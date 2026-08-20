@@ -1,0 +1,7 @@
+# KiCad-generated files and directories.
+.history/
+*-backups/
+_autosave-*
+fp-info-cache
+~*.lck
+*.kicad_prl

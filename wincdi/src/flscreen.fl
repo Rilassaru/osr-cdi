@@ -1,0 +1,425 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0308
+header_name {.h}
+code_name {.cpp}
+decl {\#include "mymsg.h"} {public global
+}
+
+decl {\#include "MyChart.h"} {public global
+}
+
+Function {make_window()} {open
+} {
+  Fl_Window {} {open
+    xywh {48 50 1280 720} type Double color 55 resizable visible
+  } {
+    Fl_Tabs tabs_window {open
+      xywh {0 0 1280 720} color 23 labeltype NO_LABEL labelsize 18
+    } {
+      Fl_Group tab_device_infomation {
+        label {    &Device Infomation} open
+        xywh {0 60 1280 660} labelsize 20 hide
+      } {
+        Fl_Box {} {
+          label {Input Signal Status}
+          xywh {60 301 550 179} box BORDER_FRAME color 8 labelsize 24 align 5
+        }
+        Fl_Box {} {
+          label {Production name}
+          xywh {60 100 550 170} box BORDER_FRAME color 8 labelsize 24 align 5
+        }
+        Fl_Box {} {
+          label {Power Valve Motor Status}
+          xywh {60 511 550 179} box BORDER_FRAME color 8 labelsize 24 align 5
+        }
+        Fl_Group {} {
+          label {Engine Type Settings} open
+          xywh {650 100 580 130} box BORDER_FRAME color 0 labelsize 24 align 5
+        } {
+          Fl_Round_Button radio_single_pulse {
+            label {1 pulse in one rotation}
+            callback cb_engine_type
+            xywh {660 109 209 30} type Radio down_box ROUND_DOWN_BOX labelsize 24
+          }
+          Fl_Round_Button radio_twin_pulse {
+            label {2 pulse in one rotation}
+            callback cb_engine_type
+            xywh {930 109 209 30} type Radio down_box ROUND_DOWN_BOX value 1 labelsize 24
+          }
+          Fl_Box {} {
+            label {NOTE:Crank case lead type must change pick up coil position by yourself.}
+            xywh {650 152 560 18} labelsize 16
+          }
+          Fl_Input sys_pickup_degree {
+            label {Pick up coil position}
+            callback cb_sys_pickup_degree
+            xywh {1120 185 60 33} type Int labelsize 24 textsize 18
+          }
+        }
+        Fl_Output msg {
+          label {Log:}
+          xywh {650 331 580 299} type Multiline color 0 labelsize 18 align 133 textfont 13 textsize 18 textcolor 7
+          class MyMsg
+        }
+        Fl_Output dev_manufacture {
+          label Manufacture
+          xywh {186 109 382 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_product {
+          label Product
+          xywh {186 149 382 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_mapsw {
+          label {Map switch}
+          xywh {370 360 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_quickshifter {
+          label {Quick shifter switch}
+          xywh {370 440 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_rpm {
+          label {R.P.M.}
+          xywh {370 320 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_pv_pot {
+          label {PV Current angle}
+          xywh {370 570 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_devid {
+          label {PIC DevID}
+          xywh {260 227 120 33} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_revid {
+          label RevID
+          xywh {450 227 120 33} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_pv_target {
+          label {PV Target}
+          xywh {370 530 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_pv_mode {
+          label {PV Mode}
+          xywh {370 650 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Output dev_pv_mt_state {
+          label {PV Motor state}
+          xywh {370 610 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Button btn_dev_read {
+          label {READ from device}
+          callback cb_device_read
+          xywh {650 240 250 60} color 207 labelsize 18
+        }
+        Fl_Button btn_dev_write {
+          label {WRITE to device}
+          callback cb_device_write
+          xywh {980 240 250 60} color 254 labelsize 18
+        }
+        Fl_Button btn_file_open {
+          label {File Open}
+          callback cb_file_open
+          xywh {650 640 250 50} labelsize 18
+        }
+        Fl_Button btn_file_save {
+          label {File Save}
+          callback cb_file_save
+          xywh {980 640 250 50} labelsize 18
+        }
+        Fl_Output dev_th_pot {
+          label {Map switch current}
+          xywh {370 400 200 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Progress pr_cputemp_current {
+          xywh {190 192 375 25} selection_color 60
+        }
+      }
+      Fl_Group tab_map_settings {
+        label {&Map Settings        }
+        xywh {0 60 1280 660} labelsize 20 hide
+      } {
+        Fl_Box chart_ign {
+          label Ignition
+          xywh {180 90 800 280} box UP_FRAME color 1 labelsize 18
+          class MyChart
+        }
+        Fl_Box chart_pvs {
+          label pvs
+          xywh {180 400 800 280} box UP_FRAME color 1 labelsize 18
+          class MyChart
+        }
+        Fl_Repeat_Button btn_map_up {
+          label {UP(&l)}
+          callback cb_up
+          xywh {1030 180 220 130} labelsize 24
+        }
+        Fl_Repeat_Button btn_map_down {
+          label {DOWN(&k)}
+          callback cb_down
+          xywh {1030 510 220 130} labelsize 24
+        }
+        Fl_Repeat_Button btn_map_left {
+          label {<<(&,)}
+          callback cb_left
+          xywh {1020 320 110 180} labelsize 24
+        }
+        Fl_Repeat_Button btn_map_right {
+          label {(&.)>>}
+          callback cb_right
+          xywh {1150 320 110 180} labelsize 25
+        }
+        Fl_Light_Button btn_select_ign_map0 {
+          label {IGN MAP1(&1)}
+          callback cb_select_map
+          xywh {20 90 140 60} type Radio color 252 selection_color 1 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_ign_map1 {
+          label {IGN MAP2(&2)}
+          callback cb_select_map
+          xywh {20 160 140 60} type Radio color 246 selection_color 4 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_ign_map2 {
+          label {IGN MAP3(&3)}
+          callback cb_select_map
+          xywh {20 230 140 60} type Radio color 95 selection_color 4 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_ign_map3 {
+          label {IGN MAP4(&4)}
+          callback cb_select_map
+          xywh {20 300 140 60} type Radio color 87 selection_color 4 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_pvs_map0 {
+          label {PVS MAP1(&5)}
+          callback cb_select_map
+          xywh {20 400 140 55} type Radio color 252 selection_color 1 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_pvs_map1 {
+          label {PVS MAP2(&6)}
+          callback cb_select_map
+          xywh {20 470 140 55} type Radio color 246 selection_color 4 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_pvs_map2 {
+          label {PVS MAP3(&7)}
+          callback cb_select_map
+          xywh {20 540 140 55} type Radio color 3 selection_color 4 labelsize 18 align 16
+        }
+        Fl_Light_Button btn_select_pvs_map3 {
+          label {PVS MAP4(&8)}
+          callback cb_select_map
+          xywh {20 610 140 60} type Radio color 87 selection_color 4 labelsize 18 align 16
+        }
+        Fl_Group {} {open
+          xywh {1035 130 205 40}
+        } {
+          Fl_Round_Button radio_map_x1 {
+            label x1
+            xywh {1035 140 25 25} type Radio down_box ROUND_DOWN_BOX value 1 labelsize 20
+          }
+          Fl_Round_Button radio_map_x5 {
+            label x5
+            xywh {1100 140 25 25} type Radio down_box ROUND_DOWN_BOX labelsize 20
+          }
+          Fl_Round_Button radio_map_x10 {
+            label x10
+            xywh {1160 140 25 25} type Radio down_box ROUND_DOWN_BOX labelsize 20
+          }
+        }
+      }
+      Fl_Group tab_quick_shifter {
+        label {&Quick Shifter       }
+        xywh {0 60 1280 660} labelsize 20 hide
+      } {
+        Fl_Value_Slider vs_qs_enable_rpm {
+          label {Enable point(r.p.m.x100)}
+          callback cb_option_setting_vs
+          xywh {40 140 600 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 minimum 40 maximum 155 step 5 value 120 textsize 18
+        }
+        Fl_Value_Slider vs_qs_sw_on_count {
+          label {Delay count  to activation(pick-up count)}
+          callback cb_option_setting_vs
+          xywh {40 340 600 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 maximum 10 step 1 value 1 textsize 18
+        }
+        Fl_Value_Slider vs_qs_cut_count {
+          label {Count of ignition cuts(pick-up count)}
+          callback cb_option_setting_vs
+          xywh {40 240 600 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 minimum 1 maximum 50 step 1 value 22 textsize 18
+        }
+        Fl_Value_Slider vs_qs_disable_count {
+          label {Count of Invalid after activation(pick-up count)}
+          callback cb_option_setting_vs
+          xywh {40 440 600 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 minimum 50 maximum 200 step 5 value 100 textsize 18
+        }
+        Fl_Light_Button btn_qs_reverse_onoff_state {
+          label {Reverse on/off state}
+          callback cb_option_setting_btn
+          xywh {410 520 227 60} selection_color 2 labelsize 18
+        }
+        Fl_Light_Button btn_qs_use_as_stopsw {
+          label {Use as stop switch}
+          callback cb_option_setting_btn
+          xywh {410 610 227 60} selection_color 2 labelsize 18
+        }
+        Fl_Box {} {
+          label {Set the minimum engine speed (RPM) at which the quickshifter switch becomes active. Using the quickshifter at low RPM is not recommended. The default value is 70.}
+          xywh {660 110 600 80} labelsize 18 align 128
+        }
+        Fl_Box {} {
+          label {Set the number of crankshaft revolutions that must occur after the quick shifter switch is activated before the ignition cut engages. The default value is zero.}
+          xywh {660 310 590 80} labelsize 18 align 128
+        }
+        Fl_Box {} {
+          label {Set the duration of the ignition cut. The default value is 11 for single-cylinder engines and 22 for twin-cylinder engines.}
+          xywh {660 210 580 80} labelsize 18 align 128
+        }
+        Fl_Box {} {
+          label {Set the engine speed threshold to inhibit the quick shifter switch from re-engaging after the ignition cut period has ended.}
+          xywh {660 410 590 80} labelsize 18 align 128
+        }
+        Fl_Box {} {
+          label {Inverts the quickshifter switch setting (ON/OFF). Please configure this according to the switch specifications. The default setting is OFF.}
+          xywh {660 500 590 80} labelsize 18 align 128
+        }
+        Fl_Box {} {
+          label {Turn this on when using the quick-shifter switch as a STOP switch. It is not normally used. The default setting is OFF.}
+          xywh {660 590 590 80} labelsize 18 align 128
+        }
+      }
+      Fl_Group tab_option_settings {
+        label {&Option Settings       } open
+        xywh {0 60 1280 660} labelsize 20
+      } {
+        Fl_Value_Slider vs_rev_limit {
+          label {Rev limitter(r.p.m.x100)}
+          callback cb_option_setting_vs selected
+          xywh {30 100 600 50} type {Horz Knob} color 7 selection_color 1 labelsize 24 align 5 minimum 40 maximum 160 step 5 value 120 textsize 18
+        }
+        Fl_Group {} {
+          label {C2 Option port} open
+          xywh {30 460 600 60} box BORDER_FRAME color 8 labelsize 24 align 5
+        } {
+          Fl_Round_Button radio_optc2_pulse_out {
+            label {Ignition pulse out}
+            callback cb_optport_type
+            xywh {60 485 25 25} type Radio down_box ROUND_DOWN_BOX value 1 labelsize 24
+          }
+          Fl_Round_Button radio_optc2_map_out {
+            label {Map switch status out}
+            callback cb_optport_type
+            xywh {320 485 25 25} type Radio down_box ROUND_DOWN_BOX labelsize 24
+          }
+        }
+        Fl_Group {} {
+          label {Map switch type} open
+          xywh {650 96 600 156} box BORDER_FRAME color 8 labelsize 24 align 5
+        } {
+          Fl_Round_Button radio_opt_mapsw_type1 {
+            label {1CH: No map switch}
+            callback cb_opt_mapsw_type
+            xywh {720 106 25 30} type Radio down_box ROUND_DOWN_BOX value 1 labelsize 24
+          }
+          Fl_Round_Button radio_opt_mapsw_type2 {
+            label {2CH: On-Off map switch}
+            callback cb_opt_mapsw_type
+            xywh {720 160 25 30} type Radio down_box ROUND_DOWN_BOX labelsize 24
+          }
+          Fl_Round_Button radio_opt_mapsw_type4 {
+            label {4CH: Throttle map switch}
+            callback cb_opt_mapsw_type
+            xywh {720 212 25 30} type Radio down_box ROUND_DOWN_BOX labelsize 24
+          }
+        }
+        Fl_Group {} {
+          label {Analog ignition} open
+          xywh {30 211 600 199} box BORDER_FRAME color 8 labelsize 24 align 5
+        } {
+          Fl_Value_Slider vs_count_of_an_ignition {
+            label {Count of initial analog ignition}
+            callback cb_option_setting_vs
+            xywh {70 251 550 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 maximum 60 step 1 value 10 textsize 18
+          }
+          Fl_Value_Slider vs_rpm_for_an_ignition {
+            label {Upper limit for analog ignition (r.p.m.x100)}
+            callback cb_option_setting_vs
+            xywh {70 341 550 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 maximum 30 step 1 textsize 18
+          }
+        }
+        Fl_Group {} {
+          label {4ch map setting} open
+          xywh {650 302 600 328} box BORDER_FRAME color 8 labelsize 24 align 5
+        } {
+          Fl_Value_Slider vs_throttle_1to2 {
+            label {Throttle map branch point: MAP 1 to 2}
+            callback cb_opt_setting_throttle
+            xywh {670 379 560 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 maximum 255 step 1 value 64 textsize 18
+          }
+          Fl_Value_Slider vs_throttle_2to3 {
+            label {Throttle map branch point: MAP 2 to 3}
+            callback cb_opt_setting_throttle
+            xywh {670 469 560 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 maximum 255 step 1 value 128 textsize 18
+          }
+          Fl_Value_Slider vs_throttle_3to4 {
+            label {Throttle map branch point: MAP 3 to 4}
+            callback cb_opt_setting_throttle
+            xywh {670 560 560 50} type {Horz Knob} color 55 selection_color 1 labelsize 24 align 5 maximum 255 step 1 value 192 textsize 18
+          }
+          Fl_Progress pr_tp_current {
+            label {CURRENT VALUE}
+            xywh {700 314 525 25} selection_color 60
+          }
+        }
+        Fl_Group {} {
+          label {PV Initial mode } open
+          xywh {30 570 600 60} box BORDER_FRAME color 8 labelsize 24 align 5
+        } {
+          Fl_Round_Button radio_opt_pv_init_open_end {
+            label {Full open end}
+            callback cb_pviinit_type
+            xywh {60 595 25 25} type Radio down_box ROUND_DOWN_BOX value 1 labelsize 24
+          }
+          Fl_Round_Button radio_opt_pv_init_close_end {
+            label {Full close end}
+            callback cb_pviinit_type
+            xywh {320 595 25 25} type Radio down_box ROUND_DOWN_BOX labelsize 24
+          }
+        }
+      }
+      Fl_Group {} {
+        label {    About    } open
+        xywh {0 60 1280 660} labelsize 20 hide
+      } {
+        Fl_Box {} {
+          label {/* ----------------------------------------------------------------------------
+Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
+----------------------------------------------------------------------------
+Copyright(c) 2013 - 2026 Rilassaru(http://rilassaru.blog.jp/)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met :
+
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and / or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The views and conclusions contained in the software and documentation are those
+of the authors and should not be interpreted as representing official policies,
+either expressed or implied, of the FreeBSD Project.
+----------------------------------------------------------------------------*/}
+          xywh {20 80 1230 630} labelfont 4 align 128
+        }
+      }
+    }
+  }
+}

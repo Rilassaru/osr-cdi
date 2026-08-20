@@ -1,0 +1,12 @@
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-F_Cu.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-B_Cu.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-F_Paste.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-B_Paste.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-F_Silkscreen.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-B_Silkscreen.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-F_Mask.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-B_Mask.gbr'.
+Plotted to 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-Edge_Cuts.gbr'.
+Created Gerber job file 'C:\Users\rilas\Documents\01.Dev\OSR-CDI\osr-cdi156\kicad\gerber\osr-cdi15x-job.gbrjob'.
+情報: Done.
+情報: Done.

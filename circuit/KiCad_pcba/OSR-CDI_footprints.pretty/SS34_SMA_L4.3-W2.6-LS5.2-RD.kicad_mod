@@ -1,0 +1,341 @@
+(footprint "SS34_SMA_L4.3-W2.6-LS5.2-RD"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -2.3005 180)
+		(layer "F.SilkS")
+		(uuid "23d3c70b-5fcf-47ff-a499-e17903c13d09")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SS34_C8678"
+		(at 0 2.330433 180)
+		(layer "F.Fab")
+		(uuid "79c97933-935c-4f99-9a45-098292b35b87")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.lcsc.com/product-detail/C8678.html?s_z=n_q_C8678&globalKeyword=C8678"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "48756011-48ca-4ce0-9b87-1db47dbf475e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Diode Independent 40V 3A Surface Mount SMA(DO-214AC)"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e1f62989-b852-4f23-8848-af8ef9221309")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer Part" "SS34"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f94dc642-cf64-484d-9a7d-74c0019222e8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "MDD(辰达半导体)"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cd5190da-5ff3-47cd-859b-4a6755a9e25d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier Part" "C8678"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1c8fe795-9e22-450c-a882-b9ddf37a288b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier" "LCSC"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "22aef5ab-cb54-41f2-8754-0c54a77c9d21")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC" "C8678"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "cfca5fd6-242e-4eb5-9716-662b68316076")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(sheetname "/")
+	(sheetfile "osr-cdi15x.kicad_sch")
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -2.596 -1.426)
+		(end 2.596 -1.426)
+		(stroke
+			(width 0.1525)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "620d4970-663a-4fbf-b6ef-19ba89bc4a7a")
+	)
+	(fp_line
+		(start -2.596 1.426)
+		(end 2.596 1.426)
+		(stroke
+			(width 0.1525)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "22efc49b-5cb2-4def-8a4e-9669edf35a4f")
+	)
+	(fp_line
+		(start -0.884 -1.426)
+		(end -0.884 1.426)
+		(stroke
+			(width 0.1525)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "72accfaa-aa6f-405d-ac24-1ac4e66141ff")
+	)
+	(fp_line
+		(start 2.5935 1.1755)
+		(end 2.6 1.415)
+		(stroke
+			(width 0.1525)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "6211091c-3ba3-498e-8979-0c8f67565ce1")
+	)
+	(fp_line
+		(start 2.596 -1.426)
+		(end 2.603 -1.187)
+		(stroke
+			(width 0.1525)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "7cd7be63-14ac-4a96-8148-24c6d7c5e0a1")
+	)
+	(fp_poly
+		(pts
+			(xy -2.52 -1.5025) (xy -2.5215 -1.096) (xy -2.981 -1.1005) (xy -2.977 -1.5025)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "d56caaa5-97af-46a9-bdf0-8e4f53c2c4a4")
+	)
+	(fp_poly
+		(pts
+			(xy -2.512 1.096) (xy -2.513 1.5025) (xy -2.9725 1.498) (xy -2.969 1.096)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "2a97c855-8c77-42e6-a9e4-2e1f70374ef3")
+	)
+	(fp_poly
+		(pts
+			(xy -2.3175 0.101) (xy -2.3175 -0.101) (xy -1.5075 -0.101) (xy -1.5075 0.101)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "Dwgs.User")
+		(uuid "5a8a3a57-87c1-4de6-87d8-aae797369fa9")
+	)
+	(fp_poly
+		(pts
+			(xy 2.0135 0.675) (xy 2.0135 -0.675) (xy 1.811 -0.675) (xy 1.811 0.675)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "Dwgs.User")
+		(uuid "346ecf42-fed1-4ee0-9217-9e42918a0c69")
+	)
+	(fp_poly
+		(pts
+			(xy 2.29 0.09) (xy 2.29 -0.1125) (xy 1.48 -0.1125) (xy 1.48 0.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "Dwgs.User")
+		(uuid "d536d10a-f05c-4c69-acd3-206586a6a332")
+	)
+	(fp_rect
+		(start -3.45 -1.5755)
+		(end 3.45 1.605433)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "de6ab020-0ea1-476a-8c2b-7caaf3de6120")
+	)
+	(fp_line
+		(start -2.16 -1.3)
+		(end 2.16 -1.3)
+		(stroke
+			(width 0.051)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "f78ac67f-7cc0-4a5f-a176-870898c3833e")
+	)
+	(fp_line
+		(start -2.16 1.3)
+		(end -2.16 -1.3)
+		(stroke
+			(width 0.051)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "31e1270a-261a-401b-93c0-fb4e1f4f3693")
+	)
+	(fp_line
+		(start 2.16 -1.3)
+		(end 2.16 1.3)
+		(stroke
+			(width 0.051)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "0053e3f2-7488-47f4-992c-a57545c81123")
+	)
+	(fp_line
+		(start 2.16 1.3)
+		(end -2.16 1.3)
+		(stroke
+			(width 0.051)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ea566cd2-92ef-407d-99fb-63e51d18b37f")
+	)
+	(fp_poly
+		(pts
+			(xy -2.549567 1.277039) (xy -2.582039 1.244567) (xy -2.627961 1.244567) (xy -2.660433 1.277039) (xy -2.660433 1.322961)
+			(xy -2.627961 1.355433) (xy -2.582039 1.355433) (xy -2.549567 1.322961)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.Fab")
+		(uuid "c4e496fc-9863-4df0-8c18-ef78e63e2c5e")
+	)
+	(fp_poly
+		(pts
+			(xy -1.48 -0.725) (xy -1.48 0.725) (xy -2.605 0.725) (xy -2.605 -0.725)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "653b92a8-aba4-4acd-80e9-3912b781ae5c")
+	)
+	(fp_poly
+		(pts
+			(xy 2.605 -0.725) (xy 2.605 0.725) (xy 1.48 0.725) (xy 1.48 -0.725)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "6f973af1-772d-47a9-8904-c80e3dc76425")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(uuid "8dd8c14f-8efa-45e9-acc4-8c4c71a93e2a")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.1)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -2.2 0 180)
+		(size 2 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "0ef249b1-db2f-41f3-885f-c095f593827b")
+	)
+	(pad "2" smd rect
+		(at 2.2 0 180)
+		(size 2 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "418e5af7-f299-48ac-9206-570dc510b706")
+	)
+	(embedded_fonts no)
+)
