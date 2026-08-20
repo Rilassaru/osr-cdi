@@ -1,4 +1,4 @@
-OSR-CDI	153
+OSR-CDI	156
 IG:0	000	0.000000
 IG:0	001	19.000000
 IG:0	002	19.000000
@@ -1295,3 +1295,4 @@ TP_TH01	060
 TP_TH02	099
 TP_TH03	150
 rpm_limit_for_an_ignition	000
+pvs_init_pattern	000
