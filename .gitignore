@@ -50,6 +50,9 @@ fp-info-cache
 *.mptags
 *.tagsrc
 
+# ★ MPLAB X の構成定義XMLをコミット対象として例外許可
+!**/nbproject/*.xml
+
 # ==========================================
 # 3. Visual Studio (Official Template Merged)
 # ==========================================
