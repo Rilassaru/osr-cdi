@@ -23,11 +23,11 @@ OSR-CDI/
 Requirements & Toolchain
 ===========================================
    Circuit Design
-      Tool: KiCad
+      Tool: KiCad ver.10
       Notes: Custom footprints included in OSR-CDI_footprints.pretty
 
    Firmware
-      Tool: MPLAB X IDE & XC8 Compiler
+      Tool: MPLAB X IDE ver.6.2 & XC8 ver.2.5 Compiler
       Notes: Targets PIC16F1455 series microcontrollers
 
    Flashing / Debugging
@@ -35,7 +35,7 @@ Requirements & Toolchain
       Notes: Via on-board ICSP header pins
 
    GUI Utility (WinCDI)
-      Tool: Visual Studio (C++ Desktop Development)
+      Tool: Visual Studio ver.2026 (C++ Desktop Development)
       Notes: Statically links against pre-built libraries in wincdi/lib/
 
 ===========================================

@@ -266,7 +266,7 @@ static void repeat_callback(void*) {
 					// Convert voltage to temperature in Celsius
 					float temperature_celsius = 25.0f + ((v_measured - 2.2f) / 0.0036f);
 					_itoa_s((int)(temperature_celsius), str, STRING_BUFFER_SIZE, 10);
-					pr_cputemp_current->value((int)temperature_celsius);
+					pr_cputemp_current->value(temperature_celsius);
 					pr_cputemp_current->copy_label(str);
 				}
 				else {
