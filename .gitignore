@@ -1,322 +1,123 @@
-# ==========================================
-# 1. KiCad (Official Template & Custom Settings)
-# ==========================================
-# Temporary & Backup files
-*.000
-*.bak
-*.bck
-*.kicad_pcb-bak
-*.kicad_sch-bak
-*-backups
-*-cache*
-*-bak
-*-bak*
-*~
-~*
-_autosave-*
-\#auto_saved_files\#
-*.tmp
-*-save.pro
-*-save.kicad_pcb
-fp-info-cache
-~*.lck
-\#auto_saved_files#
-**/*-backups/*.zip
-.history
-*.kicad_dru
+# ==============================================================================
+# OSR-CDI Project .gitignore
+# ==============================================================================
 
-# Local project settings
-*.kicad_prl
+# ==============================================================================
+# 1. Circuit Folder (KiCad) - Applied strictly to circuit/
+# ==============================================================================
+# Temporary and backup files
+circuit/**/.*.swp
+circuit/**/*-backups/
+circuit/**/_autosave-*
+circuit/**/#auto_saved_files#
+circuit/**/~*.lck
+circuit/**/*.bak
+circuit/**/*.bck
+circuit/**/*.kicad_pcb-bak
+circuit/**/*.kicad_sch-bak
+circuit/**/*.tmp
+circuit/**/fp-info-cache
+circuit/**/*.kicad_dru
 
-# Netlist / Autorouter files
-*.net
-*.dsn
-*.ses
+# Local project preferences (window positions, etc.)
+circuit/**/*.kicad_prl
 
-# BOM / Output files
-*.xml
-*.csv
-# JLCPCB用の製造・実装CSVは除外対象から除外（コミット対象とする）
-!**/jlcpcb/**.csv
-!**/production_files/**.csv
+# Netlists and intermediate layout files
+circuit/**/*.net
+circuit/**/*.dsn
+circuit/**/*.ses
 
-# ==========================================
-# 2. MPLAB X IDE (PIC Firmware)
-# ==========================================
-**/build/
-**/debug/
-**/dist/
-**/nbproject/private/
-*.mptags
-*.tagsrc
+# Output reports and BOM files (Allow manufacturing files for JLCPCB)
+circuit/**/*.xml
+circuit/**/*.csv
+!circuit/**/jlcpcb/**
+!circuit/**/production_files/**
+!circuit/**/production/**
 
-# ★ MPLAB X の構成定義XMLをコミット対象として例外許可
-!**/nbproject/*.xml
 
-# ==========================================
-# 3. Visual Studio (Official Template Merged)
-# ==========================================
-# User-specific files
-*.rsuser
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-*.env
-*.userprefs
-mono_crash.*
+# ==============================================================================
+# 2. Firmware Folder (MPLAB X IDE / PIC) - Applied strictly to firmware/
+# ==============================================================================
+# Build output directories and user-specific workspace files
+firmware/**/build/
+firmware/**/debug/
+firmware/**/dist/
+firmware/**/nbproject/private/
 
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-[Dd]ebug/x64/
-[Dd]ebugPublic/x64/
-[Rr]elease/x64/
-[Rr]eleases/x64/
-bin/x64/
-obj/x64/
-[Dd]ebug/x86/
-[Dd]ebugPublic/x86/
-[Rr]elease/x86/
-[Rr]eleases/x86/
-bin/x86/
-obj/x86/
-[Ww][Ii][Nn]32/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-[Aa][Rr][Mm]64[Ee][Cc]/
-bld/
-[Oo]bj/
-[Oo]ut/
-[Ll]og/
-[Ll]ogs/
-**/[Bb]in/*
+# Compiler intermediate files and tags
+firmware/**/*.mptags
+firmware/**/*.tagsrc
+firmware/**/*.d
+firmware/**/*.p1
+firmware/**/*.i
+firmware/**/*.cmf
+firmware/**/*.elf
+firmware/**/*.hxl
+firmware/**/*.lst
+firmware/**/*.map
+firmware/**/*.mum
+firmware/**/*.o
+firmware/**/*.rlf
+firmware/**/*.sdb
+firmware/**/*.sym
+firmware/**/*.BAK
 
-# Visual Studio cache/options directory
-.vs/
-Generated\ Files/
+# Explicitly track MPLAB X project definition XML files
+!firmware/**/nbproject/*.xml
 
-# MSTest & Tests
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
-*.trx
-*.VisualState.xml
-TestResult.xml
-nunit-*.xml
-*.received.*
-[Dd]ebugPS/
-[Rr]eleasePS/
-dlldata.c
-BenchmarkDotNet.Artifacts/
 
-# .NET / ASP.NET / StyleCop
-project.lock.json
-project.fragment.lock.json
-artifacts/
-.artifacts/
-ScaffoldingReadMe.txt
-StyleCopReport.xml
+# ==============================================================================
+# 3. WinCDI Folder (Visual Studio / C++) - Applied strictly to wincdi/
+# ==============================================================================
+# Visual Studio workspace cache and user-specific options
+wincdi/**/.vs/
+wincdi/**/*.suo
+wincdi/**/*.user
+wincdi/**/*.userosscache
+wincdi/**/*.sln.docstates
+wincdi/**/*.opendb
+wincdi/**/*.VC.db
+wincdi/**/*.VC.VC.opendb
 
-# Files built by Visual Studio
-*_i.c
-*_p.c
-*_h.h
-*.ilk
-*.meta
-*.obj
-*.idb
-*.iobj
-*.pch
-*.pdb
-*.ipdb
-*.pgc
-*.pgd
-*.rsp
-!Directory.Build.rsp
-*.sbr
-*.tlb
-*.tli
-*.tlh
-*.tmp_proj
-*_wpftmp.csproj
-*.tlog
-*.vspscc
-*.vssscc
-.builds
-*.pidb
-*.svclog
-*.scc
+# Build target directories and intermediate object folders
+wincdi/**/Debug/
+wincdi/**/Release/
+wincdi/**/x64/
+wincdi/**/x86/
+wincdi/**/ipch/
+wincdi/**/wincdi/Debug/
+wincdi/**/wincdi/Release/
 
-# Visual C++ cache files
-ipch/
-*.aps
-*.ncb
-*.opendb
-*.opensdf
-*.sdf
-*.cachefile
-*.VC.db
-*.VC.VC.opendb
+# Build artifacts, symbol files, and logs
+wincdi/**/*.obj
+wincdi/**/*.pdb
+wincdi/**/*.idb
+wincdi/**/*.ilk
+wincdi/**/*.iobj
+wincdi/**/*.ipdb
+wincdi/**/*.pch
+wincdi/**/*.res
+wincdi/**/*.tlog
+wincdi/**/*.log
+wincdi/**/*.recipe
+wincdi/**/*.lastbuildstate
+wincdi/**/wincdi.vcxproj.FileListAbsolute.txt
+wincdi/**/*.dt.d.json
+wincdi/**/*.dt.module.json
+wincdi/**/*.dt.module.json.command
 
-# Profiler & Trace
-*.psess
-*.vsp
-*.vspx
-*.sap
-*.e2e
-$tf/
-*.gpState
+# Allow third-party libraries and release installers
+!wincdi/lib/**
+!wincdi/InstallerProject/Release/*.msi
+!wincdi/InstallerProject/Release/setup.exe
 
-# Add-ins & Coverage
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
-_TeamCity*
-*.dotCover
-.axoCover/*
-!.axoCover/settings.json
-coverage*.json
-coverage*.xml
-coverage*.info
-*.coverage
-*.coveragexml
-_NCrunch_*
-.NCrunch_*
-.*crunch*.local.xml
-nCrunchTemp_*
-*.mm.*
-AutoTest.Net/
-.sass-cache/
 
-# Publish / Deployment
-[Ee]xpress/
-publish/
-*.[Pp]ublish.xml
-*.azurePubxml
-PublishScripts/
-
-# NuGet
-*.nupkg
-*.snupkg
-**/[Pp]ackages/*
-!**/[Pp]ackages/build/
-*.nuget.props
-*.nuget.targets
-
-# Azure & Store App
-csx/
-*.build.csdef
-ecf/
-rcf/
-AppPackages/
-BundleArtifacts/
-Package.StoreAssociation.xml
-_pkginfo.txt
-*.appx
-*.appxbundle
-*.appxupload
-
-# Visual Studio Cache & Other files
-*.[Cc]ache
-!?*.[Cc]ache/
-ClientBin/
-~$*
-*~
-*.dbmdl
-*.dbproj.schemaview
-*.jfm
-*.pfx
-*.publishsettings
-orleans.codegen.cs
-Generated_Code/
-_UpgradeReport_Files/
-Backup*/
-UpgradeLog*.XML
-UpgradeLog*.htm
-ServiceFabricBackup/
-*.rptproj.bak
-
-# SQL Server & BI
-*.mdf
-*.ldf
-*.ndf
-*.rdl.data
-*.bim.layout
-*.bim_*.settings
-*.rptproj.rsuser
-*- [Bb]ackup.rdl
-*- [Bb]ackup ([0-9]).rdl
-*- [Bb]ackup ([0-9][0-9]).rdl
-
-# Others (Tools / Ext)
-FakesAssemblies/
-*.GhostDoc.xml
-.ntvs_analysis.dat
-node_modules/
-*.plg
-*.opt
-*.vbw
-*.dsw
-*.dsp
-**/*.HTMLClient/GeneratedArtifacts
-**/*.DesktopClient/GeneratedArtifacts
-**/*.DesktopClient/ModelManifest.xml
-**/*.Server/GeneratedArtifacts
-**/*.Server/ModelManifest.xml
-_Pvt_Extensions
-**/.paket/paket.exe
-paket-files/
-**/.fake/
-**/.cr/personal
-**/__pycache__/
-*.pyc
-*.tss
-*.jmconfig
-*.btp.cs
-*.btm.cs
-*.odx.cs
-*.xsd.cs
-OpenCover/
-ASALocalRun/
-*.binlog
-MSBuild_Logs/
-.aws-sam
-*.nvuser
-**/.mfractor/
-**/.localhistory/
-.vshistory/
-healthchecksdb
-MigrationBackup/
-**/.ionide/
-FodyWeavers.xsd
-
-# VS Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-.history/
-*.vsix
-
-# Windows Installer
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# ==========================================
-# ★ WinCDI 依存ライブラリの例外許可
-# ==========================================
-!**/wincdi/lib/**
-
-# ==========================================
-# 4. OS & Generic
-# ==========================================
+# ==============================================================================
+# 4. OS & Editor Generic - Applied globally
+# ==============================================================================
 .DS_Store
 Thumbs.db
 Desktop.ini
+*$*
+*~
+*.tmp
