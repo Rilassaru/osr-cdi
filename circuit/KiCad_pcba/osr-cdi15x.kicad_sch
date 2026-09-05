@@ -4145,147 +4145,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "OSR-CDI:ToVR"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim yes)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "ToVR"
-				(at 0 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "OSR-CDI:ToVR"
-				(at -1.778 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Resistor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "R res resistor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "ToVR_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "ToVR_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "OSR-CDI:US2M_C64958"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4697,7 +4556,7 @@
 		(uuid "38d6a989-38e2-41c3-a009-3a7035a1d4c6")
 	)
 	(junction
-		(at 355.6 114.3)
+		(at 355.6 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "00536554-5b3e-4274-831a-2e889165a99d")
@@ -4775,7 +4634,7 @@
 		(uuid "37a4acbd-3fb3-4d2e-832f-eaa8e14cdb5f")
 	)
 	(junction
-		(at 355.6 80.01)
+		(at 355.6 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "39e7c8ae-934e-4ca3-896e-ac1c24ffc545")
@@ -4823,12 +4682,6 @@
 		(uuid "59af1114-d372-403e-811b-eda674c834f7")
 	)
 	(junction
-		(at 340.36 123.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5e50f2b4-6065-4a56-ad53-baa4f8641364")
-	)
-	(junction
 		(at 354.33 144.78)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4841,10 +4694,10 @@
 		(uuid "60406073-6d40-4761-b640-f6b86cc47033")
 	)
 	(junction
-		(at 340.36 128.27)
+		(at 328.93 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "758dd5c2-fb64-4940-a220-d2d9fee3720b")
+		(uuid "654599cf-6fd7-4c07-8c24-8790b533dd18")
 	)
 	(junction
 		(at 236.22 194.31)
@@ -4907,7 +4760,7 @@
 		(uuid "bd24dcbb-5133-4124-8482-155a5e334500")
 	)
 	(junction
-		(at 355.6 106.68)
+		(at 355.6 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c05a00fa-c55d-4615-8ca3-e1e6be4b3f1a")
@@ -4919,7 +4772,7 @@
 		(uuid "c08963ce-59a6-4c05-9d44-02f87bb8ab0d")
 	)
 	(junction
-		(at 355.6 87.63)
+		(at 355.6 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c168310c-d4f7-4519-83be-ec2dd534de49")
@@ -4937,16 +4790,16 @@
 		(uuid "cf517693-9072-4d4f-b9ef-8324123adff7")
 	)
 	(junction
+		(at 328.93 144.78)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d63c8cb5-de11-4be4-a925-b8487436869a")
+	)
+	(junction
 		(at 327.66 219.71)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "df8d28d5-5f5f-4882-929d-9816fd3b2dd0")
-	)
-	(junction
-		(at 340.36 138.43)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dfb6fb69-f015-40d9-9d03-71d64616a968")
 	)
 	(junction
 		(at 261.62 76.2)
@@ -4973,18 +4826,6 @@
 		(uuid "e7eb6901-c4c0-410a-a105-35e92b3ef7e7")
 	)
 	(junction
-		(at 340.36 144.78)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "eb07d39f-7d85-4599-899f-c6c00b835026")
-	)
-	(junction
-		(at 323.85 144.78)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ee8bb05d-81cd-4a77-b106-96b81d8b2a9c")
-	)
-	(junction
 		(at 200.66 207.01)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5001,6 +4842,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f27e9c2d-ad43-4d7d-8514-dd2131761246")
+	)
+	(junction
+		(at 309.88 144.78)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f8307809-9c25-4674-ab9c-3856aa82b0ce")
 	)
 	(junction
 		(at 69.85 196.85)
@@ -5084,7 +4931,7 @@
 	)
 	(wire
 		(pts
-			(xy 353.06 72.39) (xy 364.49 72.39)
+			(xy 353.06 62.23) (xy 364.49 62.23)
 		)
 		(stroke
 			(width 0)
@@ -5101,6 +4948,16 @@
 			(type default)
 		)
 		(uuid "0c1a7dc1-5872-44a5-8a49-f645afb7958f")
+	)
+	(wire
+		(pts
+			(xy 309.88 129.54) (xy 309.88 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f46d9f2-72e0-4f83-97fd-a0170833e6f7")
 	)
 	(wire
 		(pts
@@ -5164,13 +5021,23 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 88.9) (xy 355.6 87.63)
+			(xy 355.6 78.74) (xy 355.6 77.47)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "19dfc366-920b-4d78-8fa8-72aad4c39a6d")
+	)
+	(wire
+		(pts
+			(xy 328.93 125.73) (xy 328.93 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1bb5c255-c4ef-405a-a179-8de1739e777e")
 	)
 	(wire
 		(pts
@@ -5234,7 +5101,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 114.3) (xy 364.49 114.3)
+			(xy 355.6 104.14) (xy 364.49 104.14)
 		)
 		(stroke
 			(width 0)
@@ -5274,7 +5141,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 115.57) (xy 355.6 114.3)
+			(xy 355.6 105.41) (xy 355.6 104.14)
 		)
 		(stroke
 			(width 0)
@@ -5364,23 +5231,13 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 144.78) (xy 323.85 144.78)
+			(xy 190.5 144.78) (xy 309.88 144.78)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "37107230-edb9-44e8-8ec9-87253e98b430")
-	)
-	(wire
-		(pts
-			(xy 340.36 123.19) (xy 364.49 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3b528415-774b-448c-b7ff-dfee7415c13d")
 	)
 	(wire
 		(pts
@@ -5414,7 +5271,7 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 180.34) (xy 323.85 144.78)
+			(xy 309.88 180.34) (xy 309.88 144.78)
 		)
 		(stroke
 			(width 0)
@@ -5504,7 +5361,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 113.03) (xy 355.6 114.3)
+			(xy 355.6 102.87) (xy 355.6 104.14)
 		)
 		(stroke
 			(width 0)
@@ -5574,6 +5431,16 @@
 	)
 	(wire
 		(pts
+			(xy 328.93 129.54) (xy 364.49 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50ad30f7-4d69-407e-9df5-b3883070ff10")
+	)
+	(wire
+		(pts
 			(xy 236.22 96.52) (xy 238.76 96.52)
 		)
 		(stroke
@@ -5591,6 +5458,16 @@
 			(type default)
 		)
 		(uuid "51df2442-9390-48c3-b1f4-31d628a19d3a")
+	)
+	(wire
+		(pts
+			(xy 328.93 144.78) (xy 328.93 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51e8b527-c0ca-4707-8c67-6d0a50d35372")
 	)
 	(wire
 		(pts
@@ -5844,7 +5721,7 @@
 	)
 	(wire
 		(pts
-			(xy 353.06 80.01) (xy 355.6 80.01)
+			(xy 353.06 69.85) (xy 355.6 69.85)
 		)
 		(stroke
 			(width 0)
@@ -5994,16 +5871,6 @@
 	)
 	(wire
 		(pts
-			(xy 341.63 144.78) (xy 340.36 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88fbdefe-acfc-40ed-a181-7a7b8e9d5bb0")
-	)
-	(wire
-		(pts
 			(xy 270.51 209.55) (xy 278.13 209.55)
 		)
 		(stroke
@@ -6024,7 +5891,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 80.01) (xy 364.49 80.01)
+			(xy 355.6 69.85) (xy 364.49 69.85)
 		)
 		(stroke
 			(width 0)
@@ -6044,7 +5911,7 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 123.19) (xy 340.36 123.19)
+			(xy 320.04 129.54) (xy 328.93 129.54)
 		)
 		(stroke
 			(width 0)
@@ -6054,7 +5921,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 107.95) (xy 355.6 106.68)
+			(xy 355.6 97.79) (xy 355.6 96.52)
 		)
 		(stroke
 			(width 0)
@@ -6124,7 +5991,7 @@
 	)
 	(wire
 		(pts
-			(xy 364.49 180.34) (xy 323.85 180.34)
+			(xy 364.49 180.34) (xy 309.88 180.34)
 		)
 		(stroke
 			(width 0)
@@ -6244,23 +6111,13 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 138.43) (xy 340.36 144.78)
+			(xy 328.93 140.97) (xy 328.93 144.78)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "9c86510c-1d4a-4ab9-af64-f5aa2f989aba")
-	)
-	(wire
-		(pts
-			(xy 340.36 123.19) (xy 340.36 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a0196376-0809-4483-8c98-d4b048aa7185")
 	)
 	(wire
 		(pts
@@ -6394,7 +6251,7 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 144.78) (xy 337.82 144.78)
+			(xy 328.93 144.78) (xy 341.63 144.78)
 		)
 		(stroke
 			(width 0)
@@ -6444,23 +6301,13 @@
 	)
 	(wire
 		(pts
-			(xy 346.71 106.68) (xy 355.6 106.68)
+			(xy 346.71 96.52) (xy 355.6 96.52)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "b7a93a71-b268-48a6-90ef-152160016499")
-	)
-	(wire
-		(pts
-			(xy 340.36 128.27) (xy 340.36 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b7c4eee8-cab1-4ac9-934f-47b743f85aca")
 	)
 	(wire
 		(pts
@@ -6504,7 +6351,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 80.01) (xy 355.6 81.28)
+			(xy 355.6 69.85) (xy 355.6 71.12)
 		)
 		(stroke
 			(width 0)
@@ -6574,7 +6421,7 @@
 	)
 	(wire
 		(pts
-			(xy 346.71 99.06) (xy 349.25 99.06)
+			(xy 346.71 88.9) (xy 349.25 88.9)
 		)
 		(stroke
 			(width 0)
@@ -6614,6 +6461,16 @@
 	)
 	(wire
 		(pts
+			(xy 328.93 129.54) (xy 328.93 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ccc9259f-2654-4b13-8dfb-31304a5e470f")
+	)
+	(wire
+		(pts
 			(xy 58.42 43.18) (xy 64.77 43.18)
 		)
 		(stroke
@@ -6634,7 +6491,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 106.68) (xy 364.49 106.68)
+			(xy 355.6 96.52) (xy 364.49 96.52)
 		)
 		(stroke
 			(width 0)
@@ -6661,16 +6518,6 @@
 			(type default)
 		)
 		(uuid "d1b109e1-63c4-49bd-a2b8-2c80426f96e6")
-	)
-	(wire
-		(pts
-			(xy 323.85 144.78) (xy 327.66 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3f34bc8-73ff-48b0-b383-7c30c2ba3fa8")
 	)
 	(wire
 		(pts
@@ -6724,7 +6571,7 @@
 	)
 	(wire
 		(pts
-			(xy 356.87 99.06) (xy 364.49 99.06)
+			(xy 356.87 88.9) (xy 364.49 88.9)
 		)
 		(stroke
 			(width 0)
@@ -6754,6 +6601,16 @@
 	)
 	(wire
 		(pts
+			(xy 328.93 144.78) (xy 320.04 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e277afa5-c123-4043-9690-5ecf4d650acc")
+	)
+	(wire
+		(pts
 			(xy 327.66 213.36) (xy 327.66 209.55)
 		)
 		(stroke
@@ -6764,7 +6621,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 86.36) (xy 355.6 87.63)
+			(xy 355.6 76.2) (xy 355.6 77.47)
 		)
 		(stroke
 			(width 0)
@@ -6844,7 +6701,7 @@
 	)
 	(wire
 		(pts
-			(xy 364.49 87.63) (xy 355.6 87.63)
+			(xy 364.49 77.47) (xy 355.6 77.47)
 		)
 		(stroke
 			(width 0)
@@ -7040,7 +6897,7 @@
 	)
 	(global_label "Map Select"
 		(shape output)
-		(at 346.71 106.68 180)
+		(at 346.71 96.52 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7050,7 +6907,7 @@
 		)
 		(uuid "118ecec7-574b-4cad-9dd1-ae25407df05f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 333.1416 106.68 0)
+			(at 333.1416 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7112,7 +6969,7 @@
 	)
 	(global_label "5V"
 		(shape input)
-		(at 346.71 99.06 180)
+		(at 346.71 88.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7122,7 +6979,7 @@
 		)
 		(uuid "161ade2f-f1c0-4b7d-a0d8-14059d7a9640")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 341.4267 99.06 0)
+			(at 341.4267 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7616,7 +7473,7 @@
 	)
 	(global_label "PV Sensor"
 		(shape output)
-		(at 353.06 80.01 180)
+		(at 353.06 69.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7626,7 +7483,7 @@
 		)
 		(uuid "a86e1081-79e0-4a37-a2e9-497dccb2140e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 340.3382 80.01 0)
+			(at 340.3382 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7904,7 +7761,7 @@
 	)
 	(global_label "5V"
 		(shape input)
-		(at 353.06 72.39 180)
+		(at 353.06 62.23 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7914,7 +7771,7 @@
 		)
 		(uuid "f2915a00-26ed-42f5-bd11-511445ab3b9a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 347.7767 72.39 0)
+			(at 347.7767 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7938,7 +7795,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "01ac0c1f-d165-4b81-a2db-31cd8d803a0e")
-		(property "Reference" "H25"
+		(property "Reference" "H27"
 			(at 370.84 161.2899 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7960,7 +7817,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -8021,7 +7878,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H25")
+					(reference "H27")
 					(unit 1)
 				)
 			)
@@ -8106,7 +7963,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:C_Small")
-		(at 355.6 110.49 0)
+		(at 355.6 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8117,7 +7974,7 @@
 		(fields_autoplaced yes)
 		(uuid "036be0c3-c04a-40cf-93b1-e0d45cb734d3")
 		(property "Reference" "C14"
-			(at 358.14 109.2262 0)
+			(at 358.14 99.0662 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8128,7 +7985,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 358.14 111.7662 0)
+			(at 358.14 101.6062 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8138,8 +7995,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 355.6 110.49 0)
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
+			(at 355.6 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8150,7 +8007,7 @@
 			)
 		)
 		(property "Datasheet" "https://jlcpcb.com/partdetail/25237-CL31B104KBCNNNC/C24497"
-			(at 355.6 110.49 0)
+			(at 355.6 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8161,7 +8018,7 @@
 			)
 		)
 		(property "Description" "100nF 50V X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 355.6 110.49 0)
+			(at 355.6 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8172,7 +8029,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 355.6 110.49 0)
+			(at 355.6 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8183,7 +8040,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 355.6 110.49 0)
+			(at 355.6 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8240,7 +8097,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 59.182 33.02 90)
 			(hide yes)
 			(show_name no)
@@ -8341,7 +8198,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 232.41 98.298 90)
 			(hide yes)
 			(show_name no)
@@ -8445,7 +8302,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+		(property "Footprint" "OSR-CDI_footprints:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
 			(at 229.87 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8654,7 +8511,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 72.39 270)
+		(at 367.03 62.23 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8664,8 +8521,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0cb6d748-dac4-4e83-8e79-a8b4ef146678")
-		(property "Reference" "H15"
-			(at 370.84 71.1199 90)
+		(property "Reference" "H17"
+			(at 370.84 60.9599 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8676,7 +8533,7 @@
 			)
 		)
 		(property "Value" "YPVS(YEL/BLE)"
-			(at 370.84 73.6599 90)
+			(at 370.84 63.4999 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8686,8 +8543,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 72.39 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8698,7 +8555,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 72.39 0)
+			(at 367.03 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8709,7 +8566,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 72.39 0)
+			(at 367.03 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8720,7 +8577,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 72.39 90)
+			(at 367.03 62.23 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8731,7 +8588,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 72.39 90)
+			(at 367.03 62.23 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8747,7 +8604,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H15")
+					(reference "H17")
 					(unit 1)
 				)
 			)
@@ -8844,7 +8701,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "10585c45-8aec-4934-8980-e2f0bc12f34d")
-		(property "Reference" "H27"
+		(property "Reference" "H29"
 			(at 370.84 171.4499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8866,7 +8723,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -8927,7 +8784,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H27")
+					(reference "H29")
 					(unit 1)
 				)
 			)
@@ -8964,7 +8821,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 202.438 210.82 90)
 			(hide yes)
 			(show_name no)
@@ -9046,7 +8903,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1137bb22-a93c-4b55-85de-7405358a2f86")
-		(property "Reference" "H30"
+		(property "Reference" "H32"
 			(at 370.84 208.2799 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9068,7 +8925,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -9129,7 +8986,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H30")
+					(reference "H32")
 					(unit 1)
 				)
 			)
@@ -9137,7 +8994,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 99.06 270)
+		(at 367.03 88.9 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9147,8 +9004,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13fd6eb1-d525-4d21-8271-0ae8beedc856")
-		(property "Reference" "H18"
-			(at 370.84 97.7899 90)
+		(property "Reference" "H20"
+			(at 370.84 87.6299 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9159,7 +9016,7 @@
 			)
 		)
 		(property "Value" "TP(5V)"
-			(at 370.84 100.3299 90)
+			(at 370.84 90.1699 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9169,8 +9026,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 99.06 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9181,7 +9038,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 99.06 0)
+			(at 367.03 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9192,7 +9049,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 99.06 0)
+			(at 367.03 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9203,7 +9060,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 99.06 90)
+			(at 367.03 88.9 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9214,7 +9071,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 99.06 90)
+			(at 367.03 88.9 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9230,7 +9087,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H18")
+					(reference "H20")
 					(unit 1)
 				)
 			)
@@ -9268,7 +9125,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SOP-4_L6.5-W4.6-P2.54-LS10.0"
+		(property "Footprint" "OSR-CDI_footprints:SOP-4_L6.5-W4.6-P2.54-LS10.0"
 			(at 289.56 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -9511,7 +9368,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:CAP-SMD_BD6.3-L6.6-W6.6-FD-1"
+		(property "Footprint" "OSR-CDI_footprints:CAP-SMD_BD6.3-L6.6-W6.6-FD-1"
 			(at 249.8852 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -9612,7 +9469,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_1206_3216Metric"
 			(at 311.15 211.328 90)
 			(hide yes)
 			(show_name no)
@@ -9677,107 +9534,6 @@
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
 					(reference "R10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 342.9 128.27 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "20a99f59-b141-49b7-9a93-ac2e2aaaf438")
-		(property "Reference" "H8"
-			(at 346.71 126.9999 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "OPT HOLE"
-			(at 346.71 129.5399 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 342.9 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 342.9 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Mounting Hole with connection"
-			(at 342.9 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 342.9 128.27 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 342.9 128.27 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "1d742047-75d8-4d27-8971-e56fedd1e97f")
-		)
-		(instances
-			(project "osr-cdi15x"
-				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H8")
 					(unit 1)
 				)
 			)
@@ -9973,7 +9729,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "OSR-CDI:LED-SMD_L1.6-W0.8-R-RD"
+		(property "Footprint" "OSR-CDI_footprints:LED-SMD_L1.6-W0.8-R-RD"
 			(at 102.87 189.23 0)
 			(hide yes)
 			(show_name no)
@@ -10169,6 +9925,107 @@
 		)
 	)
 	(symbol
+		(lib_id "OSR-CDI:R")
+		(at 353.06 88.9 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "35096714-419e-43fe-a264-56622a754d5a")
+		(property "Reference" "R12"
+			(at 353.06 91.44 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "330"
+			(at 353.06 88.9 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
+			(at 353.06 87.122 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 353.06 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 353.06 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 353.06 88.9 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 353.06 88.9 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "fc84e1a7-9959-462f-b85f-f52bff19e8b5")
+		)
+		(pin "1"
+			(uuid "8a53bea7-fe1c-41fc-9014-63c92e1eb0b5")
+		)
+		(instances
+			(project "osr-cdi15x"
+				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OSR-CDI:US2M_C64958")
 		(at 346.71 167.64 180)
 		(unit 1)
@@ -10199,7 +10056,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:US2M_SMA_L4.4-W2.8-LS5.4-RD"
+		(property "Footprint" "OSR-CDI_footprints:US2M_SMA_L4.4-W2.8-LS5.4-RD"
 			(at 346.71 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -10401,7 +10258,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:US2M_SMA_L4.4-W2.8-LS5.4-RD"
+		(property "Footprint" "OSR-CDI_footprints:US2M_SMA_L4.4-W2.8-LS5.4-RD"
 			(at 346.71 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -10505,7 +10362,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "397af474-a236-4572-8d36-f46805a1e42d")
-		(property "Reference" "H10"
+		(property "Reference" "H12"
 			(at 355.6 219.7099 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10527,7 +10384,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_1.6-0.9mm_Pad"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_1.6-0.9mm_Pad"
 			(at 353.06 219.71 0)
 			(hide yes)
 			(show_name no)
@@ -10566,7 +10423,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H10")
+					(reference "H12")
 					(unit 1)
 				)
 			)
@@ -10603,7 +10460,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
+		(property "Footprint" "OSR-CDI_footprints:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
 			(at 233.68 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -10707,7 +10564,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 264.16 280.67 0)
 			(hide yes)
 			(show_name no)
@@ -10808,7 +10665,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 264.16 267.97 0)
 			(hide yes)
 			(show_name no)
@@ -10876,6 +10733,107 @@
 		)
 	)
 	(symbol
+		(lib_id "OSR-CDI:MountingHole_Pad")
+		(at 331.47 148.59 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "43d7b300-0c59-4be7-a563-229c2b423138")
+		(property "Reference" "H10"
+			(at 335.28 147.3199 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C-OPT"
+			(at 335.28 149.8599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 331.47 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 331.47 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 331.47 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 331.47 148.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 331.47 148.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6eaae329-df6e-42f9-9f79-9e44ac3d41f4")
+		)
+		(instances
+			(project "osr-cdi15x"
+				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
+					(reference "H10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OSR-CDI:HC-TYPE-C-16P-01A")
 		(at 251.46 88.9 0)
 		(unit 1)
@@ -10907,7 +10865,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:USB-C-SMD_HC-TYPE-C-16P-01A"
+		(property "Footprint" "OSR-CDI_footprints:USB-C-SMD_HC-TYPE-C-16P-01A"
 			(at 251.46 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -11086,7 +11044,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "47d065d4-3d94-4c36-a22d-a61ad7a4c7f0")
-		(property "Reference" "H28"
+		(property "Reference" "H30"
 			(at 370.84 179.0699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11108,7 +11066,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 180.34 0)
 			(hide yes)
 			(show_name no)
@@ -11169,7 +11127,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H28")
+					(reference "H30")
 					(unit 1)
 				)
 			)
@@ -11186,7 +11144,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "4c824e59-2254-40a1-8fde-396eab4c8407")
-		(property "Reference" "H14"
+		(property "Reference" "H16"
 			(at 365.76 46.9899 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11208,7 +11166,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 361.95 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -11269,7 +11227,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H14")
+					(reference "H16")
 					(unit 1)
 				)
 			)
@@ -11385,7 +11343,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:ICSP_5PIN"
+		(property "Footprint" "OSR-CDI_footprints:ICSP_5PIN"
 			(at 101.6 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -11522,108 +11480,6 @@
 		)
 	)
 	(symbol
-		(lib_id "OSR-CDI:ToVR")
-		(at 353.06 99.06 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "593059e2-4cb7-4cf4-94ab-228e747c0652")
-		(property "Reference" "R12"
-			(at 353.06 96.52 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ToVR"
-			(at 353.06 99.06 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OSR-CDI:ToVR"
-			(at 353.06 100.838 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 353.06 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 353.06 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 353.06 99.06 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 353.06 99.06 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d6a541cb-2f6e-4ec1-ae73-fad8cb7e994c")
-		)
-		(pin "2"
-			(uuid "5785b551-5271-4e88-94b3-0c6f07494657")
-		)
-		(instances
-			(project "osr-cdi15x"
-				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 54.61 212.09 0)
 		(unit 1)
@@ -11736,7 +11592,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_1.6-0.9mm_Pad"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_1.6-0.9mm_Pad"
 			(at 77.47 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -11813,7 +11669,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 214.122 179.07 90)
 			(hide yes)
 			(show_name no)
@@ -11885,7 +11741,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:C_Small")
-		(at 355.6 83.82 0)
+		(at 355.6 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11896,7 +11752,7 @@
 		(fields_autoplaced yes)
 		(uuid "6392d673-5aca-4ead-b0bd-ab925a9ccf7c")
 		(property "Reference" "C13"
-			(at 358.14 82.5562 0)
+			(at 358.14 72.3962 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11907,7 +11763,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 358.14 85.0962 0)
+			(at 358.14 74.9362 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11917,8 +11773,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 355.6 83.82 0)
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
+			(at 355.6 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11929,7 +11785,7 @@
 			)
 		)
 		(property "Datasheet" "https://jlcpcb.com/partdetail/25237-CL31B104KBCNNNC/C24497"
-			(at 355.6 83.82 0)
+			(at 355.6 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11940,7 +11796,7 @@
 			)
 		)
 		(property "Description" "100nF 50V X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 355.6 83.82 0)
+			(at 355.6 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11951,7 +11807,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 355.6 83.82 0)
+			(at 355.6 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11962,7 +11818,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 355.6 83.82 0)
+			(at 355.6 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12253,7 +12109,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 232.41 83.058 90)
 			(hide yes)
 			(show_name no)
@@ -12461,7 +12317,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
 			(at 39.37 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -12562,7 +12418,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
+		(property "Footprint" "OSR-CDI_footprints:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
 			(at 210.82 207.01 0)
 			(hide yes)
 			(show_name no)
@@ -12634,7 +12490,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 309.88 123.19 0)
+		(at 309.88 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12644,7 +12500,7 @@
 		(dnp no)
 		(uuid "75149933-5578-4b5e-9cf2-48d476e8e7db")
 		(property "Reference" "#PWR016"
-			(at 309.88 129.54 0)
+			(at 309.88 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12655,7 +12511,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 312.42 127 0)
+			(at 312.42 137.16 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12667,7 +12523,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 309.88 123.19 0)
+			(at 309.88 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12678,7 +12534,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 309.88 123.19 0)
+			(at 309.88 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12689,7 +12545,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 309.88 123.19 0)
+			(at 309.88 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12713,7 +12569,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:US2M_C64958")
-		(at 332.74 144.78 0)
+		(at 314.96 144.78 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12723,7 +12579,7 @@
 		(dnp no)
 		(uuid "76689be4-fb3e-4545-9460-57ac005d6d92")
 		(property "Reference" "D8"
-			(at 336.55 143.51 0)
+			(at 318.77 143.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12733,7 +12589,7 @@
 			)
 		)
 		(property "Value" "US2M"
-			(at 336.55 146.05 0)
+			(at 318.77 146.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12742,8 +12598,8 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:US2M_SMA_L4.4-W2.8-LS5.4-RD"
-			(at 332.74 144.78 0)
+		(property "Footprint" "OSR-CDI_footprints:US2M_SMA_L4.4-W2.8-LS5.4-RD"
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12754,7 +12610,7 @@
 			)
 		)
 		(property "Datasheet" "https://jlcpcb.com/parts/componentSearch?searchTxt=C64958"
-			(at 332.74 144.78 0)
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12765,7 +12621,7 @@
 			)
 		)
 		(property "Description" "-55℃~+150℃ 1 Independent 1.7V@2A 1kV 2A 50A 5uA@1kV 75ns SMA Fast Recovery / High Efficiency Diodes ROHS Copy"
-			(at 332.74 144.78 0)
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12776,7 +12632,7 @@
 			)
 		)
 		(property "Manufacturer Part" "US2M"
-			(at 332.74 144.78 0)
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12787,7 +12643,7 @@
 			)
 		)
 		(property "Manufacturer" "MDD(辰达半导体)"
-			(at 332.74 144.78 0)
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12798,7 +12654,7 @@
 			)
 		)
 		(property "Supplier Part" "C64958"
-			(at 332.74 144.78 0)
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12809,7 +12665,7 @@
 			)
 		)
 		(property "Supplier" "LCSC"
-			(at 332.74 144.78 0)
+			(at 314.96 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12846,7 +12702,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "79ab32be-2fff-4dc4-b3cb-cdc5dedb436b")
-		(property "Reference" "H24"
+		(property "Reference" "H26"
 			(at 370.84 156.2099 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12868,7 +12724,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_SQ_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_SQ_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -12929,7 +12785,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H24")
+					(reference "H26")
 					(unit 1)
 				)
 			)
@@ -12947,7 +12803,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7c42a561-3de8-4024-9625-93a0097d9a97")
-		(property "Reference" "H23"
+		(property "Reference" "H25"
 			(at 370.84 151.1299 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12969,7 +12825,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_SQ_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_SQ_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -13030,7 +12886,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H23")
+					(reference "H25")
 					(unit 1)
 				)
 			)
@@ -13067,7 +12923,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 279.908 215.9 90)
 			(hide yes)
 			(show_name no)
@@ -13171,7 +13027,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 264.16 251.46 0)
 			(hide yes)
 			(show_name no)
@@ -13240,7 +13096,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 114.3 270)
+		(at 367.03 104.14 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13250,8 +13106,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7f0eab50-9619-4d5c-ad68-e923274c8ef0")
-		(property "Reference" "H20"
-			(at 370.84 113.0299 90)
+		(property "Reference" "H22"
+			(at 370.84 102.8699 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13262,7 +13118,7 @@
 			)
 		)
 		(property "Value" "TP(GND)"
-			(at 370.84 115.5699 90)
+			(at 370.84 105.4099 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13272,8 +13128,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 114.3 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13284,7 +13140,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 114.3 0)
+			(at 367.03 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13295,7 +13151,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 114.3 0)
+			(at 367.03 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13306,7 +13162,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 114.3 90)
+			(at 367.03 104.14 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13317,7 +13173,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 114.3 90)
+			(at 367.03 104.14 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13333,7 +13189,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H20")
+					(reference "H22")
 					(unit 1)
 				)
 			)
@@ -13371,7 +13227,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:HSOP-8_L5.0-W4.0-P1.27-LS6.2-BL-EP"
+		(property "Footprint" "OSR-CDI_footprints:HSOP-8_L5.0-W4.0-P1.27-LS6.2-BL-EP"
 			(at 334.01 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -13518,7 +13374,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:TO-252-2_L6.6-W6.1-P4.57-LS10.1-BR-CW"
+		(property "Footprint" "OSR-CDI_footprints:TO-252-2_L6.6-W6.1-P4.57-LS10.1-BR-CW"
 			(at 193.04 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -13658,7 +13514,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8aed1384-aa71-4b41-bb83-1292eebe4dec")
-		(property "Reference" "H22"
+		(property "Reference" "H24"
 			(at 370.84 143.5099 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13680,7 +13536,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -13741,7 +13597,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H22")
+					(reference "H24")
 					(unit 1)
 				)
 			)
@@ -13759,7 +13615,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8ce55ad2-e2c6-429c-83ae-0fc97f822630")
-		(property "Reference" "H29"
+		(property "Reference" "H31"
 			(at 370.84 193.0399 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13781,7 +13637,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -13842,7 +13698,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H29")
+					(reference "H31")
 					(unit 1)
 				)
 			)
@@ -13881,7 +13737,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+		(property "Footprint" "OSR-CDI_footprints:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
 			(at 54.61 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -14040,7 +13896,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_1206_3216Metric"
 			(at 311.15 196.088 90)
 			(hide yes)
 			(show_name no)
@@ -14220,7 +14076,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
+		(property "Footprint" "OSR-CDI_footprints:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
 			(at 245.11 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -14323,7 +14179,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:CAP-SMD_BD6.3-L6.6-W6.6-FD-1"
+		(property "Footprint" "OSR-CDI_footprints:CAP-SMD_BD6.3-L6.6-W6.6-FD-1"
 			(at 183.8452 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -14472,6 +14328,107 @@
 		)
 	)
 	(symbol
+		(lib_id "OSR-CDI:MountingHole_Pad")
+		(at 331.47 125.73 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9a375774-2df1-4504-a38e-31409fe8c1ad")
+		(property "Reference" "H9"
+			(at 335.28 124.4599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C-OPT"
+			(at 335.28 126.9999 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 331.47 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 331.47 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 331.47 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 331.47 125.73 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 331.47 125.73 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "724a7004-94d1-4ab0-b9fb-2fd0de035e14")
+		)
+		(instances
+			(project "osr-cdi15x"
+				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
+					(reference "H9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OSR-CDI:C_Small")
 		(at 123.19 58.42 0)
 		(unit 1)
@@ -14505,7 +14462,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
 			(at 123.19 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -14606,7 +14563,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_1206_3216Metric"
 			(at 320.548 215.9 90)
 			(hide yes)
 			(show_name no)
@@ -14678,107 +14635,6 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 342.9 138.43 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "af0f592b-ac3e-4e75-b6a2-3cafcd3e0ff6")
-		(property "Reference" "H9"
-			(at 346.71 137.1599 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "OPT HOLE"
-			(at 346.71 139.6999 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 342.9 138.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 342.9 138.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Mounting Hole with connection"
-			(at 342.9 138.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 342.9 138.43 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 342.9 138.43 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2d2c9b40-47ed-4e7d-b52e-864ec5d0bc92")
-		)
-		(instances
-			(project "osr-cdi15x"
-				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OSR-CDI:MountingHole_Pad")
 		(at 264.16 274.32 270)
 		(unit 1)
 		(body_style 1)
@@ -14811,7 +14667,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 264.16 274.32 0)
 			(hide yes)
 			(show_name no)
@@ -14880,7 +14736,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 106.68 270)
+		(at 367.03 96.52 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -14890,8 +14746,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b22f1b6a-96f0-444d-a420-a9a578dea5af")
-		(property "Reference" "H19"
-			(at 370.84 105.4099 90)
+		(property "Reference" "H21"
+			(at 370.84 95.2499 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14902,7 +14758,7 @@
 			)
 		)
 		(property "Value" "TP(SENS)"
-			(at 370.84 107.9499 90)
+			(at 370.84 97.7899 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14912,8 +14768,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 106.68 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14924,7 +14780,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 106.68 0)
+			(at 367.03 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14935,7 +14791,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 106.68 0)
+			(at 367.03 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14946,7 +14802,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 106.68 90)
+			(at 367.03 96.52 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14957,7 +14813,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 106.68 90)
+			(at 367.03 96.52 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14973,7 +14829,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H19")
+					(reference "H21")
 					(unit 1)
 				)
 			)
@@ -15069,7 +14925,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "b2f78f59-d4a7-440a-a803-1e082367c4a7")
-		(property "Reference" "H11"
+		(property "Reference" "H13"
 			(at 365.76 20.3199 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15091,7 +14947,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 361.95 21.59 0)
 			(hide yes)
 			(show_name no)
@@ -15152,7 +15008,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H11")
+					(reference "H13")
 					(unit 1)
 				)
 			)
@@ -15189,7 +15045,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
+		(property "Footprint" "OSR-CDI_footprints:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
 			(at 311.15 189.23 0)
 			(hide yes)
 			(show_name no)
@@ -15271,7 +15127,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b8a2e383-1ade-489a-afd6-f02f7c81126b")
-		(property "Reference" "H26"
+		(property "Reference" "H28"
 			(at 370.84 166.3699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15293,7 +15149,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 367.03 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -15354,7 +15210,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H26")
+					(reference "H28")
 					(unit 1)
 				)
 			)
@@ -15371,7 +15227,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "b9a03209-3924-4f63-be1c-78f225ff832e")
-		(property "Reference" "H13"
+		(property "Reference" "H15"
 			(at 365.76 41.9099 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15393,7 +15249,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 361.95 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -15454,7 +15310,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H13")
+					(reference "H15")
 					(unit 1)
 				)
 			)
@@ -15571,7 +15427,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
 			(at 313.3852 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -15643,7 +15499,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 355.6 115.57 0)
+		(at 355.6 105.41 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -15653,7 +15509,7 @@
 		(dnp no)
 		(uuid "be982d69-a97f-4aa7-b544-6a3540889378")
 		(property "Reference" "#PWR022"
-			(at 355.6 121.92 0)
+			(at 355.6 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15664,7 +15520,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 358.14 119.38 0)
+			(at 358.14 109.22 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15676,7 +15532,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 355.6 115.57 0)
+			(at 355.6 105.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15687,7 +15543,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 355.6 115.57 0)
+			(at 355.6 105.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15698,7 +15554,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 355.6 115.57 0)
+			(at 355.6 105.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15754,7 +15610,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
 			(at 299.4152 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -15858,7 +15714,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:C_0603_1608Metric"
 			(at 69.85 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -15960,7 +15816,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SS34_SMA_L4.3-W2.6-LS5.2-RD"
+		(property "Footprint" "OSR-CDI_footprints:SS34_SMA_L4.3-W2.6-LS5.2-RD"
 			(at 353.06 21.59 0)
 			(hide yes)
 			(show_name no)
@@ -16083,7 +15939,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:US2M_SMA_L4.4-W2.8-LS5.4-RD"
+		(property "Footprint" "OSR-CDI_footprints:US2M_SMA_L4.4-W2.8-LS5.4-RD"
 			(at 360.68 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -16209,7 +16065,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
+		(property "Footprint" "OSR-CDI_footprints:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
 			(at 215.9 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -16524,7 +16380,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 71.628 184.15 90)
 			(hide yes)
 			(show_name no)
@@ -16596,7 +16452,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 80.01 270)
+		(at 367.03 69.85 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16606,8 +16462,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c871f6d1-e0cd-4bee-be63-04b76436d404")
-		(property "Reference" "H16"
-			(at 370.84 78.7399 90)
+		(property "Reference" "H18"
+			(at 370.84 68.5799 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16618,7 +16474,7 @@
 			)
 		)
 		(property "Value" "YPVS(WHT/RED)"
-			(at 370.84 81.2799 90)
+			(at 370.84 71.1199 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16628,8 +16484,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 80.01 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16640,7 +16496,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 80.01 0)
+			(at 367.03 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16651,7 +16507,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 80.01 0)
+			(at 367.03 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16662,7 +16518,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 80.01 90)
+			(at 367.03 69.85 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16673,7 +16529,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 80.01 90)
+			(at 367.03 69.85 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16689,7 +16545,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H16")
+					(reference "H18")
 					(unit 1)
 				)
 			)
@@ -16727,7 +16583,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:TO-252-2_L6.6-W6.1-P4.58-LS10.1-BR-CW"
+		(property "Footprint" "OSR-CDI_footprints:TO-252-2_L6.6-W6.1-P4.58-LS10.1-BR-CW"
 			(at 195.58 39.37 0)
 			(hide yes)
 			(show_name no)
@@ -16857,7 +16713,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:US2M_C64958")
-		(at 314.96 123.19 0)
+		(at 314.96 129.54 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16867,7 +16723,7 @@
 		(dnp no)
 		(uuid "c9479959-aaf1-4d73-8b0d-22ae0111dfbb")
 		(property "Reference" "D7"
-			(at 318.77 121.92 0)
+			(at 318.77 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16877,7 +16733,7 @@
 			)
 		)
 		(property "Value" "US2M"
-			(at 318.77 124.46 0)
+			(at 318.77 130.81 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16886,8 +16742,8 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:US2M_SMA_L4.4-W2.8-LS5.4-RD"
-			(at 314.96 123.19 0)
+		(property "Footprint" "OSR-CDI_footprints:US2M_SMA_L4.4-W2.8-LS5.4-RD"
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16898,7 +16754,7 @@
 			)
 		)
 		(property "Datasheet" "https://jlcpcb.com/parts/componentSearch?searchTxt=C64958"
-			(at 314.96 123.19 0)
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16909,7 +16765,7 @@
 			)
 		)
 		(property "Description" "-55℃~+150℃ 1 Independent 1.7V@2A 1kV 2A 50A 5uA@1kV 75ns SMA Fast Recovery / High Efficiency Diodes ROHS Copy"
-			(at 314.96 123.19 0)
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16920,7 +16776,7 @@
 			)
 		)
 		(property "Manufacturer Part" "US2M"
-			(at 314.96 123.19 0)
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16931,7 +16787,7 @@
 			)
 		)
 		(property "Manufacturer" "MDD(辰达半导体)"
-			(at 314.96 123.19 0)
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16942,7 +16798,7 @@
 			)
 		)
 		(property "Supplier Part" "C64958"
-			(at 314.96 123.19 0)
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16953,7 +16809,7 @@
 			)
 		)
 		(property "Supplier" "LCSC"
-			(at 314.96 123.19 0)
+			(at 314.96 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17112,7 +16968,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
+		(property "Footprint" "OSR-CDI_footprints:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
 			(at 245.11 184.15 0)
 			(hide yes)
 			(show_name no)
@@ -17213,7 +17069,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:US2M_SMA_L4.4-W2.8-LS5.4-RD"
+		(property "Footprint" "OSR-CDI_footprints:US2M_SMA_L4.4-W2.8-LS5.4-RD"
 			(at 346.71 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -17307,7 +17163,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:Shizuki400V")
-		(at 340.36 134.62 180)
+		(at 328.93 137.16 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17317,7 +17173,7 @@
 		(dnp no)
 		(uuid "d32f7d1a-fa32-468d-a54c-f6e7475ceb24")
 		(property "Reference" "C12"
-			(at 336.55 132.08 0)
+			(at 325.12 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17328,7 +17184,7 @@
 			)
 		)
 		(property "Value" "C_Shizuki"
-			(at 341.63 132.08 0)
+			(at 330.2 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17338,8 +17194,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "OSR-CDI:Capacitor_Sizuki400V"
-			(at 339.3948 130.81 0)
+		(property "Footprint" "OSR-CDI_footprints:Capacitor_Sizuki400V"
+			(at 327.9648 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17350,7 +17206,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 340.36 134.62 0)
+			(at 328.93 137.16 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17361,7 +17217,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 340.36 134.62 0)
+			(at 328.93 137.16 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17372,7 +17228,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 340.36 134.62 0)
+			(at 328.93 137.16 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17383,7 +17239,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 340.36 134.62 0)
+			(at 328.93 137.16 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17442,7 +17298,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 264.16 257.81 0)
 			(hide yes)
 			(show_name no)
@@ -17511,7 +17367,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 123.19 270)
+		(at 367.03 129.54 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17521,8 +17377,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d9eca749-c16b-4fa5-a86c-63dcef09971f")
-		(property "Reference" "H21"
-			(at 370.84 121.9199 90)
+		(property "Reference" "H23"
+			(at 370.84 128.2699 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17533,7 +17389,7 @@
 			)
 		)
 		(property "Value" "IGN(ORG)"
-			(at 370.84 124.4599 90)
+			(at 370.84 130.8099 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17543,8 +17399,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 123.19 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17555,7 +17411,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 123.19 0)
+			(at 367.03 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17566,7 +17422,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 123.19 0)
+			(at 367.03 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17577,7 +17433,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 123.19 90)
+			(at 367.03 129.54 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17588,7 +17444,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 123.19 90)
+			(at 367.03 129.54 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17604,7 +17460,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H21")
+					(reference "H23")
 					(unit 1)
 				)
 			)
@@ -17641,7 +17497,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
 			(at 71.628 201.93 90)
 			(hide yes)
 			(show_name no)
@@ -17713,7 +17569,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 367.03 87.63 270)
+		(at 367.03 77.47 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17723,8 +17579,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e3f591ba-09a0-4750-a4c9-bb8c0f6f5d21")
-		(property "Reference" "H17"
-			(at 370.84 86.3599 90)
+		(property "Reference" "H19"
+			(at 370.84 76.1999 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17735,7 +17591,7 @@
 			)
 		)
 		(property "Value" "YPVS(WHT/BLK)"
-			(at 370.84 88.8999 90)
+			(at 370.84 78.7399 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17745,8 +17601,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
-			(at 367.03 87.63 0)
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
+			(at 367.03 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17757,7 +17613,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 87.63 0)
+			(at 367.03 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17768,7 +17624,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 367.03 87.63 0)
+			(at 367.03 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17779,7 +17635,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 367.03 87.63 90)
+			(at 367.03 77.47 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17790,7 +17646,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 367.03 87.63 90)
+			(at 367.03 77.47 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17806,7 +17662,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H17")
+					(reference "H19")
 					(unit 1)
 				)
 			)
@@ -17823,7 +17679,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "e4163eb5-3454-4027-8000-3567b4e3d1df")
-		(property "Reference" "H12"
+		(property "Reference" "H14"
 			(at 365.76 26.6699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17845,7 +17701,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_2.5mm_Pad_075Wire"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_2.5mm_Pad_075Wire"
 			(at 361.95 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -17906,7 +17762,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H12")
+					(reference "H14")
 					(unit 1)
 				)
 			)
@@ -17914,7 +17770,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 355.6 88.9 0)
+		(at 355.6 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17924,7 +17780,7 @@
 		(dnp no)
 		(uuid "e4ec5124-5f9f-4a0c-a809-fade2fea7fc3")
 		(property "Reference" "#PWR021"
-			(at 355.6 95.25 0)
+			(at 355.6 85.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17935,7 +17791,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 358.14 92.71 0)
+			(at 358.14 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17947,7 +17803,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 355.6 88.9 0)
+			(at 355.6 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17958,7 +17814,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 355.6 88.9 0)
+			(at 355.6 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17969,7 +17825,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 355.6 88.9 0)
+			(at 355.6 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18022,7 +17878,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
+		(property "Footprint" "OSR-CDI_footprints:SD103AW_SOD-123_L2.8-W1.8-LS3.7-RD"
 			(at 311.15 204.47 0)
 			(hide yes)
 			(show_name no)
@@ -18386,7 +18242,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:SOP-4_L6.5-W4.6-P2.54-LS10.0"
+		(property "Footprint" "OSR-CDI_footprints:SOP-4_L6.5-W4.6-P2.54-LS10.0"
 			(at 289.56 207.01 0)
 			(hide yes)
 			(show_name no)
@@ -18549,7 +18405,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OSR-CDI:PIC16F1455-SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "OSR-CDI_footprints:PIC16F1455-SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 92.71 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -18945,7 +18801,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI:M_Hole_1.6-0.9mm_Pad"
+		(property "Footprint" "OSR-CDI_footprints:M_Hole_1.6-0.9mm_Pad"
 			(at 102.87 181.61 0)
 			(hide yes)
 			(show_name no)

@@ -1,34 +1,25 @@
 @echo off
-cd /d "%~dp0"
+setlocal enabledelayedexpansion
 
 echo ===================================================
-echo  Git Push Tool
+echo  3. Git Commit and Push
 echo ===================================================
-echo.
 
-git add .
-
-echo --- Changed Files ---
 git status --short
-echo ---------------------
 echo.
-
-set MSG=
-set /p MSG=Input commit message: 
-
-if not defined MSG (
-    echo.
-    echo Commit message is empty. Aborted.
+set /p COMMIT_MSG="Input commit message: "
+if "%COMMIT_MSG%"=="" (
+    echo [CANCEL] Commit message was empty.
     pause
-    exit /b
+    exit /b 0
 )
 
-echo.
-git commit -m "%MSG%"
-git push origin main
+git add .
+git commit -m "%COMMIT_MSG%"
+git push origin HEAD
 
 echo.
 echo ===================================================
-echo  Push completed!
+echo  All operations completed successfully!
 echo ===================================================
 pause

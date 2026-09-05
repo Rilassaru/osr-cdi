@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 2.5,
-          "width": 1.8
+          "height": 0.95,
+          "width": 0.8
         },
         "silk_line_width": 0.16,
         "silk_text_italic": false,
@@ -76,7 +76,44 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "copper_edge_clearance|142090000|133247579|fd08d11a-eafd-411f-9036-bf47f1cebd2b|8885264a-2edc-48c5-a293-ea21e2d6230b",
+          ""
+        ],
+        [
+          "copper_edge_clearance|142090000|133480000|fd08d11a-eafd-411f-9036-bf47f1cebd2b|ef534be6-0c5b-45b0-8347-66ccf6d6a7e4",
+          ""
+        ],
+        [
+          "copper_edge_clearance|142090000|138880000|1aa61541-ae05-4fbf-aa9a-38c9190ce329|571dc049-122a-4992-8ad9-c46fddcba45e",
+          ""
+        ],
+        [
+          "copper_edge_clearance|142090000|139080000|1aa61541-ae05-4fbf-aa9a-38c9190ce329|76def278-6d8d-4621-820e-df77349cedf8",
+          ""
+        ],
+        [
+          "isolated_copper|102706061|67021097|156a6659-580b-48a1-9e99-28b1a609444c|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "silk_edge_clearance|148000000|131680000|2890b4cd-0954-4e48-831f-c2957e9db649|d1180336-b75c-4184-87dd-8bda588a1960",
+          ""
+        ],
+        [
+          "silk_edge_clearance|148000000|140680000|2890b4cd-0954-4e48-831f-c2957e9db649|62e4c5cb-a243-4aac-8257-373b8b2b0a6a",
+          ""
+        ],
+        [
+          "starved_thermal|141440000|132980000|b8283269-18f5-4168-9067-d33b81210fab|8885264a-2edc-48c5-a293-ea21e2d6230b|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|141440000|139380000|b8283269-18f5-4168-9067-d33b81210fab|76def278-6d8d-4621-820e-df77349cedf8|F.Cu",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -508,7 +545,8 @@
   },
   "libraries": {
     "pinned_footprint_libs": [
-      "OSR-CDI"
+      "OSR-CDI",
+      "OSR-CDI_footprints"
     ],
     "pinned_symbol_libs": [
       "OSR-CDI",
@@ -769,7 +807,7 @@
         "uuid": "d97dd358-6de2-440b-a824-df94f4ec2770"
       }
     ],
-    "used_designators": "#PWR1-25,D1-14,H1-30,J1,R1-13,#FLG1-3,LED1-2,C1-14,LDO1,Q1-4,U1-5",
+    "used_designators": "#PWR1-25,D1-14,H1-33,J1,R1-13,#FLG1-3,LED1-2,C1-14,LDO1,Q1-4,U1-5",
     "variants": []
   },
   "sheets": [
