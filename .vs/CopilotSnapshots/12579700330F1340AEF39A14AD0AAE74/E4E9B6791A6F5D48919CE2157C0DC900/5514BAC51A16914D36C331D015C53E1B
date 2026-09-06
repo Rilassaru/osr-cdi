@@ -1,4 +1,4 @@
-/* ----------------------------------------------------------------------------
+﻿/* ----------------------------------------------------------------------------
 Open Source Racing CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
 ----------------------------------------------------------------------------
 Copyright(c) 2013 - 2026, Rilassaru(http://rilassaru.blog.jp/)
@@ -47,7 +47,7 @@ either expressed or implied, of the FreeBSD Project.
 /*
 T2CON :rsv.<1>|T2OUTPS<3:0>|TMR2ON|T2CKPS<1:0>
 */
-void putbin(uint8_t* p, const char* comment);
+void putbin(uint8_t* p);
 
 
 /** @brief constructor
@@ -88,7 +88,7 @@ int HidDevice::GetDevIds(device_id* pdevid) {
 	txbuf[1] = CMD_GET_DEVIDS;   // Command
 	txbuf[2] = 0;
 	txbuf[3] = 0;
-	(&txbuf[0], "TX");
+	putbin(&txbuf[0]);
 
 	if ((0 > write()) || (0 > read(rxPacket.rxbuf8))) {
 		msg("Error occured on reading device id.\n");
@@ -96,7 +96,7 @@ int HidDevice::GetDevIds(device_id* pdevid) {
 		return RET_HID_CMD_FAIL;
 	}
 
-	putbin(rxPacket.rxbuf8, "RX:GetDevIds");
+	putbin(rxPacket.rxbuf8);
 
 	// Copy device id structure
 	*pdevid = rxPacket.di;
@@ -109,7 +109,7 @@ int HidDevice::GetDevIds(device_id* pdevid) {
 	@returns
 		RET_HID_CMD_SUCCESS on success, RET_HID_CMD_FAIL on failure.
 */
-int HidDevice::SetUserIds(uint16_t* puserids) {
+int	HidDevice::SetUserIds(uint16_t* puserids) {
 	if (nullptr == puserids) return RET_HID_CMD_FAIL;
 
 	if (0 == dev_handle) {
@@ -117,46 +117,28 @@ int HidDevice::SetUserIds(uint16_t* puserids) {
 		return RET_HID_CMD_FAIL;
 	}
 
-	// 送信バッファ全体をゼロクリア
-	memset(txbuf, 0, sizeof(txbuf));
-
 	// Prepare command packet
-	txbuf[0] = 0;                // Report ID (OSのHIDドライバで消費)
-	txbuf[1] = CMD_SET_USERIDS;  // Command -> PIC: Contents[0]
-	txbuf[2] = 0;                // Blank   -> PIC: Contents[1]
-	txbuf[3] = 0;                // Blank   -> PIC: Contents[2]
-	txbuf[4] = 0;                // Blank   -> PIC: Contents[3]
+	txbuf[0] = 0;                // Report ID
+	txbuf[1] = CMD_SET_USERIDS;  // Command
+	txbuf[2] = 0;
+	txbuf[3] = 0;
+	txbuf[4] = puserids[0] & 0xFF;
+	txbuf[5] = (puserids[0] >> 8) & 0xFF;
+	txbuf[6] = puserids[1] & 0xFF;
+	txbuf[7] = (puserids[1] >> 8) & 0xFF;
 
-	// User ID 0 (PIC: Contents[4], Contents[5])
-	txbuf[5] = puserids[0] & 0xFF;
-	txbuf[6] = (puserids[0] >> 8) & 0xFF;
+	putbin(&txbuf[0]);
 
-	// User ID 1 (PIC: Contents[6], Contents[7])
-	txbuf[7] = puserids[1] & 0xFF;
-	txbuf[8] = (puserids[1] >> 8) & 0xFF;
-
-	// User ID 2 (PIC: Contents[8], Contents[9])
-	txbuf[9] = puserids[2] & 0xFF;
-	txbuf[10] = (puserids[2] >> 8) & 0xFF;
-
-	// User ID 3 (PIC: Contents[10], Contents[11])
-	txbuf[11] = puserids[3] & 0xFF;
-	txbuf[12] = ((puserids[3] >> 8) & 0xFF);
-
-	putbin(&txbuf[0], "TX: SetUserIds");
-
-	// 送信およびレスポンス受信
-	if ((0 > write()) || (0 > read(rxPacket.rxbuf8)) || (RET_HID_CMD_SUCCESS != rxPacket.rxbuf8[0])) {
+	if ((0 > write()) || (0 > read(rxPacket.rxbuf8))) {
 		msg("Error occured on setting user ids.\n");
 		Close();
 		return RET_HID_CMD_FAIL;
 	}
 
-	putbin(rxPacket.rxbuf8, "RX: SetUserIds");
+	putbin(rxPacket.rxbuf8);
 
 	return RET_HID_CMD_SUCCESS;
 }
-
 
 /** @brief Get device status from the connected device and copy to pdevstatus.
 
@@ -176,7 +158,7 @@ int HidDevice::GetDevStatus(device_status* pdevstatus) {
 	txbuf[1] = CMD_GET_STATUS;   // Command
 	txbuf[2] = 0;
 	txbuf[3] = 0;
-	putbin(&txbuf[0], "TX: GetDevStatus");
+	putbin(&txbuf[0]);
 
 	if ((0 > write()) || (0 > read(rxPacket.rxbuf8))) {
 		msg("Error occured on reading device status.\n");
@@ -184,7 +166,7 @@ int HidDevice::GetDevStatus(device_status* pdevstatus) {
 		return RET_HID_CMD_FAIL;
 	}
 
-	putbin(rxPacket.rxbuf8, "RX: GetDevStatus");
+	putbin(rxPacket.rxbuf8);
 
 	// Copy status structure
 	*pdevstatus = rxPacket.s;
@@ -274,7 +256,6 @@ void HidDevice::checkConfig(void) {
 	if (60 < cfg.count_of_an_ignition) { cfg.count_of_an_ignition = 60; }
 }
 
-
 /** @brief Reads configuration and table data from the device.
 
 	@param pIg Pointer to ignition timing tables.
@@ -306,7 +287,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 		txbuf[1] = CMD_GET_DATA;	// Command
 		txbuf[2] = page;			// Set page no to command.
 		txbuf[3] = 0;				// null
-			(&txbuf[0], "TX: GetConfig");
+		putbin(&txbuf[0]);
 
 		if ((0 > write()) || (0 > read(rxPacket.rxbuf8)) || (0 != rxPacket.rxbuf8[0])) {
 			msg("Error occured on reading Config data.\n");
@@ -315,7 +296,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			Close();
 			return 0;
 		}
-		putbin(rxPacket.rxbuf8, "RX: GetConfig");
+		putbin(rxPacket.rxbuf8);
 
 		// Reading 32 values on 1 page.
 		for (ii = 0; ii<32; ii++, p++) {
@@ -352,8 +333,10 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			rpm++;
 		}
 
-		putbin(txbuf, "TX: GetIgnitionTable");
-		putbin(rxPacket.rxbuf8, "RX: GetIgnitionTable");
+		puts("TX");
+		putbin(txbuf);
+		puts("RX");
+		putbin(rxPacket.rxbuf8);
 
 		msg( "." );
 	}
@@ -369,7 +352,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 		txbuf[1] = CMD_GET_DATA;	// Command
 		txbuf[2] = page;			// Set page no to command.
 		txbuf[3] = 0;				// null
-		putbin(&txbuf[0], "TX: GetPowerValveTable");
+		putbin(&txbuf[0]);
 
 		if ((0 > write()) || (0 > read(rxPacket.rxbuf8)) || (0 != rxPacket.rxbuf8[0])) {
 			msg( "Error occured on reading PV data.\n" );
@@ -378,8 +361,10 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			Close();
 			return 0;
 		}
-		putbin(txbuf, "TX: GetPowerValveTable");
-		putbin(rxPacket.rxbuf8, "RX: GetPowerValveTable");
+		puts("TX");
+		putbin(txbuf);
+		puts("RX");
+		putbin(rxPacket.rxbuf8);
 
 		// Reading 32 values on 1 page.
 		for( ii=0; ii<32; ii++, pData++ ) {
@@ -392,7 +377,6 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 	return 1;
 
 }
-
 
 /** @brief Writes configuration data and table data to a device.
 
@@ -437,8 +421,10 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			return 0;
 		}
 
-		putbin(txbuf, "TX: GetIgnitionTable");
-		putbin(rxPacket.rxbuf8, "RX: GetIgnitionTable");
+		puts("TX");
+		putbin(txbuf);
+		puts("RX");
+		putbin(rxPacket.rxbuf8);
 
 		if( !compareRxTx() ) {
 			msg( "Writing IG data verify failed.\n" );
@@ -476,8 +462,10 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			return 0;
 		}
 		
-		putbin(txbuf, "TX: GetPowerValveTable");
-		putbin(rxPacket.rxbuf8, "RX: GetPowerValveTable");
+		puts("TX");
+		putbin(txbuf);
+		puts("RX");
+		putbin(rxPacket.rxbuf8);
 
 		if( !compareRxTx() ) {
 			msg( "Writing PV data verify failed.\n" );
@@ -508,7 +496,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			txbuf[5+ii] = (uint8_t)*p;
 		}
 		
-		if(( 0 > write() )||( 0 > read(rxPacket.rxbuf8))||(RET_HID_CMD_SUCCESS != rxPacket.rxbuf8[0])) {
+		if(( 0 > write() )||( 0 > read(rxPacket.rxbuf8))||(0 != rxPacket.rxbuf8[0])) {
 			msg( "Error occured on writing config data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on writing config data." );
@@ -516,8 +504,10 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			return 0;
 		}
 
-		putbin(txbuf, "TX: GetConfig");
-		putbin(rxPacket.rxbuf8, "RX: GetConfig");
+		puts("TX");
+		putbin(txbuf);
+		puts("RX");
+		putbin(rxPacket.rxbuf8);
 
 		if( !compareRxTx() ) {
 			msg( "Writing config data verify failed.\n" );
@@ -531,11 +521,10 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 	}
 	msg( "OK\n" );
 
-	//Close();
+	Close();
 	return 1;
 
 }
-
 
 /** @brief Wrapper function for hid_Write()
 
@@ -566,7 +555,6 @@ int HidDevice::write( const uint8_t* data, size_t length ) {
 	return ret;
 }
 
-
 /** @brief Wrapper function for hid_read()
 
 	@param data Data pointer to write device.
@@ -591,7 +579,6 @@ int HidDevice::read( uint8_t* data, size_t length ) {
 	return ret;
 }
 
-
 /** @brief Compare the contents of received data and sent data.
 	@returns Unatch returns false, otherwise trure.
 
@@ -606,7 +593,6 @@ bool HidDevice::compareRxTx() {
 	}
 	return true;
 }
-
 
 /** @brief Convert ignition timing to time. 
 	The time is converted to the form of Timer2 of the PIC microcontroller.
@@ -672,7 +658,6 @@ uint16_t HidDevice::deg2time( double deg, uint16_t rpm ) {
 	return result;
 }
 
-
 /** @brief Convert the Timer2 value of the PIC microcontroller to an angle.
 
 	@param src Timer2 value of PIC microcontroller.
@@ -730,9 +715,8 @@ double HidDevice::time2deg( uint16_t src, uint16_t rpm ) {
 	@note
 		Outputs a total of 64 times.
 */
-void putbin(uint8_t* p, const char* comment) {
+void putbin(uint8_t* p) {
 	int ii, jj;
-	if (comment) puts(comment);
 	puts("00-01-02-03-04-05-06-07-08=09-0A-0B-0C-0D-0E-0F");
 	for(ii = 0; ii < 4; ii++) {
 		for(jj = 0; jj < 16; jj++) {

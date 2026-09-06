@@ -45,11 +45,14 @@ either expressed or implied, of the FreeBSD Project.
 #define CMD_SET_DATA		0x92
 #define CMD_GET_STATUS		0x93
 #define CMD_GET_DEVIDS		0x94
+#define CMD_SET_USERIDS     0x95
 
 #define RET_HID_CMD_SUCCESS 0x00
 #define RET_HID_CMD_FAIL    0xFF
 
 #define FLASH_PAGE_SIZE		32
+#define USER_ID_BASE_ADDR   0x8000
+#define USER_ID_COUNT       4
 
 #define FW_VER_HI	(01)
 #define FW_VER_LO	(56)
@@ -61,27 +64,13 @@ usbPacket PacketToPC;
 
 void unlock_and_activate();
 uint16_t analog_digtal_conv16(uint8_t ch);
+void send_data_at_addr(uint16_t Addr);
+uint16_t read_configuration_space(uint16_t address);
+uint8_t read_user_id(uint16_t *p_buf);
+uint8_t write_user_id(const uint16_t *p_data);
+
 #define CHS_TEMP (0b11101)       // Temperature Indicator Module
 
-
-void send_data_at_addr(uint16_t Addr)
-{
-	uint8_t ii;
-	PMADR = Addr;
-
-	PacketToPC.Contents[0] = RET_HID_CMD_SUCCESS;   // SUCCESS Flag
-	PacketToPC.Contents[1] = PMADRH;                // Address HI
-	PacketToPC.Contents[2] = PMADRL;                // Address LO
-	PacketToPC.Contents[3] = 0;                     // blank
-	
-	for(ii=0; ii<FLASH_PAGE_SIZE; ii++) {
-		PMCON1bits.RD = 1;	// Read Control bit
-		_nop();_nop();
-		PacketToPC.Contents[ii+4] = PMDATL;	// ignore HI byte
-		PMADR++;
-	}
-	hid_tx_report((char *)&PacketToPC, USB_PACKET_SIZE);
-}
 
 void hid_user_interface(void)
 {
@@ -201,37 +190,57 @@ void hid_user_interface(void)
             break;
 
 		case CMD_GET_STATUS:
-            status.g.cpu_temp = analog_digtal_conv16(CHS_TEMP);
+            //g_status.ds.cpu_temp = analog_digtal_conv16(CHS_TEMP);
+            g_status.ds.cpu_temp = 0;
 			if(!mHIDTxIsBusy()) {
-				hid_tx_report((char *)&status, USB_PACKET_SIZE);
+				hid_tx_report((char *)&g_status, USB_PACKET_SIZE);
 				ReadState = IDLE;
 			}	
 			break;
-		/*
-		case CMD_GET_DEVIDS:
+
+        case CMD_GET_DEVIDS:
 			if(!mHIDTxIsBusy()) {
+                uint16_t id;
 				GIE = 0;			
-				PMADR = 0;
-				PMCON1bits.CFGS = 1;
 				// 8000h 8001h 8002h 8003h 8004h 8005h 8006h 8007h 8008h
 				// <--      USERID     --> blank REVID DEVID <-Config-->
-				for(ii=0; ii<16;) {
-					PMCON1bits.RD = 1;	// Read Control bit
-					NOP();NOP();
-					PacketToPC.Contents[ii++] = PMDATL;
-					PacketToPC.Contents[ii++] = PMDATH;
-					PMADR++;
-				}
-
-				PacketToPC.Contents[ii++] = FW_VER_HI;			// Firmware version hi
-				PacketToPC.Contents[ii++] = FW_VER_LO;			// Firmware version low
+                
+                // read userid
+                read_user_id((uint16_t *)&PacketToPC.Contents[0]);
+                
+                // read revid
+                id = read_configuration_space(0x8005);
+				PacketToPC.di.rev_id = id;
+                
+                // read devid
+                id = read_configuration_space(0x8006);
+				PacketToPC.di.dev_id = id;
+                
+                // add firmware version
+                PacketToPC.di.fw_ver_hi = FW_VER_HI;
+                PacketToPC.di.fw_ver_lo = FW_VER_LO;
 				
 				hid_tx_report((char *)&PacketToPC, USB_PACKET_SIZE);
 				ReadState = IDLE;
 				GIE = 1;
-            } //endof if(!mHIDTxIsBusy()) 
-			break;			
-        */
+            } //end of if(!mHIDTxIsBusy()) 
+			break;
+        
+        case CMD_SET_USERIDS:
+            if(!mHIDTxIsBusy()) {
+                uint8_t ret = write_user_id((uint16_t *)&PacketFromPC.Contents[4]);
+
+                PacketToPC.Contents[0] = ret;
+              	PacketToPC.Contents[1] = 0;
+                PacketToPC.Contents[2] = 0;
+                PacketToPC.Contents[3] = 0;
+                read_user_id((uint16_t *)&PacketToPC.Contents[4]);
+                hid_tx_report((char *)&PacketToPC, USB_PACKET_SIZE);
+				ReadState = IDLE;
+				GIE = 1;
+            } //end of if(!mHIDTxIsBusy()) 
+            break;
+            
         default:
 			PacketToPC.Contents[0] = RET_HID_CMD_FAIL;
 			hid_tx_report((char *)&PacketToPC, USB_PACKET_SIZE);
@@ -289,7 +298,7 @@ uint16_t analog_digtal_conv16(uint8_t ch)
 
     // 4. Acquisition delay
     // Temperature sensor requires a longer charging time (especially right after another channel)
-    __delay_us(200);
+    __delay_us(400);
 
     // 5. Start conversion and wait for completion
     GO_nDONE = 1;
@@ -303,4 +312,152 @@ uint16_t analog_digtal_conv16(uint8_t ch)
     ADCON1 = saved_adcon1;
 
     return result;
+}
+
+void send_data_at_addr(uint16_t Addr)
+{
+	uint8_t ii;
+	PMADR = Addr;
+
+	PacketToPC.Contents[0] = RET_HID_CMD_SUCCESS;   // SUCCESS Flag
+	PacketToPC.Contents[1] = PMADRH;                // Address HI
+	PacketToPC.Contents[2] = PMADRL;                // Address LO
+	PacketToPC.Contents[3] = 0;                     // blank
+	
+	for(ii=0; ii<FLASH_PAGE_SIZE; ii++) {
+		PMCON1bits.RD = 1;	// Read Control bit
+        NOP(); NOP();
+		PacketToPC.Contents[ii+4] = PMDATL;	// ignore HI byte
+		PMADR++;
+	}
+	hid_tx_report((char *)&PacketToPC, USB_PACKET_SIZE);
+}
+
+uint16_t read_configuration_space(uint16_t address)
+{
+    PMADRH = (uint8_t)((address >> 8) & 0xFF);
+    PMADRL = (uint8_t)(address & 0xFF);
+
+    PMCON1bits.CFGS = 1;
+    PMCON1bits.RD = 1;
+    NOP(); NOP();
+    PMCON1bits.CFGS = 0;
+    // Configuration Space is 14bit length.
+    return (uint16_t)((((uint16_t)PMDATH << 8) | PMDATL) & 0x3FFF);
+}
+
+//------------------------------------------------------
+/**
+ * @brief Reads all 4 User ID words (0x8000 - 0x8003) via pointer.
+ * 
+ * @param p_buf Pointer to an array of at least 4 uint16_t elements.
+ * @return bool true if read completed successfully, false if null pointer.
+ */
+uint8_t read_user_id(uint16_t *p_buf)
+{
+    if (p_buf == NULL) {
+        return RET_HID_CMD_FAIL;
+    }
+
+    bool gie_state = INTCONbits.GIE;
+
+    // Disable interrupts to avoid timing interference
+    INTCONbits.GIE = 0;
+
+    // Select Configuration Space (Section 11.4: CFGS = 1)
+    PMCON1bits.CFGS = 1;
+
+    for (uint8_t i = 0; i < USER_ID_COUNT; i++) {
+        uint16_t address = USER_ID_BASE_ADDR + i;
+
+        // Load address registers
+        PMADRH = (uint8_t)((address >> 8) & 0xFF);
+        PMADRL = (uint8_t)(address & 0xFF);
+
+        // Initiate read operation
+        PMCON1bits.RD = 1;
+        NOP();
+        NOP();
+
+        // Store 14-bit data (mask upper 2 undefined bits)
+        p_buf[i] = (uint16_t)((((uint16_t)PMDATH << 8) | PMDATL) & 0x3FFF);
+    }
+
+    // Restore access mode back to Flash Program Memory
+    PMCON1bits.CFGS = 0;
+
+    // Restore prior interrupt state
+    if (gie_state) {
+        INTCONbits.GIE = 1;
+    }
+
+    return RET_HID_CMD_SUCCESS;
+}
+
+/**
+ * @brief Writes all 4 User ID words (0x8000 - 0x8003) via pointer.
+ *        Note: Configuration Space does NOT support Row Erase (FREE=1 is forbidden).
+ * 
+ * @param p_data Pointer to an array of 4 uint16_t elements to write (14-bit each).
+ * @return uint8_t RET_HID_CMD_SUCCESS on success, RET_HID_CMD_FAIL on failure.
+ */
+uint8_t write_user_id(const uint16_t *p_data)
+{
+    if (p_data == NULL) {
+        return RET_HID_CMD_FAIL;
+    }
+
+    bool gie_state = INTCONbits.GIE;
+
+    // ??????
+    INTCONbits.GIE = 0;
+
+    // Configuration Space ???
+    PMCON1bits.CFGS = 1;
+
+    // ????????????????????? (FREE=0, LWLO=0)
+    PMCON1bits.FREE = 0;
+    PMCON1bits.LWLO = 0;
+
+    for (uint8_t i = 0; i < USER_ID_COUNT; i++) {
+        uint16_t address = USER_ID_BASE_ADDR + i;
+        uint16_t data = p_data[i];
+
+        // ???????????
+        PMADRH = (uint8_t)((address >> 8) & 0xFF);
+        PMADRL = (uint8_t)(address & 0xFF);
+        PMDATH = (uint8_t)((data >> 8) & 0x3F); // 14????
+        PMDATL = (uint8_t)(data & 0xFF);
+
+        // ??????????
+        PMCON1bits.WREN = 1;
+        PMCON2 = 0x55;
+        PMCON2 = 0xAA;
+        PMCON1bits.WR = 1;
+        NOP();
+        NOP();
+
+        // ????????????????? (?2ms?5ms)
+        while (PMCON1bits.WR);
+        PMCON1bits.WREN = 0;
+
+        // ??????????????
+        if (PMCON1bits.WRERR) {
+            PMCON1bits.CFGS = 0;
+            if (gie_state) {
+                INTCONbits.GIE = 1;
+            }
+            return RET_HID_CMD_FAIL;
+        }
+    }
+
+    // ?????????????
+    PMCON1bits.CFGS = 0;
+
+    // ????????
+    if (gie_state) {
+        INTCONbits.GIE = 1;
+    }
+
+    return RET_HID_CMD_SUCCESS;
 }

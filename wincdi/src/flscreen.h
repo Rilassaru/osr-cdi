@@ -43,6 +43,9 @@ extern Fl_Button *btn_file_save;
 extern Fl_Output *dev_th_pot;
 #include <FL/Fl_Progress.H>
 extern Fl_Progress *pr_cputemp_current;
+extern Fl_Output *dev_fwver;
+extern Fl_Output *dev_lastupdate;
+extern Fl_Output *dev_firstupdate;
 extern Fl_Group *tab_map_settings;
 extern MyChart *chart_ign;
 extern MyChart *chart_pvs;

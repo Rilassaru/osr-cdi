@@ -48,6 +48,12 @@ Fl_Output *dev_th_pot=(Fl_Output *)0;
 
 Fl_Progress *pr_cputemp_current=(Fl_Progress *)0;
 
+Fl_Output *dev_fwver=(Fl_Output *)0;
+
+Fl_Output *dev_lastupdate=(Fl_Output *)0;
+
+Fl_Output *dev_firstupdate=(Fl_Output *)0;
+
 Fl_Group *tab_map_settings=(Fl_Group *)0;
 
 MyChart *chart_ign=(MyChart *)0;
@@ -139,20 +145,19 @@ Fl_Double_Window* make_window() {
       tabs_window->labelsize(18);
       { tab_device_infomation = new Fl_Group(0, 60, 1280, 660, "    &Device Infomation");
         tab_device_infomation->labelsize(20);
-        tab_device_infomation->hide();
-        { Fl_Box* o = new Fl_Box(60, 301, 550, 179, "Input Signal Status");
+        { Fl_Box* o = new Fl_Box(60, 396, 550, 174, "Input Signal Status");
           o->box(FL_BORDER_FRAME);
           o->color(FL_INACTIVE_COLOR);
           o->labelsize(24);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
         } // Fl_Box* o
-        { Fl_Box* o = new Fl_Box(60, 100, 550, 170, "Production name");
+        { Fl_Box* o = new Fl_Box(60, 100, 550, 240, "Production name");
           o->box(FL_BORDER_FRAME);
           o->color(FL_INACTIVE_COLOR);
           o->labelsize(24);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
         } // Fl_Box* o
-        { Fl_Box* o = new Fl_Box(60, 511, 550, 179, "Power Valve Motor Status");
+        { Fl_Box* o = new Fl_Box(60, 611, 550, 89, "Power Valve Motor Status");
           o->box(FL_BORDER_FRAME);
           o->color(FL_INACTIVE_COLOR);
           o->labelsize(24);
@@ -202,57 +207,57 @@ Fl_Double_Window* make_window() {
           msg->align(Fl_Align(133));
           msg->when(FL_WHEN_RELEASE);
         } // MyMsg* msg
-        { dev_manufacture = new Fl_Output(186, 109, 382, 30, "Manufacture");
+        { dev_manufacture = new Fl_Output(186, 110, 404, 30, "Manufacture");
           dev_manufacture->color((Fl_Color)23);
           dev_manufacture->labelsize(18);
           dev_manufacture->textsize(18);
         } // Fl_Output* dev_manufacture
-        { dev_product = new Fl_Output(186, 149, 382, 30, "Product");
+        { dev_product = new Fl_Output(186, 150, 404, 30, "Product");
           dev_product->color((Fl_Color)23);
           dev_product->labelsize(18);
           dev_product->textsize(18);
         } // Fl_Output* dev_product
-        { dev_mapsw = new Fl_Output(370, 360, 200, 30, "Map switch");
+        { dev_mapsw = new Fl_Output(390, 450, 200, 30, "Map switch");
           dev_mapsw->color((Fl_Color)23);
           dev_mapsw->labelsize(18);
           dev_mapsw->textsize(18);
         } // Fl_Output* dev_mapsw
-        { dev_quickshifter = new Fl_Output(370, 440, 200, 30, "Quick shifter switch");
+        { dev_quickshifter = new Fl_Output(390, 530, 200, 30, "Quick shifter switch");
           dev_quickshifter->color((Fl_Color)23);
           dev_quickshifter->labelsize(18);
           dev_quickshifter->textsize(18);
         } // Fl_Output* dev_quickshifter
-        { dev_rpm = new Fl_Output(370, 320, 200, 30, "R.P.M.");
+        { dev_rpm = new Fl_Output(390, 410, 200, 30, "R.P.M.");
           dev_rpm->color((Fl_Color)23);
           dev_rpm->labelsize(18);
           dev_rpm->textsize(18);
         } // Fl_Output* dev_rpm
-        { dev_pv_pot = new Fl_Output(370, 570, 200, 30, "PV Current angle");
+        { dev_pv_pot = new Fl_Output(130, 660, 200, 30, "Current");
           dev_pv_pot->color((Fl_Color)23);
           dev_pv_pot->labelsize(18);
           dev_pv_pot->textsize(18);
         } // Fl_Output* dev_pv_pot
-        { dev_devid = new Fl_Output(260, 227, 120, 33, "PIC DevID");
+        { dev_devid = new Fl_Output(210, 220, 120, 30, "PIC DevID");
           dev_devid->color((Fl_Color)23);
           dev_devid->labelsize(18);
           dev_devid->textsize(18);
         } // Fl_Output* dev_devid
-        { dev_revid = new Fl_Output(450, 227, 120, 33, "RevID");
+        { dev_revid = new Fl_Output(210, 260, 120, 30, "RevID");
           dev_revid->color((Fl_Color)23);
           dev_revid->labelsize(18);
           dev_revid->textsize(18);
         } // Fl_Output* dev_revid
-        { dev_pv_target = new Fl_Output(370, 530, 200, 30, "PV Target");
+        { dev_pv_target = new Fl_Output(130, 620, 200, 30, "Target");
           dev_pv_target->color((Fl_Color)23);
           dev_pv_target->labelsize(18);
           dev_pv_target->textsize(18);
         } // Fl_Output* dev_pv_target
-        { dev_pv_mode = new Fl_Output(370, 650, 200, 30, "PV Mode");
+        { dev_pv_mode = new Fl_Output(390, 660, 200, 30, "Mode");
           dev_pv_mode->color((Fl_Color)23);
           dev_pv_mode->labelsize(18);
           dev_pv_mode->textsize(18);
         } // Fl_Output* dev_pv_mode
-        { dev_pv_mt_state = new Fl_Output(370, 610, 200, 30, "PV Motor state");
+        { dev_pv_mt_state = new Fl_Output(390, 620, 200, 30, "State");
           dev_pv_mt_state->color((Fl_Color)23);
           dev_pv_mt_state->labelsize(18);
           dev_pv_mt_state->textsize(18);
@@ -275,14 +280,30 @@ Fl_Double_Window* make_window() {
           btn_file_save->labelsize(18);
           btn_file_save->callback((Fl_Callback*)cb_file_save);
         } // Fl_Button* btn_file_save
-        { dev_th_pot = new Fl_Output(370, 400, 200, 30, "Map switch current");
+        { dev_th_pot = new Fl_Output(390, 490, 200, 30, "Map switch current");
           dev_th_pot->color((Fl_Color)23);
           dev_th_pot->labelsize(18);
           dev_th_pot->textsize(18);
         } // Fl_Output* dev_th_pot
-        { pr_cputemp_current = new Fl_Progress(190, 192, 375, 25);
-          pr_cputemp_current->selection_color(FL_DARK_GREEN);
+        { pr_cputemp_current = new Fl_Progress(370, 300, 220, 25);
+          pr_cputemp_current->selection_color((Fl_Color)24);
+          pr_cputemp_current->hide();
         } // Fl_Progress* pr_cputemp_current
+        { dev_fwver = new Fl_Output(210, 300, 120, 30, "FW Ver");
+          dev_fwver->color((Fl_Color)23);
+          dev_fwver->labelsize(18);
+          dev_fwver->textsize(18);
+        } // Fl_Output* dev_fwver
+        { dev_lastupdate = new Fl_Output(470, 260, 120, 30, "Last update");
+          dev_lastupdate->color((Fl_Color)23);
+          dev_lastupdate->labelsize(18);
+          dev_lastupdate->textsize(18);
+        } // Fl_Output* dev_lastupdate
+        { dev_firstupdate = new Fl_Output(470, 220, 120, 30, "First update");
+          dev_firstupdate->color((Fl_Color)23);
+          dev_firstupdate->labelsize(18);
+          dev_firstupdate->textsize(18);
+        } // Fl_Output* dev_firstupdate
         tab_device_infomation->end();
       } // Fl_Group* tab_device_infomation
       { tab_map_settings = new Fl_Group(0, 60, 1280, 660, "&Map Settings        ");
@@ -511,6 +532,7 @@ normally used. The default setting is OFF.");
       } // Fl_Group* tab_quick_shifter
       { tab_option_settings = new Fl_Group(0, 60, 1280, 660, "&Option Settings       ");
         tab_option_settings->labelsize(20);
+        tab_option_settings->hide();
         { vs_rev_limit = new Fl_Value_Slider(30, 100, 600, 50, "Rev limitter(r.p.m.x100)");
           vs_rev_limit->type(5);
           vs_rev_limit->color(FL_BACKGROUND2_COLOR);

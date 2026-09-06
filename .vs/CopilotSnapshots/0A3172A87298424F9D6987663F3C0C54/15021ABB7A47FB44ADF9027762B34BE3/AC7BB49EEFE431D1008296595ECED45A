@@ -53,7 +53,6 @@ either expressed or implied, of the FreeBSD Project.
 #include <cctype>
 #include <set>
 #include <iomanip>
-#include <ctime>
 
 // define
 #define WINDOW_TITLE "OSR-CDI v1.5.6"
@@ -237,34 +236,8 @@ static void repeat_callback(void*) {
 	if (dev.isWireConnected()) {
 		if (0 != dev.Open()) {
 			device_id di = {};
-			if (RET_HID_CMD_SUCCESS == dev.GetDevIds(&di)) {
-				
-				if (0x3FFF == di.userid[0] || 0x3FFF == di.userid[1] || 0x3FFF == di.userid[2] || 0x3FFF == di.userid[3]) {
-					std::time_t t = std::time(nullptr);
-					std::tm tmnow = {};
-
-					#ifdef _WIN32
-					localtime_s(&tmnow, &t);
-					#else
-					localtime_r(&t, &tmnow);
-					#endif
-					uint16_t year = static_cast<uint16_t>(tmnow.tm_year + 1900);
-					uint16_t monthday = static_cast<uint16_t>(((tmnow.tm_mon + 1) << 8) + tmnow.tm_mday);					// Set user id fields to current local date (YYYY and MMDD packed as (MM<<8)|DD)
-					
-					di.userid[0] = year;
-					di.userid[1] = monthday;
-					di.userid[2] = year;
-					di.userid[3] = monthday;
-
-					dev.SetUserIds(di.userid);
-				}
-
-				snprintf(str, STRING_BUFFER_SIZE, "%04d/%02d/%02d", di.userid[0], di.userid[1] >> 8, di.userid[1] & 0xFF);
-				dev_firstupdate->value(str);
-
-				snprintf(str, STRING_BUFFER_SIZE, "%04d/%02d/%02d", di.userid[2], di.userid[3] >> 8, di.userid[3] & 0xFF);
-				dev_lastupdate->value(str);
-
+			if (dev.GetDevIds(&di) == RET_HID_CMD_SUCCESS) {
+				// 4桁の16進数で整形
 				snprintf(str, STRING_BUFFER_SIZE, "%04Xh", di.dev_id);
 				dev_devid->value(str);
 
@@ -280,7 +253,6 @@ static void repeat_callback(void*) {
 				dev_fwver->value("");
 			}
 
-			// Get device status and update UI indicators
 			device_status st = {};
 			if (dev.GetDevStatus(&st) == RET_HID_CMD_SUCCESS) {
 				// Map switch indicator
@@ -376,10 +348,6 @@ static void repeat_callback(void*) {
 		pr_cputemp_current->value(-100);
 		pr_cputemp_current->copy_label("");
 	}
-/*test code*/
-	dev.Open(); // Reopen device for next iteration
-	
-	dev.Close();
 
 	Fl::repeat_timeout(0.5, repeat_callback);
 }
@@ -678,13 +646,8 @@ void cb_device_read(Fl_Button*, void*) {
 	}
 	else {
 		// Validate expected device id and firmware major/minor (legacy check)
-		// If the product string explicitly starts with the known compatible
-		// prefix, allow the operation even if the numeric ID/version differ.
-		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = (prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0);
+		if (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10)) {
 
-		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
-			// Device appears incompatible
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Device or firmware mismatch. Read aborted.");
 			msg->add("Device or firmware mismatch. Read aborted.\n");
@@ -791,13 +754,7 @@ void cb_device_write(Fl_Button*, void*) {
 	}
 	else {
 		// Validate expected device id and firmware major/minor (legacy check)
-		// If the product string explicitly starts with the known compatible
-		// prefix, allow the operation even if the numeric ID/version differ.
-		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = (prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0);
-
-		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
-			// Device appears incompatible
+		if (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo/10)) {
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Device or firmware mismatch. Write aborted.");
 			msg->add("Device or firmware mismatch. Write aborted.\n");
@@ -816,28 +773,6 @@ void cb_device_write(Fl_Button*, void*) {
 		dev.Close();
 		return;
 	}
-
-	/* Update userid here */
-	if (RET_HID_CMD_FAIL == dev.GetDevIds(&di)) {
-		msg->add("DeviceIDs read error.\n");
-		dev.Close();
-		return;
-	}
-	// Set user id fields to current local date (YYYY and MMDD packed as (MM<<8)|DD)
-	std::time_t t = std::time(nullptr);
-	std::tm tmnow;
-#ifdef _WIN32
-	localtime_s(&tmnow, &t);
-#else
-	localtime_r(&t, &tmnow);
-#endif
-	uint16_t year = static_cast<uint16_t>(tmnow.tm_year + 1900);
-	uint16_t monthday = static_cast<uint16_t>(((tmnow.tm_mon + 1) << 8) + tmnow.tm_mday);
-	// Update the device ID structure with the current date
-	di.userid[2] = year;
-	di.userid[3] = monthday;
-
-	dev.SetUserIds(di.userid);
 
 	// Close the device handle after successful write.
 	dev.Close();

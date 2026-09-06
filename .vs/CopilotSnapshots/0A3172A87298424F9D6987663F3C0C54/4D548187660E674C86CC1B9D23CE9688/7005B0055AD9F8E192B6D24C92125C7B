@@ -1,4 +1,4 @@
-/* ----------------------------------------------------------------------------
+﻿/* ----------------------------------------------------------------------------
 Open Source Racing CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
 ----------------------------------------------------------------------------
 Copyright(c) 2013 - 2026, Rilassaru(http://rilassaru.blog.jp/)
@@ -54,8 +54,6 @@ either expressed or implied, of the FreeBSD Project.
 #define CMD_SET_DATA		0x92
 #define CMD_GET_STATUS		0x93
 #define CMD_GET_DEVIDS		0x94
-#define CMD_SET_USERIDS     0x95
-
 
 //#define CMD_ERASE_DATA		0x91
 //#define CMD_GET_DEVIDS		0x94
@@ -93,11 +91,6 @@ typedef struct _device_status
 
 typedef struct _device_id
 {
-	uint16_t    userid[4];
-	// userid0: first updated year
-	// userid1: first updated mmdd
-	// userid0: last updated year
-	// userid1: last updated mmdd
 	uint16_t    rev_id;
 	uint16_t    dev_id;
 	uint8_t     fw_ver_hi;
@@ -179,7 +172,7 @@ private:
 
 public:
 	HidDevice(void);
-	~HidDevice(void);
+	~HidDevice(void) {};
 
 	CONFIG cfg = {};
 
@@ -197,13 +190,12 @@ public:
 	int write( const uint8_t* data = nullptr, size_t length = HID_MAX_TXBUF_SIZE);
 	int read( uint8_t* data = nullptr, size_t length = HID_MAX_RXBUF_SIZE);
 
-	bool isWireConnected();
+	bool isConnected();
 	bool compareRxTx();
 	void checkConfig(void);
 
 	/* Get device id from the device. Copies into pdevid on success. */
 	int GetDevIds(device_id* pdevid);
-	int SetUserIds(uint16_t* puserids);
 
 	/* Get device status from the device. Copies into pdevstatus on success. */
 	int GetDevStatus(device_status* pdevstatus);

@@ -70,8 +70,9 @@ DATE        VERSION UPDATE
 03/Mar/2025 1.5.4b  When the analog ignition count is set to 0,
                     analog ignition is not actually performed.
 08/Feb/2026 1.5.5   Minor bug-fix.
-12/Aug/2026 1.5.6   PVS Added a fully closed state to the initial operation of the PVS.
+12/Aug/2026 1.5.6a  PVS Added a fully closed state to the initial operation of the PVS.
                     *The version has been updated to include a PCBA case for the circuit board assembly.
+06/Oct/2026 1.5.6b  USB userinterface modified UserID/DevID/RevID
 -----------------
 
 Version a.b.c
@@ -308,17 +309,17 @@ void main(void) {
                 gMapSelect = 0;
                 
                 if(OPT_PORT_MAPSW == gCfg.sys_opt_port) {mOPTPORT = 0;}
-                status.g.tp_pot = 0;
+                g_status.ds.tp_pot = 0;
                 break;
 
             case TP_TYPE_2CH:
                 ANSELA	= 0b00000000;   // RA4(AN3) set to digtal input
                 if(mSW1) {
                     gMapSelect = 1;
-                    status.g.tp_pot = 0xFF;
+                    g_status.ds.tp_pot = 0xFF;
                 } else {
                     gMapSelect = 0;
-                    status.g.tp_pot = 0;
+                    g_status.ds.tp_pot = 0;
                 }
                 
                 if(OPT_PORT_MAPSW == gCfg.sys_opt_port) {mOPTPORT = gMapSelect;}
@@ -342,16 +343,16 @@ void main(void) {
                         default:mOPTPORT = 0;  break;
                     }
                 }
-                status.g.tp_pot = anresult;
+                g_status.ds.tp_pot = anresult;
                 break;
         }
         
         /*
          * Set status report data for PC
          */
-        status.g.current_map = gMapSelect;
-        status.g.qs_signal = (gCfg.qs_reverse_onoff_state ? !mSHIFTER : mSHIFTER);
-        status.g.qs_state = gQShifterState;
+        g_status.ds.current_map = gMapSelect;
+        g_status.ds.qs_signal = (gCfg.qs_reverse_onoff_state ? !mSHIFTER : mSHIFTER);
+        g_status.ds.qs_state = gQShifterState;
         CLRWDT();
         
     }
@@ -574,9 +575,9 @@ void interrupt ISRCode() {
     }
 
 	// For usb report
-	status.g.timer1 = gIGtbl[gMapSelect][gRPM];
-	status.g.rpm    = gRPM;
-	status.g.e_stop = gEngineState;
+	g_status.ds.timer1 = gIGtbl[gMapSelect][gRPM];
+	g_status.ds.rpm    = gRPM;
+	g_status.ds.e_stop = gEngineState;
 }
 
 
@@ -812,10 +813,10 @@ void pvs_motor_head(uint16_t rpm, uint8_t pot)
         case MTD_STOP:      {MT_STOP(); break;}
         default:            {MT_BRAKE();break;}
     }
-    status.g.pv_pot = pot;
-    status.g.pv_target = target;
-    status.g.pv_mode = pvs_mode;
-    status.g.pv_mt_state = motor_state;
+    g_status.ds.pv_pot = pot;
+    g_status.ds.pv_target = target;
+    g_status.ds.pv_mode = pvs_mode;
+    g_status.ds.pv_mt_state = motor_state;
 }
 
 

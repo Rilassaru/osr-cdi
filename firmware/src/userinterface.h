@@ -49,7 +49,7 @@ void hid_user_interface(void);
 // ------------------------------------------------------------------------------------------
 // Packet types
 // ------------------------------------------------------------------------------------------
-typedef struct _global
+typedef struct _device_status
 {
 	uint16_t    rpm;        // 01-02
 	uint8_t     current_map;// 03
@@ -64,15 +64,29 @@ typedef struct _global
 	uint8_t     tp_pot;     // 13
     uint8_t     reserve14;  // 14
 	uint16_t    cpu_temp;   // 15-16
-} global;
+} device_status;
+
+typedef struct _device_id
+{
+    uint16_t    userid[4];
+    // userid0: first updated year
+    // userid1: first updated mmdd
+    // userid0: last updated year
+    // userid1: last updated mmdd
+    uint16_t    rev_id;
+    uint16_t    dev_id;
+    uint8_t     fw_ver_hi;
+    uint8_t     fw_ver_lo;
+} device_id;
 
 typedef union
 {
 	uint8_t	Command;
 	uint8_t	Contents[USB_PACKET_SIZE];
-	global	g;
+	device_status	ds;
+    device_id       di;
 } usbPacket;
 
-usbPacket status;
+usbPacket g_status;
 
 #endif //USERINTERFACE_H

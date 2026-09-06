@@ -53,7 +53,6 @@ either expressed or implied, of the FreeBSD Project.
 #include <cctype>
 #include <set>
 #include <iomanip>
-#include <ctime>
 
 // define
 #define WINDOW_TITLE "OSR-CDI v1.5.6"
@@ -192,6 +191,12 @@ static void main_window_cb(Fl_Widget*, void*) {
  *
  * @param p Null-terminated string message to display.
  */
+/**
+ * Message callback used to display messages in the UI and optionally
+ * print them to stdout in debug builds.
+ *
+ * @param p Null-terminated string message to display.
+ */
 static void msg_cb(const char* p) {
 	// Append message to the UI message widget
 	msg->add((const char*)p);
@@ -237,34 +242,8 @@ static void repeat_callback(void*) {
 	if (dev.isWireConnected()) {
 		if (0 != dev.Open()) {
 			device_id di = {};
-			if (RET_HID_CMD_SUCCESS == dev.GetDevIds(&di)) {
-				
-				if (0x3FFF == di.userid[0] || 0x3FFF == di.userid[1] || 0x3FFF == di.userid[2] || 0x3FFF == di.userid[3]) {
-					std::time_t t = std::time(nullptr);
-					std::tm tmnow = {};
-
-					#ifdef _WIN32
-					localtime_s(&tmnow, &t);
-					#else
-					localtime_r(&t, &tmnow);
-					#endif
-					uint16_t year = static_cast<uint16_t>(tmnow.tm_year + 1900);
-					uint16_t monthday = static_cast<uint16_t>(((tmnow.tm_mon + 1) << 8) + tmnow.tm_mday);					// Set user id fields to current local date (YYYY and MMDD packed as (MM<<8)|DD)
-					
-					di.userid[0] = year;
-					di.userid[1] = monthday;
-					di.userid[2] = year;
-					di.userid[3] = monthday;
-
-					dev.SetUserIds(di.userid);
-				}
-
-				snprintf(str, STRING_BUFFER_SIZE, "%04d/%02d/%02d", di.userid[0], di.userid[1] >> 8, di.userid[1] & 0xFF);
-				dev_firstupdate->value(str);
-
-				snprintf(str, STRING_BUFFER_SIZE, "%04d/%02d/%02d", di.userid[2], di.userid[3] >> 8, di.userid[3] & 0xFF);
-				dev_lastupdate->value(str);
-
+			if (dev.GetDevIds(&di) == RET_HID_CMD_SUCCESS) {
+				// 4桁の16進数で整形
 				snprintf(str, STRING_BUFFER_SIZE, "%04Xh", di.dev_id);
 				dev_devid->value(str);
 
@@ -280,7 +259,6 @@ static void repeat_callback(void*) {
 				dev_fwver->value("");
 			}
 
-			// Get device status and update UI indicators
 			device_status st = {};
 			if (dev.GetDevStatus(&st) == RET_HID_CMD_SUCCESS) {
 				// Map switch indicator
@@ -376,10 +354,6 @@ static void repeat_callback(void*) {
 		pr_cputemp_current->value(-100);
 		pr_cputemp_current->copy_label("");
 	}
-/*test code*/
-	dev.Open(); // Reopen device for next iteration
-	
-	dev.Close();
 
 	Fl::repeat_timeout(0.5, repeat_callback);
 }
@@ -423,17 +397,8 @@ void ResizeIgnitionChart()
  * @param btn The repeat button widget (unused).
  * @param data User data pointer (unused).
  */
-/**
- * Increase map value handler.
- *
- * Called by the UI when the up/raise control is activated. Moves the
- * selected pointer upward in the currently active map (ignition or PVS).
- *
- * @param btn The repeat button widget (unused).
- * @param data User data pointer (unused).
- */
 void cb_up(Fl_Repeat_Button*, void*) {
-	// Determine movement amount based on selected multiplier controls
+	// Take the movement magnification
 	int move = (radio_map_x1->value() * 1) + (radio_map_x5->value() * 5) + (radio_map_x10->value() * 10);
 
 	// For the ignition timing map, the amount of movement is 0.1,
@@ -456,7 +421,6 @@ void cb_up(Fl_Repeat_Button*, void*) {
 	}
 }
 
-
 /**
  * Decrease map value handler.
  *
@@ -467,7 +431,7 @@ void cb_up(Fl_Repeat_Button*, void*) {
  * @param data User data pointer (unused).
  */
 void cb_down(Fl_Repeat_Button*, void*){
-	// Determine movement amount based on selected multiplier controls
+	// Take the movement magnification
 	int move = (radio_map_x1->value() * 1) + (radio_map_x5->value() * 5) + (radio_map_x10->value() * 10);
 
 	// For the ignition timing map, the amount of movement is 0.1,
@@ -490,7 +454,6 @@ void cb_down(Fl_Repeat_Button*, void*){
 	}
 }
 
-
 /**
  * Move pointer left handler.
  *
@@ -501,7 +464,6 @@ void cb_down(Fl_Repeat_Button*, void*){
  * @param data User data pointer (unused).
  */
 void cb_left(Fl_Repeat_Button*, void*){
-	// Shift pointer left by one index and request redraw
 	chart_ign->MovePointerX(-1);
 	chart_ign->redraw();
 	chart_pvs->MovePointerX(-1);
@@ -517,24 +479,12 @@ void cb_left(Fl_Repeat_Button*, void*){
  * @param btn The repeat button widget (unused).
  * @param data User data pointer (unused).
  */
-/**
- * Move pointer right handler.
- *
- * Moves the selected pointer to the right in the active map when the user
- * requests a right shift.
- *
- * @param btn The repeat button widget (unused).
- * @param data User data pointer (unused).
- */
 void cb_right(Fl_Repeat_Button*, void*){
-	// Shift pointer right by one index and request redraw
 	chart_ign->MovePointerX(1);
 	chart_ign->redraw();
 	chart_pvs->MovePointerX(1);
 	chart_pvs->redraw();
 }
-
-
 /**
  * Open file button handler.
  *
@@ -556,7 +506,7 @@ void cb_file_open(Fl_Button*, void*) {
 
 	if (0 == ret) {
 
-		// Perform two-pass file read to validate and load
+		// 2pass file read
 		if (dataFileRead(fnfc.filename())&& dataFileRead(fnfc.filename())) {
 			ResizeIgnitionChart();
 			chart_ign->redraw();
@@ -573,13 +523,11 @@ void cb_file_open(Fl_Button*, void*) {
 		}
 	}
 	else if (ret < 0) {
-		// Show an alert when the chooser fails
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("Cannot open file or write data.");
 	}
 	w->flush();
 }
-
 
 /**
  * Save file button handler.
@@ -613,29 +561,19 @@ void cb_file_save(Fl_Button*, void*) {
 		}
 	}
 	else if (ret < 0) {
-		// Show an alert when the chooser fails
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("Cannot open file or write data.");
 	}
 }
 
-
-/** ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Device read button down
+// ----------------------------------------------------------------------------
+/**
  * Read configuration from the connected device.
  *
  * Initiates a read operation from the connected CDI device and updates the
- * UI with received values. This function performs the following steps:
- *  - Verifies a device is present (isWireConnected).
- *  - Caches the currently known engine pulse type from dev.cfg before opening.
- *  - Opens the device handle and verifies device ID/firmware version.
- *  - Reads the map tables into local buffers.
- *  - Closes the device handle and updates UI elements and warnings.
- *
- * Notes:
- *  - dev.cfg is consulted prior to opening the device to preserve any cached
- *    configuration that may have been set in the UI or by prior operations.
- *  - The function does not attempt recovery on ID/firmware mismatch; it aborts
- *    the read to avoid writing incompatible data into the application state.
+ * UI with received values.
  *
  * @param btn The button widget that triggered the action (unused).
  * @param data User data pointer (unused).
@@ -643,19 +581,16 @@ void cb_file_save(Fl_Button*, void*) {
 void cb_device_read(Fl_Button*, void*) {
 	char str[STRING_BUFFER_SIZE] = { 0 };
 
-	// Ensure device is present on the bus before attempting any communication.
 	if (false == dev.isWireConnected()) {
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("USB CDI not found.");
 		return;
 	}
 
-	// Cache the last-known engine pulse configuration from the device object.
-	// This is read before opening the HID handle intentionally (it may reflect
-	// the UI or previously loaded state).
-	uint8_t current_engine_type = dev.cfg.sys_pulse_per_rotation;
+	uint8_t current_engine_type;
 
-	// Open a handle to the device for commands that require direct HID access.
+	current_engine_type = dev.cfg.sys_pulse_per_rotation;
+
 	if (0 == dev.Open())
 	{
 		fl_beep(FL_BEEP_ERROR);
@@ -664,12 +599,12 @@ void cb_device_read(Fl_Button*, void*) {
 		return;
 	}
 
-	// Verify device identity and firmware to avoid loading incompatible data.
+
+	// Check device ID before writing
 	device_id di = {};
 	device_status st = {};
 
 	if (RET_HID_CMD_SUCCESS != dev.GetDevIds(&di)) {
-		// Failed to read device identifiers
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("Device read error.");
 		msg->add("Device read error.\n");
@@ -677,14 +612,10 @@ void cb_device_read(Fl_Button*, void*) {
 		return;
 	}
 	else {
-		// Validate expected device id and firmware major/minor (legacy check)
-		// If the product string explicitly starts with the known compatible
-		// prefix, allow the operation even if the numeric ID/version differ.
-		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = (prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0);
-
-		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
-			// Device appears incompatible
+		// Check if the device ID matches expected values
+		if (0x3021 != di.dev_id 
+			|| 1 != di.fw_ver_hi 
+			|| 5 != (di.fw_ver_lo / 10)) {
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Device or firmware mismatch. Read aborted.");
 			msg->add("Device or firmware mismatch. Read aborted.\n");
@@ -693,8 +624,6 @@ void cb_device_read(Fl_Button*, void*) {
 		}
 	}
 
-	// Read the ignition and PVS tables into the application's map buffers.
-	// dev.readTable performs the HID transfer and populates provided pointers.
 	if (FALSE == dev.readTable(ignMapData.GetPointer(), pvsMapData.GetPointer()))
 	{
 		fl_alert("Reading device map error.");
@@ -704,26 +633,25 @@ void cb_device_read(Fl_Button*, void*) {
 		strcpy_s(str, STRING_BUFFER_SIZE, WINDOW_TITLE);
 		strcat_s(str, STRING_BUFFER_SIZE, " - device loaded");
 		w->label(str);
+
 	}
-	// Close device handle opened above.
 	dev.Close();
 
-	// If the engine pulse type changed as a result of the read, notify the user.
+	// Engine type check
 	if (current_engine_type != dev.cfg.sys_pulse_per_rotation) {
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("WARNING: Engine type does not match!\nCheck your config.");
-		radio_single_pulse->value(1 == dev.cfg.sys_pulse_per_rotation);
+		radio_single_pulse->value(1==dev.cfg.sys_pulse_per_rotation);
 		radio_twin_pulse->value(2 == dev.cfg.sys_pulse_per_rotation);
 	}
 
-	// Guard against invalid pickup degree returned by the device; apply a safe default.
 	if (0 == dev.cfg.sys_pickup_degree) {
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("WARNING: Pickup degree is zero!\nCheck your config.");
 		dev.cfg.sys_pickup_degree = (1 == dev.cfg.sys_pulse_per_rotation ? PICKUP_DEG_1 : PICKUP_DEG_2);
 	}
 
-	// Update charts and option UI after successful (or partially successful) read.
+	// chart draw
 	ResizeIgnitionChart();
 	chart_ign->redraw();
 	chart_pvs->redraw();
@@ -735,17 +663,7 @@ void cb_device_read(Fl_Button*, void*) {
 /**
  * Write configuration to the connected device.
  *
- * Performs validation, prompts the user for confirmation and then
- * writes the current map and configuration data to the connected CDI
- * device. The routine:
- *  - Verifies a device is present (isWireConnected).
- *  - Prompts the user to confirm the write operation.
- *  - Opens a device handle and validates device identifiers/firmware.
- *  - Writes the ignition and PVS tables via HidDevice::writeTable.
- *  - Closes the device handle and updates UI state/messages.
- *
- * Note: All failures present an alert and ensure the device handle is
- * closed before returning.
+ * Sends the current configuration values to the connected CDI device.
  *
  * @param btn The button widget that triggered the action (unused).
  * @param data User data pointer (unused).
@@ -753,22 +671,18 @@ void cb_device_read(Fl_Button*, void*) {
 void cb_device_write(Fl_Button*, void*) {
 	msg->clear();
 
-	// Ensure the USB device appears on the bus before proceeding.
-	if (false == dev.isWireConnected()) {
+	if (false==dev.isWireConnected()) {
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("USB CDI not found.");
 		return;
 	}
 
-	// Confirm with the user - this is a potentially destructive action.
+	// Writing phase.
 	fl_beep(FL_BEEP_QUESTION);
-	// fl_ask returns 0 when the user cancels, so abort if 0.
 	if (0 == fl_ask("Do you really want to write data to CDI?")) {
 		return;
 	}
 
-	// Open the device handle for direct HID operations.
-	// dev.Open() returns non-zero on success in this codebase.
 	if (0 == dev.Open())
 	{
 		fl_beep(FL_BEEP_ERROR);
@@ -777,12 +691,11 @@ void cb_device_write(Fl_Button*, void*) {
 		return;
 	}
 
-	// Verify device ID/firmware to avoid writing incompatible data.
+	// Check device ID before writing
 	device_id di = {};
 	device_status st = {};
 
 	if (RET_HID_CMD_SUCCESS != dev.GetDevIds(&di)) {
-		// Failed to read device identifiers -> abort.
 		fl_beep(FL_BEEP_ERROR);
 		fl_alert("Device read error.");
 		msg->add("Device read error.\n");
@@ -790,14 +703,8 @@ void cb_device_write(Fl_Button*, void*) {
 		return;
 	}
 	else {
-		// Validate expected device id and firmware major/minor (legacy check)
-		// If the product string explicitly starts with the known compatible
-		// prefix, allow the operation even if the numeric ID/version differ.
-		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = (prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0);
-
-		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
-			// Device appears incompatible
+		// Check if the device ID matches expected values
+		if (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo/10)) {
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Device or firmware mismatch. Write aborted.");
 			msg->add("Device or firmware mismatch. Write aborted.\n");
@@ -806,9 +713,7 @@ void cb_device_write(Fl_Button*, void*) {
 		}
 	}
 
-	// Perform the actual table write. writeTable handles the HID transfer.
 	if (FALSE == dev.writeTable(ignMapData.GetPointer(), pvsMapData.GetPointer())) {
-		// Write failed - update UI and ensure device is closed.
 		fl_alert("Writing device map error(ph.1).");
 		chart_ign->redraw();
 		chart_pvs->redraw();
@@ -817,32 +722,8 @@ void cb_device_write(Fl_Button*, void*) {
 		return;
 	}
 
-	/* Update userid here */
-	if (RET_HID_CMD_FAIL == dev.GetDevIds(&di)) {
-		msg->add("DeviceIDs read error.\n");
-		dev.Close();
-		return;
-	}
-	// Set user id fields to current local date (YYYY and MMDD packed as (MM<<8)|DD)
-	std::time_t t = std::time(nullptr);
-	std::tm tmnow;
-#ifdef _WIN32
-	localtime_s(&tmnow, &t);
-#else
-	localtime_r(&t, &tmnow);
-#endif
-	uint16_t year = static_cast<uint16_t>(tmnow.tm_year + 1900);
-	uint16_t monthday = static_cast<uint16_t>(((tmnow.tm_mon + 1) << 8) + tmnow.tm_mday);
-	// Update the device ID structure with the current date
-	di.userid[2] = year;
-	di.userid[3] = monthday;
-
-	dev.SetUserIds(di.userid);
-
-	// Close the device handle after successful write.
 	dev.Close();
 
-	// Ensure message area is repainted to reflect changes.
 	msg->redraw();
 }
 
@@ -1363,7 +1244,6 @@ void option_redraw() {
  * @param data User data pointer (unused).
  */
 void cb_option_setting_vs(Fl_Value_Slider*, void*) {
-	// Update device configuration fields from option sliders
 	dev.cfg.qs_enable_rpm = (uint8_t)vs_qs_enable_rpm->value();
 	dev.cfg.qs_sw_on_count = (uint8_t)vs_qs_sw_on_count->value();
 	dev.cfg.qs_cut_count = (uint8_t)vs_qs_cut_count->value();
