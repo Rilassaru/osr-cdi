@@ -230,6 +230,7 @@ YPVS definition
 void main(void);
 void initialize_system(void);
 void interrupt ISRCode();
+//void __interrupt() ISRCode(void);
 uint8_t analog_digtal_conv8(uint8_t ch);
 uint8_t pvs_leveled_analog_data(uint8_t pot);
 void pvs_motor_head(uint16_t rpm, uint8_t pot);
@@ -239,11 +240,12 @@ void initialize_pvs_min_max();
 /** -----------------------------------------------------------------
  * global variable
 ------------------------------------------------------------------ */
-uint8_t	gRPM = 0;	
-uint8_t	gEngineState = ENGINE_STATE_STOPPED;
-uint8_t gMapSelect = 0;             // State of map sw device. 
-uint8_t	gQShifterState = QS_IDLE;  // State of Quick shifter function.
-uint8_t	gQShifterCount = 0;        // Work counter for Q.S.
+usbPacket g_status;
+volatile uint8_t	gRPM = 0;	
+volatile uint8_t	gEngineState = ENGINE_STATE_STOPPED;
+volatile uint8_t    gMapSelect = 0;             // State of map sw device. 
+volatile uint8_t	gQShifterState = QS_IDLE;  // State of Quick shifter function.
+volatile uint8_t	gQShifterCount = 0;        // Work counter for Q.S.
 uint8_t gPvsMax;                   // Power valve max pos.
 uint8_t gPvsMin;                   // Power valve min pos. 
 
@@ -378,6 +380,7 @@ void main(void) {
  * - Timer0 is used to handle noise filtering and manage prescaler settings for the engine.
  */
 void interrupt ISRCode() {
+//void __interrupt() ISRCode(void) {
     static uint16_t tm1_count = 0;
     static uint16_t tm2_preset = 0;
     static uint8_t  rev_over_count = 0;

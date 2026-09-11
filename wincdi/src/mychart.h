@@ -38,6 +38,12 @@ either expressed or implied, of the FreeBSD Project.
 #define SELECTED_NONE (-1)
 #define MESSAGE_BUFFER_SIZE 256
 
+/**
+ * @class MyChart
+ * @brief A custom chart widget for displaying map data.
+ *
+ * The MyChart class provides a graphical interface for visualizing 2D map data, allowing users to interact with and modify the data points.
+ */
 class MyChart : public Fl_Box
 {
 private:

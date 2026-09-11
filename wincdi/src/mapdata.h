@@ -33,6 +33,17 @@ either expressed or implied, of the FreeBSD Project.
 #define MAX_DATA_NUM	160
 #define MAX_MAP_NUM		4
 
+
+/**
+ * @class MapData
+ * @brief Represents a 2D map of data values with configurable limits.
+ *
+ * The MapData class provides a structure to store and manage a 2D array of double values,
+ * representing multiple maps, each containing a fixed number of data points. It allows for
+ * setting and retrieving values while enforcing minimum and maximum limits.
+ *
+ * @note The maximum number of maps and data points is defined by MAX_MAP_NUM and MAX_DATA_NUM.
+*/
 class MapData
 {
 private:

@@ -40,6 +40,12 @@ either expressed or implied, of the FreeBSD Project.
 
 #define STRING_BUFFER_SIZE_1024	1024
 
+/**
+ * @class MyMsg
+ * @brief A custom multiline output widget for displaying messages.
+ *
+ * The MyMsg class provides a specialized widget for displaying text messages, with support for adding different types of data.
+ */
 class MyMsg : public Fl_Multiline_Output
 {
 public:
@@ -116,23 +122,45 @@ public:
 			}
 		}
 	}
+
+	/**
+	 * Add an integer to the message output.
+	 *
+	 * @param n The integer to add.
+	 */
 	void add(int n) {
 		position(size());
 		// use std::to_string to avoid sprintf buffer issues
 		insert(std::to_string(n).c_str());
 	}
+
+	/**
+	 * Add a float to the message output.
+	 *
+	 * @param n The float to add.
+	 */
 	void add(float n) {
 		position(size());
 		std::ostringstream os;
 		os << std::fixed << std::setprecision(6) << n;
 		insert(os.str().c_str());
 	}
+	/**
+	 * Add a double to the message output.
+	 *
+	 * @param n The double to add.
+	 */
 	void add(double n) {
 		position(size());
 		std::ostringstream os;
 		os << std::fixed << std::setprecision(6) << n;
 		insert(os.str().c_str());
 	}
+	/**
+	 * Add a hexadecimal value to the message output.
+	 *
+	 * @param n The integer to add in hexadecimal.
+	 */
 	void addHex(int n) {
 		position(size());
 		std::ostringstream os;
@@ -140,6 +168,11 @@ public:
 		insert(os.str().c_str());
 	}
 
+	/**
+	 * Clear the message output.
+	 *
+	 * @brief Clears all text from the message output.
+	 */
 	void clear() {
 		replace(0, size(), "");
 	}

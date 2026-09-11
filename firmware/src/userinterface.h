@@ -87,6 +87,6 @@ typedef union
     device_id       di;
 } usbPacket;
 
-usbPacket g_status;
+extern usbPacket g_status;
 
 #endif //USERINTERFACE_H

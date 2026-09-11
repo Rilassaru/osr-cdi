@@ -16,6 +16,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_04A1FA109D1E9292692DE9EF55713F16"
+        "OwnerKey" = "8:_D4FA8CAB1EC7427CAD7471BA4752B363"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7C270DFE153A43B0AF4F4CE32FB1EF8C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -24,6 +30,12 @@
         {
         "MsmKey" = "8:_D4FA8CAB1EC7427CAD7471BA4752B363"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D5DAD15B3F44341ACD2C25104D34C7B0"
+        "OwnerKey" = "8:_D4FA8CAB1EC7427CAD7471BA4752B363"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,6 +69,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -81,6 +101,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -103,6 +131,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04A1FA109D1E9292692DE9EF55713F16"
+            {
+            "SourcePath" = "8:COMDLG32.dll"
+            "TargetName" = "8:COMDLG32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_CDFC4D813AAB4287BEEC2EC8F258C863"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C270DFE153A43B0AF4F4CE32FB1EF8C"
             {
             "SourcePath" = "8:..\\lib\\msvcr100.dll"
@@ -121,6 +169,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D5DAD15B3F44341ACD2C25104D34C7B0"
+            {
+            "SourcePath" = "8:hidapi.dll"
+            "TargetName" = "8:hidapi.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_CDFC4D813AAB4287BEEC2EC8F258C863"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC7CE0A4DEA94F3CAF31123089663E24"
@@ -199,15 +267,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OSR-CDI"
-        "ProductCode" = "8:{DE91B1CE-B144-4CE4-8B6B-BAE54573B2FF}"
-        "PackageCode" = "8:{872EE0D5-FCBE-48F0-ADD7-57AB948B66FE}"
+        "ProductCode" = "8:{29CB501C-D958-4DBC-A36C-61BEEB85932A}"
+        "PackageCode" = "8:{A9801EC9-743F-4C45-8107-95459EE7E4C0}"
         "UpgradeCode" = "8:{EFD93600-F06B-4782-857A-CB9580C9E23A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.3"
+        "ProductVersion" = "8:1.5.6"
         "Manufacturer" = "8:Rilassaru"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
