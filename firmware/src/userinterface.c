@@ -201,7 +201,7 @@ void hid_user_interface(void)
         case CMD_GET_DEVIDS:
 			if(!mHIDTxIsBusy()) {
                 uint16_t id;
-				GIE = 0;			
+				GIE = 0;
 				// 8000h 8001h 8002h 8003h 8004h 8005h 8006h 8007h 8008h
 				// <--      USERID     --> blank REVID DEVID <-Config-->
                 
@@ -228,6 +228,7 @@ void hid_user_interface(void)
         
         case CMD_SET_USERIDS:
             if(!mHIDTxIsBusy()) {
+				GIE = 0;
                 uint8_t ret = write_user_id((uint16_t *)&PacketFromPC.Contents[4]);
 
                 PacketToPC.Contents[0] = ret;
@@ -254,7 +255,6 @@ void hid_user_interface(void)
 void unlock_and_activate()
 {
 	ClrWdt();
-
 
 	// PIC16F1455/9 Revision A2 has issue of writing flash memory.
 	// So, use revision A3 or later.
@@ -318,6 +318,8 @@ void send_data_at_addr(uint16_t Addr)
 {
 	uint8_t ii;
 	PMADR = Addr;
+    bool gie_state = INTCONbits.GIE;
+    INTCONbits.GIE = 0;
 
 	PacketToPC.Contents[0] = RET_HID_CMD_SUCCESS;   // SUCCESS Flag
 	PacketToPC.Contents[1] = PMADRH;                // Address HI
@@ -331,10 +333,17 @@ void send_data_at_addr(uint16_t Addr)
 		PMADR++;
 	}
 	hid_tx_report((char *)&PacketToPC, USB_PACKET_SIZE);
+
+    if (gie_state) {
+        INTCONbits.GIE = 1;
+    }
 }
 
 uint16_t read_configuration_space(uint16_t address)
 {
+    bool gie_state = INTCONbits.GIE;
+    INTCONbits.GIE = 0;
+
     PMADRH = (uint8_t)((address >> 8) & 0xFF);
     PMADRL = (uint8_t)(address & 0xFF);
 
@@ -342,6 +351,11 @@ uint16_t read_configuration_space(uint16_t address)
     PMCON1bits.RD = 1;
     NOP(); NOP();
     PMCON1bits.CFGS = 0;
+
+    if (gie_state) {
+        INTCONbits.GIE = 1;
+    }
+
     // Configuration Space is 14bit length.
     return (uint16_t)((((uint16_t)PMDATH << 8) | PMDATL) & 0x3FFF);
 }
@@ -360,15 +374,11 @@ uint8_t read_user_id(uint16_t *p_buf)
     }
 
     bool gie_state = INTCONbits.GIE;
-
-    // Disable interrupts to avoid timing interference
     INTCONbits.GIE = 0;
-
-    // Select Configuration Space (Section 11.4: CFGS = 1)
     PMCON1bits.CFGS = 1;
 
-    for (uint8_t i = 0; i < USER_ID_COUNT; i++) {
-        uint16_t address = USER_ID_BASE_ADDR + i;
+    for (uint8_t ii = 0; ii < USER_ID_COUNT; ii++) {
+        uint16_t address = USER_ID_BASE_ADDR + ii;
 
         // Load address registers
         PMADRH = (uint8_t)((address >> 8) & 0xFF);
@@ -380,13 +390,11 @@ uint8_t read_user_id(uint16_t *p_buf)
         NOP();
 
         // Store 14-bit data (mask upper 2 undefined bits)
-        p_buf[i] = (uint16_t)((((uint16_t)PMDATH << 8) | PMDATL) & 0x3FFF);
+        p_buf[ii] = (uint16_t)((((uint16_t)PMDATH << 8) | PMDATL) & 0x3FFF);
     }
 
     // Restore access mode back to Flash Program Memory
     PMCON1bits.CFGS = 0;
-
-    // Restore prior interrupt state
     if (gie_state) {
         INTCONbits.GIE = 1;
     }
@@ -408,28 +416,22 @@ uint8_t write_user_id(const uint16_t *p_data)
     }
 
     bool gie_state = INTCONbits.GIE;
-
-    // ??????
     INTCONbits.GIE = 0;
 
-    // Configuration Space ???
     PMCON1bits.CFGS = 1;
 
-    // ????????????????????? (FREE=0, LWLO=0)
     PMCON1bits.FREE = 0;
     PMCON1bits.LWLO = 0;
 
-    for (uint8_t i = 0; i < USER_ID_COUNT; i++) {
-        uint16_t address = USER_ID_BASE_ADDR + i;
-        uint16_t data = p_data[i];
+    for (uint8_t ii = 0; ii < USER_ID_COUNT; ii++) {
+        uint16_t address = USER_ID_BASE_ADDR + ii;
+        uint16_t data = p_data[ii];
 
-        // ???????????
         PMADRH = (uint8_t)((address >> 8) & 0xFF);
         PMADRL = (uint8_t)(address & 0xFF);
-        PMDATH = (uint8_t)((data >> 8) & 0x3F); // 14????
+        PMDATH = (uint8_t)((data >> 8) & 0x3F);
         PMDATL = (uint8_t)(data & 0xFF);
 
-        // ??????????
         PMCON1bits.WREN = 1;
         PMCON2 = 0x55;
         PMCON2 = 0xAA;
@@ -437,11 +439,9 @@ uint8_t write_user_id(const uint16_t *p_data)
         NOP();
         NOP();
 
-        // ????????????????? (?2ms?5ms)
         while (PMCON1bits.WR);
         PMCON1bits.WREN = 0;
 
-        // ??????????????
         if (PMCON1bits.WRERR) {
             PMCON1bits.CFGS = 0;
             if (gie_state) {
@@ -451,13 +451,10 @@ uint8_t write_user_id(const uint16_t *p_data)
         }
     }
 
-    // ?????????????
     PMCON1bits.CFGS = 0;
 
-    // ????????
     if (gie_state) {
         INTCONbits.GIE = 1;
     }
-
     return RET_HID_CMD_SUCCESS;
 }

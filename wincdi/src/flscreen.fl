@@ -22,15 +22,15 @@ Function {make_window()} {open
       } {
         Fl_Box {} {
           label {Input Signal Status}
-          xywh {60 396 550 174} box BORDER_FRAME color 8 labelsize 24 align 5
+          xywh {60 307 550 173} box BORDER_FRAME color 8 labelsize 24 align 5
         }
         Fl_Box {} {
           label {Production name}
-          xywh {60 100 550 240} box BORDER_FRAME color 8 labelsize 24 align 5
+          xywh {60 100 550 170} box BORDER_FRAME color 8 labelsize 24 align 5
         }
         Fl_Box {} {
           label {Power Valve Motor Status}
-          xywh {60 611 550 89} box BORDER_FRAME color 8 labelsize 24 align 5
+          xywh {60 521 550 166} box BORDER_FRAME color 8 labelsize 24 align 5
         }
         Fl_Group {} {
           label {Engine Type Settings} open
@@ -66,44 +66,44 @@ Function {make_window()} {open
           xywh {186 110 404 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_product {
-          label Product selected
+          label Product
           xywh {186 150 404 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_mapsw {
           label {Map switch}
-          xywh {390 450 200 30} color 23 labelsize 18 textsize 18
+          xywh {390 360 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_quickshifter {
           label {Quick shifter switch}
-          xywh {390 530 200 30} color 23 labelsize 18 textsize 18
+          xywh {389 440 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_rpm {
           label {R.P.M.}
-          xywh {390 410 200 30} color 23 labelsize 18 textsize 18
+          xywh {390 320 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_pv_pot {
           label Current
-          xywh {130 660 200 30} color 23 labelsize 18 textsize 18
+          xywh {390 610 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_devid {
           label {PIC DevID}
-          xywh {210 220 120 30} color 23 labelsize 18 textsize 18
+          xywh {170 190 160 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_revid {
-          label RevID
-          xywh {210 260 120 30} color 23 labelsize 18 textsize 18
+          label {PIC RevID}
+          xywh {431 190 160 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_pv_target {
           label Target
-          xywh {130 620 200 30} color 23 labelsize 18 textsize 18
+          xywh {390 530 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_pv_mode {
           label Mode
-          xywh {390 660 200 30} color 23 labelsize 18 textsize 18
+          xywh {390 650 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_pv_mt_state {
           label State
-          xywh {390 620 200 30} color 23 labelsize 18 textsize 18
+          xywh {390 570 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Button btn_dev_read {
           label {READ from device}
@@ -126,23 +126,64 @@ Function {make_window()} {open
           xywh {980 640 250 50} labelsize 18
         }
         Fl_Output dev_th_pot {
-          label {Map switch current}
-          xywh {390 490 200 30} color 23 labelsize 18 textsize 18
-        }
-        Fl_Progress pr_cputemp_current {
-          xywh {370 300 220 25} selection_color 24 hide
+          label {Map SW current}
+          xywh {390 400 200 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_fwver {
           label {FW Ver}
-          xywh {210 300 120 30} color 23 labelsize 18 textsize 18
-        }
-        Fl_Output dev_lastupdate {
-          label {Last update}
-          xywh {470 260 120 30} color 23 labelsize 18 textsize 18
+          xywh {170 230 160 30} color 23 labelsize 18 textsize 18
         }
         Fl_Output dev_firstupdate {
           label {First update}
-          xywh {470 220 120 30} color 23 labelsize 18 textsize 18
+          xywh {431 230 160 30} color 23 labelsize 18 textsize 18
+        }
+        Fl_Dial dev_rpm_meter {
+          label RPM
+          xywh {80 340 120 120} type Line box ROUND_UP_BOX color 7 maximum 160 value 80
+        }
+        Fl_Dial dev_pv_pot_meter {
+          label PVS selected
+          xywh {80 550 120 120} type Line box ROUND_UP_BOX color 7 maximum 160 value 80
+        }
+        Fl_Box {} {
+          label 80
+          xywh {130 316 20 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 0
+          xywh {80 436 20 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 40
+          xywh {65 356 20 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 120
+          xywh {190 356 30 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 0
+          xywh {80 646 20 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 40
+          xywh {65 566 20 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 80
+          xywh {130 526 20 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 120
+          xywh {190 566 30 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 160
+          xywh {180 436 30 22} labelsize 16
+        }
+        Fl_Box {} {
+          label 160
+          xywh {180 646 30 22} labelsize 16
         }
       }
       Fl_Group tab_map_settings {

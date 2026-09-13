@@ -41,11 +41,11 @@ extern Fl_Button *btn_file_open;
 extern void cb_file_save(Fl_Button*, void*);
 extern Fl_Button *btn_file_save;
 extern Fl_Output *dev_th_pot;
-#include <FL/Fl_Progress.H>
-extern Fl_Progress *pr_cputemp_current;
 extern Fl_Output *dev_fwver;
-extern Fl_Output *dev_lastupdate;
 extern Fl_Output *dev_firstupdate;
+#include <FL/Fl_Dial.H>
+extern Fl_Dial *dev_rpm_meter;
+extern Fl_Dial *dev_pv_pot_meter;
 extern Fl_Group *tab_map_settings;
 extern MyChart *chart_ign;
 extern MyChart *chart_pvs;
@@ -96,6 +96,7 @@ extern void cb_opt_setting_throttle(Fl_Value_Slider*, void*);
 extern Fl_Value_Slider *vs_throttle_1to2;
 extern Fl_Value_Slider *vs_throttle_2to3;
 extern Fl_Value_Slider *vs_throttle_3to4;
+#include <FL/Fl_Progress.H>
 extern Fl_Progress *pr_tp_current;
 extern void cb_pviinit_type(Fl_Round_Button*, void*);
 extern Fl_Round_Button *radio_opt_pv_init_open_end;

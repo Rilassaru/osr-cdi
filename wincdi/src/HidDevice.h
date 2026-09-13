@@ -183,9 +183,9 @@ public:
 
 	CONFIG cfg = {};
 
-	MsgCallback* msgfunc;
+	MsgCallback* msgfunc = nullptr;
 
-	void callback(MsgCallback* p) {msgfunc=p;}
+	void SetMessageCallback(MsgCallback* p) {msgfunc=p;}
 	void msg( const char* p );
 
 	int Open(uint16_t vid = DEVICE_VID, uint16_t pid = DEVICE_PID, wchar_t *s_number = 0);

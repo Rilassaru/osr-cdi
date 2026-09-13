@@ -66,7 +66,7 @@ either expressed or implied, of the FreeBSD Project.
 #define IGN_CHART_MAX	35
 #define PVS_CHART_MAX	180
 
-#define REPEAT_TIME	(0.5)
+#define REPEAT_TIME	(3)
 
 // prototype
 void repeat_callback(void*);
@@ -152,7 +152,6 @@ int main(int argc, char **argv) {
 
 	return(Fl::run());
 }
-
 
 /**
  * Window close callback.
@@ -310,84 +309,6 @@ static void repeat_callback(void*) {
 
 	Fl::repeat_timeout(REPEAT_TIME, repeat_callback);
 }
-
-
-/*
- * Updates the device status UI elements based on the provided device_id and device_status.
- * If clear_flag is true or st is nullptr, clears the status-related UI elements.
- *
- * @param di Pointer to the device_id structure (can be nullptr if clearing).
- * @param st Pointer to the device_status structure (can be nullptr if clearing).
- * @param clear_flag Boolean flag indicating whether to clear the status UI.
- */
-void device_status_update(const device_id* di, const device_status* st, bool clear_flag)
-{
-	char str[STRING_BUFFER_SIZE] = { 0 };
-
-	if (clear_flag || st == nullptr) {
-		// Clear only status-related UI (keep device id fields to caller's control)
-		dev_mapsw->value("");
-		dev_quickshifter->value("");
-		dev_rpm->value("");
-		dev_rpm_meter->value(0);
-
-		dev_pv_pot->value("");
-		dev_pv_pot_meter->value(0);
-		dev_pv_target->value("");
-		dev_pv_mode->value("");
-		dev_pv_mt_state->value("");
-
-		dev_th_pot->value("");
-		pr_tp_current->value(0);
-		return;
-	}
-
-	// Update UI from device_status
-	switch (st->current_map) {
-	case 0:  dev_mapsw->color(FL_MAGENTA); dev_mapsw->value("MAP1"); break;
-	case 1:  dev_mapsw->color(FL_CYAN);    dev_mapsw->value("MAP2"); break;
-	case 2:  dev_mapsw->color(FL_YELLOW);  dev_mapsw->value("MAP3"); break;
-	case 3:  dev_mapsw->color((Fl_Color)87); dev_mapsw->value("MAP4"); break;
-	}
-
-	// Throttle position
-	pr_tp_current->value(st->tp_pot);
-	_itoa_s(st->tp_pot, str, STRING_BUFFER_SIZE, 10);
-	dev_th_pot->value(str);
-
-	// Quick shifter and rpm
-	dev_quickshifter->color(st->qs_signal ? FL_MAGENTA : FL_CYAN);
-	dev_quickshifter->value(st->qs_signal ? "QSSW OFF" : "QSSW ON");
-	_itoa_s(st->rpm, str, STRING_BUFFER_SIZE, 10);
-	dev_rpm->value(str);
-	dev_rpm_meter->value(st->rpm);
-
-	// Power valve
-	_itoa_s(st->pv_pot, str, STRING_BUFFER_SIZE, 10);
-	dev_pv_pot->value(str);
-	dev_pv_pot_meter->value(st->pv_pot);
-
-	_itoa_s(st->pv_target, str, STRING_BUFFER_SIZE, 10);
-	dev_pv_target->value(str);
-
-	switch (st->pv_mode) {
-	case 0: dev_pv_mode->value("ACTIVE");  break;
-	case 1: dev_pv_mode->value("OPEN-1");  break;
-	case 2: dev_pv_mode->value("CLOSE1");  break;
-	case 3: dev_pv_mode->value("OPEN-2");  break;
-	case 4: dev_pv_mode->value("CLOSE-2"); break;
-	default: dev_pv_mode->value("UNKNOWN");
-	}
-
-	switch (st->pv_mt_state) {
-	case 0: dev_pv_mt_state->value("OPEN");  break;
-	case 1: dev_pv_mt_state->value("CLOSE"); break;
-	case 2: dev_pv_mt_state->value("STOP");  break;
-	case 3: dev_pv_mt_state->value("BRAKE"); break;
-	default: dev_pv_mt_state->value("UNKNOWN");
-	}
-}
-
 
 /**
  * Resize the ignition chart scale automatically.

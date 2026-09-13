@@ -132,11 +132,11 @@ int HidDevice::SetUserIds(uint16_t* puserids) {
 	txbuf[6] = (puserids[0] >> 8) & 0xFF;
 
 	// User ID 1 (PIC: Contents[6], Contents[7])
-	txbuf[7] = puserids[1] & 0xFF;
+	txbuf[7] = (puserids[1] & 0xFF);
 	txbuf[8] = (puserids[1] >> 8) & 0xFF;
 
 	// User ID 2 (PIC: Contents[8], Contents[9])
-	txbuf[9] = puserids[2] & 0xFF;
+	txbuf[9] = (puserids[2] & 0xFF);
 	txbuf[10] = (puserids[2] >> 8) & 0xFF;
 
 	// User ID 3 (PIC: Contents[10], Contents[11])
@@ -199,7 +199,7 @@ int HidDevice::GetDevStatus(device_status* pdevstatus) {
 	@note This function should be prepared by the caller.
 */
 void HidDevice::msg( const char* p ) {
-	if(msgfunc) {
+	if(nullptr != msgfunc) {
 		msgfunc( p );
 	}
 }
