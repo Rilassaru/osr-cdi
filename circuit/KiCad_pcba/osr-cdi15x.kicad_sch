@@ -4545,7 +4545,7 @@
 	)
 	(rectangle
 		(start 22.86 171.45)
-		(end 119.38 220.98)
+		(end 92.71 220.98)
 		(stroke
 			(width 0)
 			(type default)
@@ -4596,12 +4596,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "15b1af95-ffce-4774-837f-defb1bbfb7e8")
-	)
-	(junction
-		(at 77.47 190.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "15c6c729-d790-4ab4-a9fb-87e2a24ee114")
 	)
 	(junction
 		(at 278.13 209.55)
@@ -5481,6 +5475,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 186.69) (xy 102.87 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58c7bc5f-a3a8-48d8-8c6c-d934962be194")
+	)
+	(wire
+		(pts
 			(xy 248.92 194.31) (xy 278.13 194.31)
 		)
 		(stroke
@@ -5951,16 +5955,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 190.5) (xy 77.47 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8fc19520-035e-459b-b5aa-ce21beee367c")
-	)
-	(wire
-		(pts
 			(xy 172.72 36.83) (xy 172.72 38.1)
 		)
 		(stroke
@@ -6011,16 +6005,6 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 184.15) (xy 77.47 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "93e427fd-cd81-4704-89c8-c58ac8134d00")
-	)
-	(wire
-		(pts
 			(xy 209.55 38.1) (xy 219.71 38.1)
 		)
 		(stroke
@@ -6061,7 +6045,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 190.5) (xy 82.55 190.5)
+			(xy 69.85 190.5) (xy 82.55 190.5)
 		)
 		(stroke
 			(width 0)
@@ -6218,6 +6202,16 @@
 			(type default)
 		)
 		(uuid "ab6d5a2e-5e74-4484-bae5-a2f46a3d2675")
+	)
+	(wire
+		(pts
+			(xy 102.87 212.09) (xy 102.87 208.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac3237bc-0d33-431f-8ab9-df9eb486af0c")
 	)
 	(wire
 		(pts
@@ -6711,6 +6705,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 194.31) (xy 102.87 198.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f12475cd-5a3c-4f40-bd7c-10595787a57f")
+	)
+	(wire
+		(pts
 			(xy 172.72 50.8) (xy 172.72 45.72)
 		)
 		(stroke
@@ -7156,6 +7160,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "5V"
+		(shape input)
+		(at 102.87 181.61 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "61cffef7-672a-4811-b348-39c0996a4980")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 102.87 176.3267 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -7795,7 +7823,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "01ac0c1f-d165-4b81-a2db-31cd8d803a0e")
-		(property "Reference" "H27"
+		(property "Reference" "H23"
 			(at 370.84 161.2899 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7878,7 +7906,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H27")
+					(reference "H23")
 					(unit 1)
 				)
 			)
@@ -8178,7 +8206,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0b0b7c7c-d26d-41ef-9809-70a3b0928f01")
-		(property "Reference" "R7"
+		(property "Reference" "R8"
 			(at 228.6 95.25 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8262,7 +8290,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R7")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -8521,7 +8549,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0cb6d748-dac4-4e83-8e79-a8b4ef146678")
-		(property "Reference" "H17"
+		(property "Reference" "H13"
 			(at 370.84 60.9599 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8604,7 +8632,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H17")
+					(reference "H13")
 					(unit 1)
 				)
 			)
@@ -8701,7 +8729,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "10585c45-8aec-4934-8980-e2f0bc12f34d")
-		(property "Reference" "H29"
+		(property "Reference" "H25"
 			(at 370.84 171.4499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8784,7 +8812,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H29")
+					(reference "H25")
 					(unit 1)
 				)
 			)
@@ -8801,7 +8829,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "10a0cd04-1606-4727-842c-4f0a469c596e")
-		(property "Reference" "R4"
+		(property "Reference" "R5"
 			(at 198.12 212.09 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8885,7 +8913,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R4")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -8903,7 +8931,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1137bb22-a93c-4b55-85de-7405358a2f86")
-		(property "Reference" "H32"
+		(property "Reference" "H28"
 			(at 370.84 208.2799 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8986,7 +9014,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H32")
+					(reference "H28")
 					(unit 1)
 				)
 			)
@@ -9004,7 +9032,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13fd6eb1-d525-4d21-8271-0ae8beedc856")
-		(property "Reference" "H20"
+		(property "Reference" "H16"
 			(at 370.84 87.6299 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9087,7 +9115,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H20")
+					(reference "H16")
 					(unit 1)
 				)
 			)
@@ -9449,7 +9477,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1d47c1f5-fab9-450a-a9b8-f9e321e44647")
-		(property "Reference" "R10"
+		(property "Reference" "R11"
 			(at 311.15 209.55 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9533,7 +9561,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R10")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -9698,7 +9726,7 @@
 	)
 	(symbol
 		(lib_id "OSR-CDI:KT-0603R")
-		(at 102.87 189.23 90)
+		(at 102.87 203.2 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9708,7 +9736,7 @@
 		(dnp no)
 		(uuid "2c2184c4-51a9-4111-8557-85b2408cd90a")
 		(property "Reference" "LED1"
-			(at 106.68 189.2299 90)
+			(at 106.68 203.1999 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9719,7 +9747,7 @@
 			)
 		)
 		(property "Value" "KT-0603R"
-			(at 96.52 186.69 0)
+			(at 96.52 200.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9730,7 +9758,7 @@
 			)
 		)
 		(property "Footprint" "OSR-CDI_footprints:LED-SMD_L1.6-W0.8-R-RD"
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9741,7 +9769,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9752,7 +9780,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9763,7 +9791,7 @@
 			)
 		)
 		(property "Manufacturer Part" "KT-0603R"
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9774,7 +9802,7 @@
 			)
 		)
 		(property "Manufacturer" "KENTO"
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9785,7 +9813,7 @@
 			)
 		)
 		(property "Supplier Part" "C2286"
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9796,7 +9824,7 @@
 			)
 		)
 		(property "Supplier" "LCSC"
-			(at 102.87 189.23 0)
+			(at 102.87 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9935,7 +9963,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "35096714-419e-43fe-a264-56622a754d5a")
-		(property "Reference" "R12"
+		(property "Reference" "R13"
 			(at 353.06 91.44 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10019,7 +10047,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R12")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -10362,7 +10390,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "397af474-a236-4572-8d36-f46805a1e42d")
-		(property "Reference" "H12"
+		(property "Reference" "H8"
 			(at 355.6 219.7099 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10423,7 +10451,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H12")
+					(reference "H8")
 					(unit 1)
 				)
 			)
@@ -10542,7 +10570,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3d02c351-fd67-412a-b65a-68f23f637700")
-		(property "Reference" "H7"
+		(property "Reference" "H5"
 			(at 267.97 279.3999 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10625,7 +10653,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H7")
+					(reference "H5")
 					(unit 1)
 				)
 			)
@@ -10643,7 +10671,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3d10618a-2ae1-4330-a20e-64df5326d072")
-		(property "Reference" "H5"
+		(property "Reference" "H3"
 			(at 267.97 266.6999 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10726,7 +10754,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H5")
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -10744,7 +10772,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "43d7b300-0c59-4be7-a563-229c2b423138")
-		(property "Reference" "H10"
+		(property "Reference" "H7"
 			(at 335.28 147.3199 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10827,7 +10855,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H10")
+					(reference "H7")
 					(unit 1)
 				)
 			)
@@ -11044,7 +11072,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "47d065d4-3d94-4c36-a22d-a61ad7a4c7f0")
-		(property "Reference" "H30"
+		(property "Reference" "H26"
 			(at 370.84 179.0699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11127,7 +11155,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H30")
+					(reference "H26")
 					(unit 1)
 				)
 			)
@@ -11144,7 +11172,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "4c824e59-2254-40a1-8fde-396eab4c8407")
-		(property "Reference" "H16"
+		(property "Reference" "H12"
 			(at 365.76 46.9899 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11227,7 +11255,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H16")
+					(reference "H12")
 					(unit 1)
 				)
 			)
@@ -11559,85 +11587,6 @@
 		)
 	)
 	(symbol
-		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 77.47 181.61 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5e1384d3-1be5-41b1-aa74-e8da972550e9")
-		(property "Reference" "H1"
-			(at 80.01 179.0699 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SingalLED"
-			(at 80.01 181.6099 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OSR-CDI_footprints:M_Hole_1.6-0.9mm_Pad"
-			(at 77.47 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 77.47 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Mounting Hole with connection"
-			(at 77.47 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "1c6bfcd5-706e-4333-9378-62eca0549f26")
-		)
-		(instances
-			(project "osr-cdi15x"
-				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "OSR-CDI:R")
 		(at 215.9 179.07 0)
 		(mirror x)
@@ -11649,7 +11598,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "5e8c18b8-d71d-41ba-84ab-5f701571e83b")
-		(property "Reference" "R5"
+		(property "Reference" "R6"
 			(at 218.44 179.07 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11733,7 +11682,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R5")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -12001,7 +11950,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 102.87 194.31 0)
+		(at 102.87 212.09 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12011,7 +11960,7 @@
 		(dnp no)
 		(uuid "68bfefda-5315-4ced-ace0-f7e4ef4a0e4e")
 		(property "Reference" "#PWR05"
-			(at 102.87 200.66 0)
+			(at 102.87 218.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12022,7 +11971,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 105.41 198.12 0)
+			(at 105.41 215.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12034,7 +11983,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 102.87 194.31 0)
+			(at 102.87 212.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12045,7 +11994,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 194.31 0)
+			(at 102.87 212.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12056,7 +12005,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 102.87 194.31 0)
+			(at 102.87 212.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12089,7 +12038,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "69f0a64f-c493-4bd7-b37c-f94f07d44e0a")
-		(property "Reference" "R6"
+		(property "Reference" "R7"
 			(at 228.6 80.01 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12173,7 +12122,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R6")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -12702,7 +12651,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "79ab32be-2fff-4dc4-b3cb-cdc5dedb436b")
-		(property "Reference" "H26"
+		(property "Reference" "H22"
 			(at 370.84 156.2099 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12785,7 +12734,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H26")
+					(reference "H22")
 					(unit 1)
 				)
 			)
@@ -12803,7 +12752,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7c42a561-3de8-4024-9625-93a0097d9a97")
-		(property "Reference" "H25"
+		(property "Reference" "H21"
 			(at 370.84 151.1299 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12886,7 +12835,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H25")
+					(reference "H21")
 					(unit 1)
 				)
 			)
@@ -12903,7 +12852,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "7dc2933b-8ea1-4265-841c-bf435883130c")
-		(property "Reference" "R8"
+		(property "Reference" "R9"
 			(at 276.86 219.71 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12987,7 +12936,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R8")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -13005,7 +12954,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7ed51f49-58a6-4fc0-b71e-48794a255468")
-		(property "Reference" "H3"
+		(property "Reference" "H1"
 			(at 267.97 250.1899 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13088,7 +13037,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H3")
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -13106,7 +13055,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7f0eab50-9619-4d5c-ad68-e923274c8ef0")
-		(property "Reference" "H22"
+		(property "Reference" "H18"
 			(at 370.84 102.8699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13189,7 +13138,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H22")
+					(reference "H18")
 					(unit 1)
 				)
 			)
@@ -13514,7 +13463,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8aed1384-aa71-4b41-bb83-1292eebe4dec")
-		(property "Reference" "H24"
+		(property "Reference" "H20"
 			(at 370.84 143.5099 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13597,7 +13546,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H24")
+					(reference "H20")
 					(unit 1)
 				)
 			)
@@ -13615,7 +13564,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8ce55ad2-e2c6-429c-83ae-0fc97f822630")
-		(property "Reference" "H31"
+		(property "Reference" "H27"
 			(at 370.84 193.0399 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13698,7 +13647,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H31")
+					(reference "H27")
 					(unit 1)
 				)
 			)
@@ -13876,7 +13825,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8e38d9a6-7433-4e89-bfb0-8bc58a49c88e")
-		(property "Reference" "R9"
+		(property "Reference" "R10"
 			(at 311.15 194.31 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13960,7 +13909,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R9")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -14339,7 +14288,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9a375774-2df1-4504-a38e-31409fe8c1ad")
-		(property "Reference" "H9"
+		(property "Reference" "H6"
 			(at 335.28 124.4599 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14422,7 +14371,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H9")
+					(reference "H6")
 					(unit 1)
 				)
 			)
@@ -14543,7 +14492,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a85ae142-f9de-42e1-8166-8e67552be8d3")
-		(property "Reference" "R11"
+		(property "Reference" "R12"
 			(at 318.77 215.9 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14627,7 +14576,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "R11")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -14645,7 +14594,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "af477ffc-527d-47e8-843a-abe96df8a942")
-		(property "Reference" "H6"
+		(property "Reference" "H4"
 			(at 267.97 273.0499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14728,7 +14677,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H6")
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -14746,7 +14695,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b22f1b6a-96f0-444d-a420-a9a578dea5af")
-		(property "Reference" "H21"
+		(property "Reference" "H17"
 			(at 370.84 95.2499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14829,7 +14778,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H21")
+					(reference "H17")
 					(unit 1)
 				)
 			)
@@ -14925,7 +14874,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "b2f78f59-d4a7-440a-a803-1e082367c4a7")
-		(property "Reference" "H13"
+		(property "Reference" "H9"
 			(at 365.76 20.3199 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15008,7 +14957,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H13")
+					(reference "H9")
 					(unit 1)
 				)
 			)
@@ -15127,7 +15076,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b8a2e383-1ade-489a-afd6-f02f7c81126b")
-		(property "Reference" "H28"
+		(property "Reference" "H24"
 			(at 370.84 166.3699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15210,7 +15159,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H28")
+					(reference "H24")
 					(unit 1)
 				)
 			)
@@ -15227,7 +15176,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "b9a03209-3924-4f63-be1c-78f225ff832e")
-		(property "Reference" "H15"
+		(property "Reference" "H11"
 			(at 365.76 41.9099 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15310,7 +15259,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H15")
+					(reference "H11")
 					(unit 1)
 				)
 			)
@@ -16462,7 +16411,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c871f6d1-e0cd-4bee-be63-04b76436d404")
-		(property "Reference" "H18"
+		(property "Reference" "H14"
 			(at 370.84 68.5799 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16545,7 +16494,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H18")
+					(reference "H14")
 					(unit 1)
 				)
 			)
@@ -17276,7 +17225,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d465179d-0fe2-4464-9ecc-a87e3df2b27c")
-		(property "Reference" "H4"
+		(property "Reference" "H2"
 			(at 267.97 256.5399 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17359,7 +17308,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H4")
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -17377,7 +17326,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d9eca749-c16b-4fa5-a86c-63dcef09971f")
-		(property "Reference" "H23"
+		(property "Reference" "H19"
 			(at 370.84 128.2699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17460,7 +17409,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H23")
+					(reference "H19")
 					(unit 1)
 				)
 			)
@@ -17579,7 +17528,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e3f591ba-09a0-4750-a4c9-bb8c0f6f5d21")
-		(property "Reference" "H19"
+		(property "Reference" "H15"
 			(at 370.84 76.1999 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17662,7 +17611,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H19")
+					(reference "H15")
 					(unit 1)
 				)
 			)
@@ -17679,7 +17628,7 @@
 		(in_pos_files no)
 		(dnp no)
 		(uuid "e4163eb5-3454-4027-8000-3567b4e3d1df")
-		(property "Reference" "H14"
+		(property "Reference" "H10"
 			(at 365.76 26.6699 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17762,7 +17711,7 @@
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H14")
+					(reference "H10")
 					(unit 1)
 				)
 			)
@@ -18768,41 +18717,39 @@
 		)
 	)
 	(symbol
-		(lib_id "OSR-CDI:MountingHole_Pad")
-		(at 102.87 181.61 0)
+		(lib_id "OSR-CDI:R")
+		(at 102.87 190.5 0)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
-		(in_pos_files no)
+		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f9eb19a8-90fa-43ed-b713-5c5869838ca3")
-		(property "Reference" "H2"
-			(at 105.41 179.0699 0)
+		(uuid "fd8ffea3-87a3-490f-a36a-85ee81b933a6")
+		(property "Reference" "R4"
+			(at 105.41 190.5 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "SignalLED"
-			(at 105.41 181.6099 0)
+		(property "Value" "330"
+			(at 102.87 190.5 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "OSR-CDI_footprints:M_Hole_1.6-0.9mm_Pad"
-			(at 102.87 181.61 0)
+		(property "Footprint" "OSR-CDI_footprints:R_0603_1608Metric"
+			(at 101.092 190.5 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18813,7 +18760,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 181.61 0)
+			(at 102.87 190.5 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18823,8 +18770,8 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole with connection"
-			(at 102.87 181.61 0)
+		(property "Description" "Resistor"
+			(at 102.87 190.5 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18833,14 +18780,39 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Sim.Device" ""
+			(at 102.87 190.5 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 102.87 190.5 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ab9976cd-cafe-4f10-8445-b1d35f9d0637")
 		)
 		(pin "1"
-			(uuid "1b8bd1d0-1b8f-4047-8a30-47da13a6e24a")
+			(uuid "dc74bebc-f56d-4e3e-b66d-855465ceddeb")
 		)
 		(instances
 			(project "osr-cdi15x"
 				(path "/d97dd358-6de2-440b-a824-df94f4ec2770"
-					(reference "H2")
+					(reference "R4")
 					(unit 1)
 				)
 			)
