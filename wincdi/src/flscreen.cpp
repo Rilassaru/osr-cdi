@@ -368,19 +368,19 @@ Fl_Double_Window* make_window() {
         } // MyChart* chart_pvs
         { btn_map_up = new Fl_Repeat_Button(1030, 180, 220, 130, "UP(&l)");
           btn_map_up->labelsize(24);
-          btn_map_up->callback((Fl_Callback*)cb_up);
+          btn_map_up->callback((Fl_Callback*)cb_chart_button_up);
         } // Fl_Repeat_Button* btn_map_up
         { btn_map_down = new Fl_Repeat_Button(1030, 510, 220, 130, "DOWN(&k)");
           btn_map_down->labelsize(24);
-          btn_map_down->callback((Fl_Callback*)cb_down);
+          btn_map_down->callback((Fl_Callback*)cb_chart_button_down);
         } // Fl_Repeat_Button* btn_map_down
         { btn_map_left = new Fl_Repeat_Button(1020, 320, 110, 180, "<<(&,)");
           btn_map_left->labelsize(24);
-          btn_map_left->callback((Fl_Callback*)cb_left);
+          btn_map_left->callback((Fl_Callback*)cb_chart_button_left);
         } // Fl_Repeat_Button* btn_map_left
         { btn_map_right = new Fl_Repeat_Button(1150, 320, 110, 180, "(&.)>>");
           btn_map_right->labelsize(25);
-          btn_map_right->callback((Fl_Callback*)cb_right);
+          btn_map_right->callback((Fl_Callback*)cb_chart_button_right);
         } // Fl_Repeat_Button* btn_map_right
         { btn_select_ign_map0 = new Fl_Light_Button(20, 90, 140, 60, "IGN MAP1(&1)");
           btn_select_ign_map0->type(102);

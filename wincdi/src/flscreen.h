@@ -50,13 +50,13 @@ extern Fl_Group *tab_map_settings;
 extern MyChart *chart_ign;
 extern MyChart *chart_pvs;
 #include <FL/Fl_Repeat_Button.H>
-extern void cb_up(Fl_Repeat_Button*, void*);
+extern void cb_chart_button_up(Fl_Repeat_Button*, void*);
 extern Fl_Repeat_Button *btn_map_up;
-extern void cb_down(Fl_Repeat_Button*, void*);
+extern void cb_chart_button_down(Fl_Repeat_Button*, void*);
 extern Fl_Repeat_Button *btn_map_down;
-extern void cb_left(Fl_Repeat_Button*, void*);
+extern void cb_chart_button_left(Fl_Repeat_Button*, void*);
 extern Fl_Repeat_Button *btn_map_left;
-extern void cb_right(Fl_Repeat_Button*, void*);
+extern void cb_chart_button_right(Fl_Repeat_Button*, void*);
 extern Fl_Repeat_Button *btn_map_right;
 #include <FL/Fl_Light_Button.H>
 extern void cb_select_map(Fl_Light_Button*, void*);

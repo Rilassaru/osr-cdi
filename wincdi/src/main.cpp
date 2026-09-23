@@ -71,15 +71,15 @@ either expressed or implied, of the FreeBSD Project.
 // prototype
 void repeat_callback(void*);
 void msg_cb(const char* p);
-int dataFileWrite(const char* file_name);
-int dataFileRead(const char* file_name);
-int dataFileReadV14(const char* file_name);
-int dataFileReadV15(const char* file_name);
+int data_file_write(const char* file_name);
+int data_file_read(const char* file_name);
+int data_file_read_v14(const char* file_name);
+int data_file_read_v15(const char* file_name);
 
 void option_redraw();
 void main_window_cb(Fl_Widget*, void*);
-void ResizeIgnitionChart();
-void device_status_update(const device_id* di, const device_status* st, bool clear_flag);
+void resize_ignition_chart();
+void device_status_ui_update(const device_id* di, const device_status* st, bool clear_flag);
 
 // global
 Fl_Double_Window* w;
@@ -129,7 +129,7 @@ int main(int argc, char **argv) {
 	strcat_s(szDefaultFileName, STRING_BUFFER_SIZE, DEFAULT_FILE_NAME);
 
 	// read default .cdi
-	dataFileRead(szDefaultFileName);
+	data_file_read(szDefaultFileName);
 
 	// Set function pointer to message 
 	dev.SetMessageCallback(msg_cb);
@@ -172,7 +172,7 @@ int main(int argc, char **argv) {
  */
 static void main_window_cb(Fl_Widget*, void*) {
 	// Save current data and perform a clean shutdown.
-	dataFileWrite(szDefaultFileName);
+	data_file_write(szDefaultFileName);
 
 	// Stop periodic callbacks to avoid touching UI after hide
 	Fl::remove_timeout(repeat_callback);
@@ -285,12 +285,12 @@ static void repeat_callback(void*) {
 			device_status st = {};
 			if (dev.GetDevStatus(&st) == RET_HID_CMD_SUCCESS) {
 				// delegate UI update to helper
-				device_status_update(&di, &st, false);
+				device_status_ui_update(&di, &st, false);
 			}
 		}
 		else {
 			// Clear status UI when unable to read
-			device_status_update(nullptr, nullptr, true);
+			device_status_ui_update(nullptr, nullptr, true);
 		}
 
 		// Close the device handle opened by GetDev* calls
@@ -298,7 +298,7 @@ static void repeat_callback(void*) {
 	}
 	else {
 		// 未接続時のUIクリア処理
-		device_status_update(nullptr, nullptr, true);
+		device_status_ui_update(nullptr, nullptr, true);
 		dev_devid->value("");
 		dev_revid->value("");
 		dev_fwver->value("");
@@ -320,7 +320,7 @@ static void repeat_callback(void*) {
  * @param st Pointer to the device_status structure (can be nullptr if clearing).
  * @param clear_flag Boolean flag indicating whether to clear the status UI.
  */
-void device_status_update(const device_id* di, const device_status* st, bool clear_flag)
+void device_status_ui_update(const device_id* di, const device_status* st, bool clear_flag)
 {
 	char str[STRING_BUFFER_SIZE] = { 0 };
 
@@ -402,7 +402,7 @@ void device_status_update(const device_id* di, const device_status* st, bool cle
  * Automatically change the chart scale to accommodate the maximum
  * value present in the ignition map so the UI remains readable.
  */
-void ResizeIgnitionChart()
+void resize_ignition_chart()
 {
 	// Automatically change the scale according to the maximum value of the map data.
 	double max_value = chart_ign->GetMaxValue();
@@ -437,7 +437,7 @@ void ResizeIgnitionChart()
  * @param btn The repeat button widget (unused).
  * @param data User data pointer (unused).
  */
-void cb_up(Fl_Repeat_Button*, void*) {
+void cb_chart_button_up(Fl_Repeat_Button*, void*) {
 	// Determine movement amount based on selected multiplier controls
 	int move = (radio_map_x1->value() * 1) + (radio_map_x5->value() * 5) + (radio_map_x10->value() * 10);
 
@@ -449,7 +449,7 @@ void cb_up(Fl_Repeat_Button*, void*) {
 		// Refresh
 		chart_ign->MovePointerY(move*0.1);
 		chart_ign->ReMap(chart_ign->GetPointerX());
-		ResizeIgnitionChart();
+		resize_ignition_chart();
 		chart_ign->redraw();
 	}
 
@@ -471,7 +471,7 @@ void cb_up(Fl_Repeat_Button*, void*) {
  * @param btn The repeat button widget (unused).
  * @param data User data pointer (unused).
  */
-void cb_down(Fl_Repeat_Button*, void*){
+void cb_chart_button_down(Fl_Repeat_Button*, void*){
 	// Determine movement amount based on selected multiplier controls
 	int move = (radio_map_x1->value() * 1) + (radio_map_x5->value() * 5) + (radio_map_x10->value() * 10);
 
@@ -483,7 +483,7 @@ void cb_down(Fl_Repeat_Button*, void*){
 		// Refresh
 		chart_ign->MovePointerY(move*-0.1);
 		chart_ign->ReMap(chart_ign->GetPointerX());
-		ResizeIgnitionChart();
+		resize_ignition_chart();
 		chart_ign->redraw();
 	}
 
@@ -505,7 +505,7 @@ void cb_down(Fl_Repeat_Button*, void*){
  * @param btn The repeat button widget (unused).
  * @param data User data pointer (unused).
  */
-void cb_left(Fl_Repeat_Button*, void*){
+void cb_chart_button_left(Fl_Repeat_Button*, void*){
 	// Shift pointer left by one index and request redraw
 	chart_ign->MovePointerX(-1);
 	chart_ign->redraw();
@@ -531,7 +531,7 @@ void cb_left(Fl_Repeat_Button*, void*){
  * @param btn The repeat button widget (unused).
  * @param data User data pointer (unused).
  */
-void cb_right(Fl_Repeat_Button*, void*){
+void cb_chart_button_right(Fl_Repeat_Button*, void*){
 	// Shift pointer right by one index and request redraw
 	chart_ign->MovePointerX(1);
 	chart_ign->redraw();
@@ -562,8 +562,8 @@ void cb_file_open(Fl_Button*, void*) {
 	if (0 == ret) {
 
 		// Perform two-pass file read to validate and load
-		if (dataFileRead(fnfc.filename())&& dataFileRead(fnfc.filename())) {
-			ResizeIgnitionChart();
+		if (data_file_read(fnfc.filename())&& data_file_read(fnfc.filename())) {
+			resize_ignition_chart();
 			chart_ign->redraw();
 			chart_pvs->redraw();
 			option_redraw();
@@ -606,7 +606,7 @@ void cb_file_save(Fl_Button*, void*) {
 	int ret = fnfc.show();
 
 	if (0 == ret) {
-		if (dataFileWrite(fnfc.filename())) {
+		if (data_file_write(fnfc.filename())) {
 			// rename window title
 			strcpy_s(str, STRING_BUFFER_SIZE, WINDOW_TITLE);
 			strcat_s(str, STRING_BUFFER_SIZE, " - ");
@@ -686,7 +686,10 @@ void cb_device_read(Fl_Button*, void*) {
 		// If the product string explicitly starts with the known compatible
 		// prefix, allow the operation even if the numeric ID/version differ.
 		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = (prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0);
+		bool product_is_compatible = 
+			(prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0) ||
+			(prod.rfind("OSR-CDI TV250J Ver.1.5.", 0) == 0);
+
 
 		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
 			// Device appears incompatible
@@ -729,7 +732,7 @@ void cb_device_read(Fl_Button*, void*) {
 	}
 
 	// Update charts and option UI after successful (or partially successful) read.
-	ResizeIgnitionChart();
+	resize_ignition_chart();
 	chart_ign->redraw();
 	chart_pvs->redraw();
 	option_redraw();
@@ -839,7 +842,7 @@ void cb_device_write(Fl_Button*, void*) {
  * @param file_name Path of the file to write.
  * @return 1 on success, 0 on failure.
  */
-int dataFileWrite(const char* file_name) {
+int data_file_write(const char* file_name) {
 	std::string fname(file_name ? file_name : "");
 	if (fname.size() == 0) return 0;
 	// Ensure extension .cd2
@@ -899,7 +902,7 @@ int dataFileWrite(const char* file_name) {
 // ----------------------------------------------------------------------------
 // Entry point for file reading
 // ----------------------------------------------------------------------------
-int dataFileRead(const char* file_name) {
+int data_file_read(const char* file_name) {
 	int len;
 	// Clear previous messages and log start
 	msg->clear();
@@ -915,7 +918,7 @@ int dataFileRead(const char* file_name) {
 	if (len > 4 && 0 == _stricmp(&file_name[len - 4], ".cdi")) {
 		// Legacy Ver1.4 format
 		msg->add("Detected format: Ver1.4\n");
-		int ret = dataFileReadV14(file_name);
+		int ret = data_file_read_v14(file_name);
 		if (ret) msg->add("File load completed.\n");
 		else msg->add("File load failed.\n");
 		return ret;
@@ -923,7 +926,7 @@ int dataFileRead(const char* file_name) {
 	else {
 		// Current Ver1.5 format
 		msg->add("Detected format: Ver1.5\n");
-		int ret = dataFileReadV15(file_name);
+		int ret = data_file_read_v15(file_name);
 		if (ret) msg->add("File load completed.\n");
 		else msg->add("File load failed.\n");
 		return ret;
@@ -1143,7 +1146,7 @@ static bool ParseCdiFile(const char* file_name, int &outErrorFlag) {
 	return true;
 }
 
-int dataFileReadV15(const char* file_name) {
+int data_file_read_v15(const char* file_name) {
 	int errorFlag = 0;
 	if (!ParseCdiFile(file_name, errorFlag)) return 0;
 
@@ -1158,7 +1161,7 @@ int dataFileReadV15(const char* file_name) {
 		dev.cfg.sys_numerator_for_rpm = SYS_NUMERATOR_FOR_RPM_1;
 	}
 
-	ResizeIgnitionChart();
+	resize_ignition_chart();
 	if (errorFlag) {
 		chart_ign->redraw();
 		chart_pvs->redraw();
@@ -1187,7 +1190,7 @@ int dataFileReadV15(const char* file_name) {
  * @param file_name Path of the file to read.
  * @return 1 on success, 0 on failure.
  */
-int dataFileReadV14(const char* file_name) {
+int data_file_read_v14(const char* file_name) {
 	int errorFlag = 0;
 	if (!ParseCdiFile(file_name, errorFlag)) return 0;
 
@@ -1200,7 +1203,7 @@ int dataFileReadV14(const char* file_name) {
 		pvsMapData.Set(3, index, pvsMapData.Get(1, index));
 	}
 
-	ResizeIgnitionChart();
+	resize_ignition_chart();
 
 	if (errorFlag) {
 		chart_ign->redraw();
