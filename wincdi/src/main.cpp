@@ -281,6 +281,7 @@ static void repeat_callback(void*) {
 				dev_devid->value("");
 				dev_revid->value("");
 				dev_fwver->value("");
+				dev_firstupdate->value("");
 			}
 
 			// Get device status and update UI indicators
@@ -304,6 +305,7 @@ static void repeat_callback(void*) {
 		dev_devid->value("");
 		dev_revid->value("");
 		dev_fwver->value("");
+		dev_firstupdate->value("");
 	}
 
 	Fl::repeat_timeout(REPEAT_TIME, repeat_callback);

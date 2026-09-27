@@ -109,7 +109,7 @@ Version a.b.c
 #include "usb.h"
 
 //------------------------------------------------------------------
-//proto type
+//prototype
 //------------------------------------------------------------------
 void main(void);
 void initialize_system(void);
