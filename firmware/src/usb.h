@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013-2025, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013-, Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,7 @@ either expressed or implied, of the FreeBSD Project.
 #include "usb_config.h"
 #include "usb_device.h"
 #include "HardwareProfile.h"
-
-
+#include "userinterface.h"
 #include "usb_device_hid.h"
 
 

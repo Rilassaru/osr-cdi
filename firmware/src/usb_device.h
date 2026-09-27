@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013-2025, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013-, Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,8 @@ either expressed or implied, of the FreeBSD Project.
 #ifndef _USB_DEVICE_H
 #define _USB_DEVICE_H
 
-#include "usb.h"
+#include "typedefs.h"
+#include "usb_config.h"
 
 #define USBIF_FLAG  PIR2bits.USBIF
 #define USBIE_BIT   PIE2bits.USBIE
@@ -483,6 +484,16 @@ typedef struct _USB_EP_DSC
 #define RCPT_EP             2
 #define RCPT_OTH            3
 
+/** -----------------------------------------------------------------
+ * Pointer helper union (Used for USB Control Transfers)
+------------------------------------------------------------------ */
+typedef union _POINTER
+{
+    uint8_t*        bRam;
+    uint16_t*       wRam;
+    const uint8_t*  bRom;
+    const uint16_t* wRom;
+} POINTER;
 
 extern uint8_t ctrl_trf_session_owner;
 extern POINTER pSrc;
@@ -534,7 +545,7 @@ extern volatile unsigned char hid_report_in[HID_INT_IN_EP_SIZE];
 
 extern ROM USB_DEV_DSC device_dsc;
 extern ROM uint8_t CFG01[CONFIG_DESC_TOTAL_LEN];
-extern ROM const unsigned char *ROM USB_CD_Ptr[];
+extern ROM unsigned char *ROM USB_CD_Ptr[];
 extern ROM unsigned char* ROM USB_SD_Ptr[];
 
 void usb_device_init(void);

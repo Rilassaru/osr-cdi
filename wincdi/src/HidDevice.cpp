@@ -64,7 +64,7 @@ HidDevice::HidDevice() {
 	memset(&rxPacket, 0, sizeof(usbPacket));
 }
 
-/** @brief Destructor: ensure USB handle is closed when object is destroyed. */
+/** @brief Destructor: ensure USB handle is d when object is destroyed. */
 HidDevice::~HidDevice() {
 	Close();
 }
@@ -92,7 +92,7 @@ int HidDevice::GetDevIds(device_id* pdevid) {
 
 	if ((0 > write()) || (0 > read(rxPacket.rxbuf8))) {
 		msg("Error occured on reading device id.\n");
-		Close();
+		//Close();
 		return RET_HID_CMD_FAIL;
 	}
 
@@ -117,11 +117,11 @@ int HidDevice::SetUserIds(uint16_t* puserids) {
 		return RET_HID_CMD_FAIL;
 	}
 
-	// 送信バッファ全体をゼロクリア
+	// Zero-clear the entire transmit buffer
 	memset(txbuf, 0, sizeof(txbuf));
 
 	// Prepare command packet
-	txbuf[0] = 0;                // Report ID (OSのHIDドライバで消費)
+	txbuf[0] = 0;                // Report ID (consumed by the OS HID driver)
 	txbuf[1] = CMD_SET_USERIDS;  // Command -> PIC: Contents[0]
 	txbuf[2] = 0;                // Blank   -> PIC: Contents[1]
 	txbuf[3] = 0;                // Blank   -> PIC: Contents[2]
@@ -145,11 +145,15 @@ int HidDevice::SetUserIds(uint16_t* puserids) {
 
 	putbin(&txbuf[0], "TX: SetUserIds");
 
-	// 送信およびレスポンス受信
-	if ((0 > write()) || (0 > read(rxPacket.rxbuf8)) || (RET_HID_CMD_SUCCESS != rxPacket.rxbuf8[0])) {
+	// Send and receive response
+	if ((0 > write()) || (0 > read(rxPacket.rxbuf8))) {
 		msg("Error occured on setting user ids.\n");
-		Close();
+//		Close();
 		return RET_HID_CMD_FAIL;
+	}
+
+	if ((RET_HID_CMD_SUCCESS != rxPacket.rxbuf8[0])) {
+		// Nothing to do
 	}
 
 	putbin(rxPacket.rxbuf8, "RX: SetUserIds");
@@ -158,7 +162,7 @@ int HidDevice::SetUserIds(uint16_t* puserids) {
 }
 
 
-/** @brief Get device status from the connected device and copy to pdevstatus.
+	/** @brief Get device status from the connected device and copy to pdevstatus.
 
 	@returns
 		RET_HID_CMD_SUCCESS on success, RET_HID_CMD_FAIL on failure.
@@ -180,11 +184,17 @@ int HidDevice::GetDevStatus(device_status* pdevstatus) {
 
 	if ((0 > write()) || (0 > read(rxPacket.rxbuf8))) {
 		msg("Error occured on reading device status.\n");
-		Close();
 		return RET_HID_CMD_FAIL;
 	}
 
 	putbin(rxPacket.rxbuf8, "RX: GetDevStatus");
+
+	// The device places a status byte in rxbuf8[0]. Treat non-zero as failure
+	// (consistent with other HID commands in this project where 0 == success).
+	if (rxPacket.rxbuf8[0] != RET_HID_CMD_SUCCESS) {
+		msg("Device reported command failure in GetDevStatus.\n");
+		return RET_HID_CMD_FAIL;
+	}
 
 	// Copy status structure
 	*pdevstatus = rxPacket.s;
@@ -312,7 +322,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			msg("Error occured on reading Config data.\n");
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Error occured on reading Config data.");
-			Close();
+//			Close();
 			return 0;
 		}
 		putbin(rxPacket.rxbuf8, "RX: GetConfig");
@@ -342,7 +352,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			msg( "Error occured on reading IG data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on reading IG data." );
-			Close();
+//			Close();
 			return 0;
 		}
 
@@ -375,7 +385,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			msg( "Error occured on reading PV data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on reading PV data." );
-			Close();
+//			Close();
 			return 0;
 		}
 		putbin(txbuf, "TX: GetPowerValveTable");
@@ -388,7 +398,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 		msg( "." );
 	}
 	msg( "OK.\n" );
-	Close();
+//	Close();
 	return 1;
 
 }
@@ -433,7 +443,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			msg( "Error occured on writing IG data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on writing IG data." );
-			Close();
+//			Close();
 			return 0;
 		}
 
@@ -444,7 +454,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			msg( "Writing IG data verify failed.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Writing IG data verify failed." );
-			Close();
+//			Close();
 			return 0;
 		}
 		msg( "." );
@@ -472,7 +482,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			msg( "Error occured on writing PV data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on writing PV data." );
-			Close();
+			//	();
 			return 0;
 		}
 		
@@ -483,7 +493,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			msg( "Writing PV data verify failed.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Writing PV data verify failed." );
-			Close();
+//			Close();
 			return 0;
 		}
 		msg( "." );
@@ -512,7 +522,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			msg( "Error occured on writing config data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on writing config data." );
-			Close();
+//			Close();
 			return 0;
 		}
 
@@ -523,7 +533,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 			msg( "Writing config data verify failed.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Writing config data verify failed." );
-			Close();
+//			Close();
 			return 0;
 		}
 		msg( "." );
@@ -531,7 +541,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 	}
 	msg( "OK\n" );
 
-	//Close();
+//	Close();
 	return 1;
 
 }
@@ -549,7 +559,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 int HidDevice::write( const uint8_t* data, size_t length ) {
 	if( nullptr == dev_handle || (length > HID_MAX_TXBUF_SIZE) ) {
 		msg( "Writing fail with no device.\n" );
-		Close();
+//		Close();
 		return -1;
 	}
 	txbuf[0] = '\0';
@@ -560,6 +570,7 @@ int HidDevice::write( const uint8_t* data, size_t length ) {
 	}
 	int ret = hid_write( dev_handle, txbuf, HID_MAX_TXBUF_SIZE );
 	if( ret <= 0 ) {
+		// On write failure, close underlying handle to avoid leaking OS handle
 		Close();
 		msg( "\nhid_write() fail with no device.\n" );
 	}
@@ -584,8 +595,10 @@ int HidDevice::read( uint8_t* data, size_t length ) {
 
 	ret = hid_read_timeout( dev_handle, data, length, 1000 );
 	if( ret <= 0 ) {
-		dev_handle = nullptr;
-		msg( "\nhid_rea() Failed.\n" );
+		// On read failure, close underlying handle to avoid leaving the device
+		// in an indeterminate state and leaking the OS handle.
+		Close();
+		msg( "\nhid_read() Failed.\n" );
 	}
 
 	return ret;

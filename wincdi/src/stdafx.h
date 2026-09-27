@@ -1,8 +1,7 @@
-// stdafx.h : 標準のシステム インクルード ファイルのインクルード ファイル、または
-// 参照回数が多く、かつあまり変更されない、プロジェクト専用のインクルード ファイル
-// を記述します。
+// stdafx.h : Precompiled header for the project
+// Use of precompiled headers can significantly speed up compilation by
+// reducing redundant parsing of commonly included headers.
 //
-
 #pragma once
 
 #include "targetver.h"
@@ -12,4 +11,4 @@
 
 
 
-// TODO: プログラムに必要な追加ヘッダーをここで参照してください
+// TODO: reference additional headers your program requires here

@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013-2025, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013-, Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,7 @@ of the authors and should not be interpreted as representing official policies,
 either expressed or implied, of the FreeBSD Project.
 ----------------------------------------------------------------------------*/
 #include "usb.h"
-#include "userinterface.h"
 #include "constant.h"
-#define mLED		LATC1
-#define _XTAL_FREQ 16000000
-
-#define OSCCON1MHZ			0b11101100
-#define OSCCON4MHZ			0b11011100
-#define OSCCON16MHZ         0b11111100
-#define SLOWCLOCK			OSCCON4MHZ
 
 // Constants
 #define CMD_GET_DATA		0x90
@@ -61,17 +53,20 @@ unsigned char ReadState;
 
 usbPacket PacketFromPC;
 usbPacket PacketToPC;
+usbPacket g_status = {0};
 
-void unlock_and_activate();
-uint16_t analog_digtal_conv16(uint8_t ch);
+void unlock_and_activate(void);
 void send_data_at_addr(uint16_t Addr);
 uint16_t read_configuration_space(uint16_t address);
 uint8_t read_user_id(uint16_t *p_buf);
 uint8_t write_user_id(const uint16_t *p_data);
 
-#define CHS_TEMP (0b11101)       // Temperature Indicator Module
-
-
+/**
+ * @brief Receives and handles one pending host command when USB is ready.
+ *
+ * Handles map read/write, status, and device-ID/User-ID requests. Flash and
+ * configuration-space operations temporarily disable interrupts where needed.
+ */
 void hid_user_interface(void)
 {
 	uint8_t ii;
@@ -190,7 +185,6 @@ void hid_user_interface(void)
             break;
 
 		case CMD_GET_STATUS:
-            //g_status.ds.cpu_temp = analog_digtal_conv16(CHS_TEMP);
             g_status.ds.cpu_temp = 0;
 			if(!mHIDTxIsBusy()) {
 				hid_tx_report((char *)&g_status, USB_PACKET_SIZE);
@@ -252,6 +246,12 @@ void hid_user_interface(void)
 	}
 }
 
+/**
+ * @brief Executes the PIC program-memory unlock and write sequence.
+ *
+ * The caller must configure the program-memory control and address registers
+ * for the desired operation before calling this function.
+ */
 void unlock_and_activate()
 {
 	ClrWdt();
@@ -269,51 +269,22 @@ void unlock_and_activate()
 
 }
 
+/**
+ * @brief Resets the HID command receiver to its idle state.
+ */
 void user_init(void)
 {
     ReadState = IDLE;
 }
 
 /**
- * @brief Converts an analog signal to a 10-bit digital value for a specified input channel.
- *        Safely switches to right-justified format without corrupting clock/reference settings,
- *        and restores original registers upon exit.
- * 
- * @param ch  Analog input channel (e.g., CHS_TIM)
- * @return uint16_t 10-bit ADC result (0 to 1023)
+ * @brief Reads one flash page and sends it to the host over HID.
+ *
+ * Interrupts are disabled during the program-memory read and restored to their
+ * previous state before returning.
+ *
+ * @param Addr Starting program-memory address of the page to read.
  */
-uint16_t analog_digtal_conv16(uint8_t ch)
-{
-    // 1. Save original register states
-    uint8_t saved_adcon0 = ADCON0;
-    uint8_t saved_adcon1 = ADCON1;
-    uint16_t result;
-
-    // 2. Safely set ADFM = 1 (Right-justified) while keeping ADCS / ADPREF unchanged
-    ADCON1 = saved_adcon1 | 0b10000000;
-
-    // 3. Select channel and ensure ADC module is ON
-    ADCON0bits.CHS = ch;
-    ADCON0bits.ADON = 1;
-
-    // 4. Acquisition delay
-    // Temperature sensor requires a longer charging time (especially right after another channel)
-    __delay_us(400);
-
-    // 5. Start conversion and wait for completion
-    GO_nDONE = 1;
-    while(GO_nDONE);
-
-    // 6. Read 10-bit value (Right-justified: ADRESH[1:0] + ADRESL[7:0])
-    result = ((uint16_t)ADRESH << 8) | ADRESL;
-
-    // 7. Restore previous register states (Restores ADFM=0 left-justified for 8-bit functions)
-    ADCON0 = saved_adcon0;
-    ADCON1 = saved_adcon1;
-
-    return result;
-}
-
 void send_data_at_addr(uint16_t Addr)
 {
 	uint8_t ii;
@@ -339,6 +310,12 @@ void send_data_at_addr(uint16_t Addr)
     }
 }
 
+/**
+ * @brief Reads one word from PIC configuration space.
+ *
+ * @param address Configuration-space address to read.
+ * @return The 14-bit configuration word.
+ */
 uint16_t read_configuration_space(uint16_t address)
 {
     bool gie_state = INTCONbits.GIE;
@@ -360,12 +337,11 @@ uint16_t read_configuration_space(uint16_t address)
     return (uint16_t)((((uint16_t)PMDATH << 8) | PMDATL) & 0x3FFF);
 }
 
-//------------------------------------------------------
 /**
- * @brief Reads all 4 User ID words (0x8000 - 0x8003) via pointer.
- * 
- * @param p_buf Pointer to an array of at least 4 uint16_t elements.
- * @return bool true if read completed successfully, false if null pointer.
+ * @brief Reads the four PIC User ID words into the supplied array.
+ *
+ * @param p_buf Destination array with room for @ref USER_ID_COUNT words.
+ * @return `RET_HID_CMD_SUCCESS`, or `RET_HID_CMD_FAIL` if `p_buf` is null.
  */
 uint8_t read_user_id(uint16_t *p_buf)
 {
@@ -403,11 +379,14 @@ uint8_t read_user_id(uint16_t *p_buf)
 }
 
 /**
- * @brief Writes all 4 User ID words (0x8000 - 0x8003) via pointer.
- *        Note: Configuration Space does NOT support Row Erase (FREE=1 is forbidden).
- * 
- * @param p_data Pointer to an array of 4 uint16_t elements to write (14-bit each).
- * @return uint8_t RET_HID_CMD_SUCCESS on success, RET_HID_CMD_FAIL on failure.
+ * @brief Writes the four PIC User ID words from the supplied array.
+ *
+ * Configuration space does not support row erase, so this function writes
+ * each word without setting the erase bit. Interrupt state is restored before
+ * returning.
+ *
+ * @param p_data Source array containing @ref USER_ID_COUNT 14-bit words.
+ * @return `RET_HID_CMD_SUCCESS` on success, otherwise `RET_HID_CMD_FAIL`.
  */
 uint8_t write_user_id(const uint16_t *p_data)
 {

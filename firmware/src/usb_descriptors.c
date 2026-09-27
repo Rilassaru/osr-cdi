@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright (c) 2013-2024, Rilassaru (http://rilassaru.blog.jp/)
+Copyright (c) 2013-, Rilassaru (http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,7 @@ either expressed or implied, of the FreeBSD Project.
   each source code for details.
   (modified from (this file name).c included in MCHPFSUSB v1.2/v1.3)
   --------------------------------------------------------------------------*/
+
 #include "usb.h"
 
 #ifndef __XC8__
@@ -113,7 +114,7 @@ ROM uint8_t CFG01[CONFIG_DESC_TOTAL_LEN] = {
     0x01 //bInterval
 };
 
-ROM struct {
+static ROM struct {
     uint8_t bLength;
     uint8_t bDscType;
     uint16_t string[1];
@@ -121,7 +122,7 @@ ROM struct {
     sizeof (sd000), DSC_STR, 0x0409
 };
 
-ROM struct {
+static ROM struct {
     uint8_t bLength;
     uint8_t bDscType;
     uint16_t string[25];
@@ -132,14 +133,14 @@ ROM struct {
 //  'Y', 'A', 'M', 'A', 'H', 'A', '-', '2', 'T', '-', 'D', 'e', 'n', 's', 'o', 'T', 'o', 'm', 'o', 'n', 'o', 'K', 'a', 'i', '.'
 };
 
-ROM struct {
+static ROM struct {
     uint8_t bLength;
     uint8_t bDscType;
     uint16_t string[26];
 } sd002 = {
     sizeof (sd002), DSC_STR,
   // 0    1    2    3    4    5    6    7    8    9    0    1    2    3    4    5    6    7    8    9    0    1    2    3    4    5
-    'O', 'S', 'R', '-', 'C', 'D', 'I', ' ', 'S', 'Y', 'S', 'T', 'E', 'M', ' ', 'V', 'e', 'r', '.', '1', '.', '5', '.', '6', 'b', '\0'
+    'O', 'S', 'R', '-', 'C', 'D', 'I', ' ', 'S', 'Y', 'S', 'T', 'E', 'M', ' ', 'V', 'e', 'r', '.', '1', '.', '5', '.', '6', 'c', '\0'
 };
 
 ROM uint8_t hid_rpt01[HID_RPT01_SIZE] =
@@ -166,9 +167,9 @@ ROM uint8_t hid_rpt01[HID_RPT01_SIZE] =
 
 
 ROM unsigned char* ROM USB_SD_Ptr[] ={
-    (ROM const unsigned char *ROM) & sd000,
-    (ROM const unsigned char *ROM) & sd001,
-    (ROM const unsigned char *ROM) & sd002
+    (ROM unsigned char *ROM) & sd000,
+    (ROM unsigned char *ROM) & sd001,
+    (ROM unsigned char *ROM) & sd002
 };
 
 

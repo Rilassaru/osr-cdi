@@ -1,0 +1,4 @@
+C:/Users/rilas/Documents/01.Dev/OSR-CDI/osr-cdi-dev/firmware/osr-cdi16X.X/_build/osr-cdi16X/default/CMakeFiles/osr_cdi16X_default_default_XC8_compile.dir
+C:/Users/rilas/Documents/01.Dev/OSR-CDI/osr-cdi-dev/firmware/osr-cdi16X.X/_build/osr-cdi16X/default/CMakeFiles/osr_cdi16X_default_image_1V1mL2MX.dir
+C:/Users/rilas/Documents/01.Dev/OSR-CDI/osr-cdi-dev/firmware/osr-cdi16X.X/_build/osr-cdi16X/default/CMakeFiles/edit_cache.dir
+C:/Users/rilas/Documents/01.Dev/OSR-CDI/osr-cdi-dev/firmware/osr-cdi16X.X/_build/osr-cdi16X/default/CMakeFiles/rebuild_cache.dir

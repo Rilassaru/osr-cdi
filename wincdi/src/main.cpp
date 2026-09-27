@@ -62,6 +62,7 @@ either expressed or implied, of the FreeBSD Project.
 #define STRING_BUFFER_SIZE 1024
 
 #define MAX_UINT8 0xFF
+#define MAX_UINT14 0x3FFF
 
 #define IGN_CHART_MAX	35
 #define PVS_CHART_MAX	180
@@ -243,7 +244,8 @@ static void repeat_callback(void*) {
 			device_id di = {};
 			if (RET_HID_CMD_SUCCESS == dev.GetDevIds(&di)) {
 				
-				if (0x3FFF == di.userid[0] || 0x3FFF == di.userid[1]) {
+				// If the user id fields are all MAX_UINT14, it means they have not been set yet.
+				if (MAX_UINT14 == di.userid[0] && MAX_UINT14 == di.userid[1]) {
 					std::time_t t = std::time(nullptr);
 					std::tm tmnow = {};
 
@@ -257,8 +259,8 @@ static void repeat_callback(void*) {
 					
 					di.userid[0] = year;
 					di.userid[1] = monthday;
-					di.userid[2] = 0x3FFF;	// Set 0x3FFF (not set)
-					di.userid[3] = 0x3FFF;	// Set 0x3FFF (not set)
+					di.userid[2] = MAX_UINT14;	// Set MAX_UINT14 (not set)
+					di.userid[3] = MAX_UINT14;	// Set MAX_UINT14 (not set)
 
 					dev.SetUserIds(di.userid);
 				}
@@ -297,16 +299,12 @@ static void repeat_callback(void*) {
 		dev.Close();
 	}
 	else {
-		// 未接続時のUIクリア処理
+		// Clear UI when device is not connected
 		device_status_ui_update(nullptr, nullptr, true);
 		dev_devid->value("");
 		dev_revid->value("");
 		dev_fwver->value("");
 	}
-/*test code*/
-	dev.Open(); // Reopen device for next iteration
-	
-	dev.Close();
 
 	Fl::repeat_timeout(REPEAT_TIME, repeat_callback);
 }

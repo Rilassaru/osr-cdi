@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "OSR-CDI_footprints") (type "KiCad") (uri "${KIPRJMOD}/OSR-CDI_footprints.pretty") (options "") (descr ""))
+)

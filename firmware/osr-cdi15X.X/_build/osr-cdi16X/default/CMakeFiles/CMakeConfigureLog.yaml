@@ -1,0 +1,2084 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineSystem.cmake:213 (message)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      The target system is: Generic -  - 
+      The host system is: Windows - 10.0.26200 - 
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Program used to build from build.ninja files."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ninja-build"
+      - "ninja"
+      - "samu"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ninja-build.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ninja-build.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ninja-build"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ninja.com"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ninja.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -Aa 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -D__CLASSIC_C__ 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      (2043) target device was not recognized
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -Aa 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -D__CLASSIC_C__ 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      (2043) target device was not recognized
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/"
+    found: "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: c:/Program Files/Microchip/xc8/v4.00/bin/xc8-cc.exe 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      (2042) no target device specified; use the -mcpu option to specify a target device
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:97 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:97 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/strip.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/strip.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/strip"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/strip.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/strip.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/strip"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/strip.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/strip.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/strip"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/strip.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/strip.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/strip"
+      - "C:/Windows/System32/strip.com"
+      - "C:/Windows/System32/strip.exe"
+      - "C:/Windows/System32/strip"
+      - "C:/Windows/strip.com"
+      - "C:/Windows/strip.exe"
+      - "C:/Windows/strip"
+      - "C:/Windows/System32/wbem/strip.com"
+      - "C:/Windows/System32/wbem/strip.exe"
+      - "C:/Windows/System32/wbem/strip"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/strip.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/strip.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/strip"
+      - "C:/Windows/System32/OpenSSH/strip.com"
+      - "C:/Windows/System32/OpenSSH/strip.exe"
+      - "C:/Windows/System32/OpenSSH/strip"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/strip.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/strip.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/strip"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/strip.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/strip.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/strip"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/strip.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/strip.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/strip"
+      - "C:/PROGRA~1/JPKI/strip.com"
+      - "C:/PROGRA~1/JPKI/strip.exe"
+      - "C:/PROGRA~1/JPKI/strip"
+      - "C:/Program Files/Git/cmd/strip.com"
+      - "C:/Program Files/Git/cmd/strip.exe"
+      - "C:/Program Files/Git/cmd/strip"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/strip.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/strip.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/strip"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/strip.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/strip.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/strip"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/strip.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/strip.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/strip"
+      - "C:/Users/rilas/AppData/Local/Python/bin/strip.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/strip.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/strip"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/ld.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/ld.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/ld"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ld.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ld.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/ld"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/ld.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/ld.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/ld"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/ld.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/ld.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/ld"
+      - "C:/Windows/System32/ld.com"
+      - "C:/Windows/System32/ld.exe"
+      - "C:/Windows/System32/ld"
+      - "C:/Windows/ld.com"
+      - "C:/Windows/ld.exe"
+      - "C:/Windows/ld"
+      - "C:/Windows/System32/wbem/ld.com"
+      - "C:/Windows/System32/wbem/ld.exe"
+      - "C:/Windows/System32/wbem/ld"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ld.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ld.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ld"
+      - "C:/Windows/System32/OpenSSH/ld.com"
+      - "C:/Windows/System32/OpenSSH/ld.exe"
+      - "C:/Windows/System32/OpenSSH/ld"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/ld.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/ld.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/ld"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/ld.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/ld.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/ld"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ld.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ld.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ld"
+      - "C:/PROGRA~1/JPKI/ld.com"
+      - "C:/PROGRA~1/JPKI/ld.exe"
+      - "C:/PROGRA~1/JPKI/ld"
+      - "C:/Program Files/Git/cmd/ld.com"
+      - "C:/Program Files/Git/cmd/ld.exe"
+      - "C:/Program Files/Git/cmd/ld"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/ld.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/ld.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/ld"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/ld.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/ld.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/ld"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/ld.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/ld.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/ld"
+      - "C:/Users/rilas/AppData/Local/Python/bin/ld.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/ld.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/ld"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/nm.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/nm.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/nm"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/nm.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/nm.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/nm"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/nm.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/nm.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/nm"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/nm.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/nm.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/nm"
+      - "C:/Windows/System32/nm.com"
+      - "C:/Windows/System32/nm.exe"
+      - "C:/Windows/System32/nm"
+      - "C:/Windows/nm.com"
+      - "C:/Windows/nm.exe"
+      - "C:/Windows/nm"
+      - "C:/Windows/System32/wbem/nm.com"
+      - "C:/Windows/System32/wbem/nm.exe"
+      - "C:/Windows/System32/wbem/nm"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/nm.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/nm.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/nm"
+      - "C:/Windows/System32/OpenSSH/nm.com"
+      - "C:/Windows/System32/OpenSSH/nm.exe"
+      - "C:/Windows/System32/OpenSSH/nm"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/nm.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/nm.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/nm"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/nm.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/nm.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/nm"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/nm.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/nm.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/nm"
+      - "C:/PROGRA~1/JPKI/nm.com"
+      - "C:/PROGRA~1/JPKI/nm.exe"
+      - "C:/PROGRA~1/JPKI/nm"
+      - "C:/Program Files/Git/cmd/nm.com"
+      - "C:/Program Files/Git/cmd/nm.exe"
+      - "C:/Program Files/Git/cmd/nm"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/nm.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/nm.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/nm"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/nm.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/nm.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/nm"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/nm.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/nm.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/nm"
+      - "C:/Users/rilas/AppData/Local/Python/bin/nm.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/nm.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/nm"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/objdump.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/objdump.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/objdump"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/objdump.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/objdump.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/objdump"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/objdump.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/objdump.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/objdump"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/objdump.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/objdump.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/objdump"
+      - "C:/Windows/System32/objdump.com"
+      - "C:/Windows/System32/objdump.exe"
+      - "C:/Windows/System32/objdump"
+      - "C:/Windows/objdump.com"
+      - "C:/Windows/objdump.exe"
+      - "C:/Windows/objdump"
+      - "C:/Windows/System32/wbem/objdump.com"
+      - "C:/Windows/System32/wbem/objdump.exe"
+      - "C:/Windows/System32/wbem/objdump"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objdump.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objdump.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objdump"
+      - "C:/Windows/System32/OpenSSH/objdump.com"
+      - "C:/Windows/System32/OpenSSH/objdump.exe"
+      - "C:/Windows/System32/OpenSSH/objdump"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/objdump.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/objdump.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/objdump"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/objdump.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/objdump.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/objdump"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objdump.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objdump.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objdump"
+      - "C:/PROGRA~1/JPKI/objdump.com"
+      - "C:/PROGRA~1/JPKI/objdump.exe"
+      - "C:/PROGRA~1/JPKI/objdump"
+      - "C:/Program Files/Git/cmd/objdump.com"
+      - "C:/Program Files/Git/cmd/objdump.exe"
+      - "C:/Program Files/Git/cmd/objdump"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/objdump.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/objdump.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/objdump"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/objdump.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/objdump.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/objdump"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/objdump.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/objdump.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/objdump"
+      - "C:/Users/rilas/AppData/Local/Python/bin/objdump.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/objdump.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/objdump"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/objcopy.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/objcopy.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/objcopy"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/objcopy.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/objcopy.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/objcopy"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/objcopy.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/objcopy.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/objcopy"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/objcopy.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/objcopy.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/objcopy"
+      - "C:/Windows/System32/objcopy.com"
+      - "C:/Windows/System32/objcopy.exe"
+      - "C:/Windows/System32/objcopy"
+      - "C:/Windows/objcopy.com"
+      - "C:/Windows/objcopy.exe"
+      - "C:/Windows/objcopy"
+      - "C:/Windows/System32/wbem/objcopy.com"
+      - "C:/Windows/System32/wbem/objcopy.exe"
+      - "C:/Windows/System32/wbem/objcopy"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objcopy.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objcopy.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objcopy"
+      - "C:/Windows/System32/OpenSSH/objcopy.com"
+      - "C:/Windows/System32/OpenSSH/objcopy.exe"
+      - "C:/Windows/System32/OpenSSH/objcopy"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/objcopy.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/objcopy.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/objcopy"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/objcopy.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/objcopy.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/objcopy"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objcopy.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objcopy.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objcopy"
+      - "C:/PROGRA~1/JPKI/objcopy.com"
+      - "C:/PROGRA~1/JPKI/objcopy.exe"
+      - "C:/PROGRA~1/JPKI/objcopy"
+      - "C:/Program Files/Git/cmd/objcopy.com"
+      - "C:/Program Files/Git/cmd/objcopy.exe"
+      - "C:/Program Files/Git/cmd/objcopy"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/objcopy.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/objcopy.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/objcopy"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/objcopy.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/objcopy.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/objcopy"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/objcopy.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/objcopy.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/objcopy"
+      - "C:/Users/rilas/AppData/Local/Python/bin/objcopy.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/objcopy.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/objcopy"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/readelf.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/readelf.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/readelf"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/readelf.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/readelf.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/readelf"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/readelf.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/readelf.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/readelf"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/readelf.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/readelf.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/readelf"
+      - "C:/Windows/System32/readelf.com"
+      - "C:/Windows/System32/readelf.exe"
+      - "C:/Windows/System32/readelf"
+      - "C:/Windows/readelf.com"
+      - "C:/Windows/readelf.exe"
+      - "C:/Windows/readelf"
+      - "C:/Windows/System32/wbem/readelf.com"
+      - "C:/Windows/System32/wbem/readelf.exe"
+      - "C:/Windows/System32/wbem/readelf"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/readelf.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/readelf.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/readelf"
+      - "C:/Windows/System32/OpenSSH/readelf.com"
+      - "C:/Windows/System32/OpenSSH/readelf.exe"
+      - "C:/Windows/System32/OpenSSH/readelf"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/readelf.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/readelf.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/readelf"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/readelf.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/readelf.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/readelf"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/readelf.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/readelf.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/readelf"
+      - "C:/PROGRA~1/JPKI/readelf.com"
+      - "C:/PROGRA~1/JPKI/readelf.exe"
+      - "C:/PROGRA~1/JPKI/readelf"
+      - "C:/Program Files/Git/cmd/readelf.com"
+      - "C:/Program Files/Git/cmd/readelf.exe"
+      - "C:/Program Files/Git/cmd/readelf"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/readelf.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/readelf.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/readelf"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/readelf.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/readelf.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/readelf"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/readelf.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/readelf.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/readelf"
+      - "C:/Users/rilas/AppData/Local/Python/bin/readelf.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/readelf.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/readelf"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/dlltool.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/dlltool.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/dlltool"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/dlltool.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/dlltool.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/dlltool"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/dlltool.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/dlltool.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/dlltool"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/dlltool.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/dlltool.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/dlltool"
+      - "C:/Windows/System32/dlltool.com"
+      - "C:/Windows/System32/dlltool.exe"
+      - "C:/Windows/System32/dlltool"
+      - "C:/Windows/dlltool.com"
+      - "C:/Windows/dlltool.exe"
+      - "C:/Windows/dlltool"
+      - "C:/Windows/System32/wbem/dlltool.com"
+      - "C:/Windows/System32/wbem/dlltool.exe"
+      - "C:/Windows/System32/wbem/dlltool"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/dlltool.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/dlltool.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/dlltool"
+      - "C:/Windows/System32/OpenSSH/dlltool.com"
+      - "C:/Windows/System32/OpenSSH/dlltool.exe"
+      - "C:/Windows/System32/OpenSSH/dlltool"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/dlltool.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/dlltool.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/dlltool"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/dlltool.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/dlltool.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/dlltool"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/dlltool.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/dlltool.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/dlltool"
+      - "C:/PROGRA~1/JPKI/dlltool.com"
+      - "C:/PROGRA~1/JPKI/dlltool.exe"
+      - "C:/PROGRA~1/JPKI/dlltool"
+      - "C:/Program Files/Git/cmd/dlltool.com"
+      - "C:/Program Files/Git/cmd/dlltool.exe"
+      - "C:/Program Files/Git/cmd/dlltool"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/dlltool.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/dlltool.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/dlltool"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/dlltool.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/dlltool.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/dlltool"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/dlltool.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/dlltool.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/dlltool"
+      - "C:/Users/rilas/AppData/Local/Python/bin/dlltool.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/dlltool.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/addr2line.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/addr2line.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/addr2line"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/addr2line.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/addr2line.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/addr2line"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/addr2line.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/addr2line.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/addr2line"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/addr2line.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/addr2line.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/addr2line"
+      - "C:/Windows/System32/addr2line.com"
+      - "C:/Windows/System32/addr2line.exe"
+      - "C:/Windows/System32/addr2line"
+      - "C:/Windows/addr2line.com"
+      - "C:/Windows/addr2line.exe"
+      - "C:/Windows/addr2line"
+      - "C:/Windows/System32/wbem/addr2line.com"
+      - "C:/Windows/System32/wbem/addr2line.exe"
+      - "C:/Windows/System32/wbem/addr2line"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/addr2line.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/addr2line.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/addr2line"
+      - "C:/Windows/System32/OpenSSH/addr2line.com"
+      - "C:/Windows/System32/OpenSSH/addr2line.exe"
+      - "C:/Windows/System32/OpenSSH/addr2line"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/addr2line.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/addr2line.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/addr2line"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/addr2line.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/addr2line.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/addr2line"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/addr2line.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/addr2line.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/addr2line"
+      - "C:/PROGRA~1/JPKI/addr2line.com"
+      - "C:/PROGRA~1/JPKI/addr2line.exe"
+      - "C:/PROGRA~1/JPKI/addr2line"
+      - "C:/Program Files/Git/cmd/addr2line.com"
+      - "C:/Program Files/Git/cmd/addr2line.exe"
+      - "C:/Program Files/Git/cmd/addr2line"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/addr2line.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/addr2line.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/addr2line"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/addr2line.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/addr2line.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/addr2line"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/addr2line.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/addr2line.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/addr2line"
+      - "C:/Users/rilas/AppData/Local/Python/bin/addr2line.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/addr2line.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/addr2line"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/PROGRA~1/JPKI/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/rilas/AppData/Local/Python/bin/"
+    searched_directories:
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/tapi.com"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/tapi.exe"
+      - "c:/Program Files/Microchip/xc8/v4.00/bin/tapi"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/tapi.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/tapi.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/ninja/v1.13.2/tapi"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/tapi.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/tapi.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/make/v4.4.1/windows/tapi"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/tapi.com"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/tapi.exe"
+      - "C:/Users/rilas/.mplab/app-finder/apps/hexmate/v3.00/dist/win/bin/tapi"
+      - "C:/Windows/System32/tapi.com"
+      - "C:/Windows/System32/tapi.exe"
+      - "C:/Windows/System32/tapi"
+      - "C:/Windows/tapi.com"
+      - "C:/Windows/tapi.exe"
+      - "C:/Windows/tapi"
+      - "C:/Windows/System32/wbem/tapi.com"
+      - "C:/Windows/System32/wbem/tapi.exe"
+      - "C:/Windows/System32/wbem/tapi"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi"
+      - "C:/Windows/System32/OpenSSH/tapi.com"
+      - "C:/Windows/System32/OpenSSH/tapi.exe"
+      - "C:/Windows/System32/OpenSSH/tapi"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/tapi.com"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/tapi.exe"
+      - "C:/Program Files (x86)/Common Files/Adobe/AGL/tapi"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/tapi.com"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/tapi.exe"
+      - "C:/Program Files/Microchip/xc8/v2.50/bin/tapi"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/tapi.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/tapi.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/tapi"
+      - "C:/PROGRA~1/JPKI/tapi.com"
+      - "C:/PROGRA~1/JPKI/tapi.exe"
+      - "C:/PROGRA~1/JPKI/tapi"
+      - "C:/Program Files/Git/cmd/tapi.com"
+      - "C:/Program Files/Git/cmd/tapi.exe"
+      - "C:/Program Files/Git/cmd/tapi"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/tapi.com"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/tapi.exe"
+      - "C:/Program Files/Microchip/xc8/v4.00/bin/tapi"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/tapi.com"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/tapi.exe"
+      - "C:/Users/rilas/AppData/Local/Microsoft/WindowsApps/tapi"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/tapi.com"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/tapi.exe"
+      - "C:/Users/rilas/AppData/Local/Programs/Microsoft VS Code/bin/tapi"
+      - "C:/Users/rilas/AppData/Local/Python/bin/tapi.com"
+      - "C:/Users/rilas/AppData/Local/Python/bin/tapi.exe"
+      - "C:/Users/rilas/AppData/Local/Python/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\ninja\\v1.13.2"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\make\\v4.4.1\\windows"
+        - "C:\\Users\\rilas\\.mplab\\app-finder\\apps\\hexmate\\v3.00\\dist\\win\\bin"
+        - "C:\\Windows\\system32"
+        - "C:\\Windows"
+        - "C:\\Windows\\System32\\Wbem"
+        - "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\Windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\Common Files\\Adobe\\AGL"
+        - "C:\\Program Files\\Microchip\\xc8\\v2.50\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\PROGRA~1\\JPKI"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\Microchip\\xc8\\v4.00\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\rilas\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\rilas\\AppData\\Local\\Python\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is AppleClang using "--version" did not match "(Apple (clang|LLVM) version)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is Clang using "--version" did not match "(clang version)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is ARMClang using "--version" did not match "armclang":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is OrangeC using "--version" did not match "occ \\(OrangeC\\) Version":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is HP using "-V" did not match "HP C":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is Intel using "--version" did not match "(ICC)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is IntelLLVM using "--version" did not match "(Intel[^
+      ]+oneAPI)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is SunPro using "-V" did not match "Sun C":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is XL using "-qversion" did not match "XL C":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is MSVC using "-?" did not match "Microsoft":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is TI using "-h" did not match "Texas Instruments":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is TIClang using "--version" did not match "(TI (.*) Clang Compiler)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is IAR using "" did not match "IAR Assembler":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is Diab using "-V" did not match "Wind River Systems":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is ARMCC using "" did not match "(ARM Compiler)|(ARM Assembler)|(Arm Compiler)":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is NASM using "-v" did not match "(NASM version)":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is YASM using "--version" did not match "(yasm)":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is ADSP using "-version" did not match "Analog Devices":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is QCC using "-V" did not match "gcc_nto":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is Tasking using "--version" did not match "TASKING":
+      Microchip MPLAB XC8 C Compiler V4.00
+      Build date: Jun 14 2026
+      Copyright (C) 2026 Microchip Technology Inc.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is Renesas using "-v" did not match "(RX Family C/C\\+\\+ Compiler)|(RL78 Family Compiler)|(RH850 Family Compiler)":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Users/rilas/.mplab/app-finder/apps/cmake/v4.4.3/cmake-4.4.3-windows-x86_64/share/cmake-4.4/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is PellesC using "" did not match "Pelles Macro Assembler":
+      (2042) no target device specified; use the -mcpu option to specify a target device
+...

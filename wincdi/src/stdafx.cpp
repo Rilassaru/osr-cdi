@@ -1,8 +1,8 @@
-// stdafx.cpp : 標準インクルード rcdi240.pch のみを
-// 含むソース ファイルは、プリコンパイル済みヘッダーになります。
-// stdafx.obj にはプリコンパイル済み型情報が含まれます。
+// stdafx.cpp : source file that includes just the standard includes
+// This file is used to build the precompiled header.
+// stdafx.obj will contain the precompiled type information.
 
 #include "stdafx.h"
 
-// TODO: このファイルではなく、STDAFX.H で必要な
-// 追加ヘッダーを参照してください。
+// TODO: reference any additional headers your program requires here
+// and not in STDAFX.H

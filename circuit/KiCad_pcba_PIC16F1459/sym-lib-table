@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "OSR-CDI_symbols") (type "KiCad") (uri "${KIPRJMOD}/OSR-CDI_symbols.kicad_sym") (options "") (descr ""))
+)

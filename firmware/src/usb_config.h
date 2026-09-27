@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013-2025, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013-, Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -38,19 +38,20 @@ either expressed or implied, of the FreeBSD Project.
 #ifndef USBCFG_H
 #define USBCFG_H
 
-#define MAX_EP_NUMBER           1   // EP0 and EP1 are the only EPs used in this application
-#define MAX_NUM_INT             1   // For tracking Alternate Setting - make sure this matches the number of interfaces implemented in the device
-#define EP0_BUFF_SIZE           8   // Valid Options: 8, 16, 32, or 64 bytes.
-                                    // There is little advantage in using
-                                    // more than 8 bytes on EP0 IN/OUT in most cases.
-#define USB_MAX_NUM_CONFIG_DSC  1   // Number of configurations that this firmware implements
-//#define ENABLE_CONTROL_TRANSFERS_WITH_OUT_DATA_STAGE    //Commented out to save code size, since this bootloader firmware doesn't use OUT control transfers with data stage
+#define MAX_EP_NUMBER           1   /* EP0 and EP1 are the only EPs used in this application */
+#define MAX_NUM_INT             1   /* For tracking Alternate Setting - make sure this matches the number of interfaces implemented in the device */
+#define EP0_BUFF_SIZE           8   /* Valid Options: 8, 16, 32, or 64 bytes. */
+                                    /* There is little advantage in using */
+                                    /* more than 8 bytes on EP0 IN/OUT in most cases. */
+#define USB_MAX_NUM_CONFIG_DSC  1   /* Number of configurations that this firmware implements */
+//#define ENABLE_CONTROL_TRANSFERS_WITH_OUT_DATA_STAGE
+                                    /* Commented out to save code size, since this bootloader firmware doesn't use OUT control transfers with data stage  */
 
 
-#define CONFIG_DESC_TOTAL_LEN    41     //Make sure this matches the size of your configuration descriptor + all subordinate
-                                        //descriptors returned by the get descriptor(configuration) request
+#define CONFIG_DESC_TOTAL_LEN    41 /* Make sure this matches the size of your configuration descriptor + all subordinate */
+                                    /* descriptors returned by the get descriptor(configuration) request */
 
-#define MODE_PP                 _PPBM1  //This code is only written to support _PPBM1 mode only (ping pong on EP0 OUT buffer only).  Do not change.
+#define MODE_PP                 _PPBM1   /* This code is only written to support _PPBM1 mode only (ping pong on EP0 OUT buffer only).  Do not change. */
 #define UCFG_VAL                _PUEN|_TRINT|_FS|MODE_PP
 
 // HID
@@ -60,8 +61,8 @@ either expressed or implied, of the FreeBSD Project.
 #define HID_INT_OUT_EP_SIZE     64
 #define HID_BD_IN               ep1Bi
 #define HID_INT_IN_EP_SIZE      64
-#define HID_NUM_OF_DSC          1       //Just the Report descriptor (no physical descriptor present)
-#define HID_RPT01_SIZE          29      //Make sure this matches the size of your HID report descriptor
+#define HID_NUM_OF_DSC          1       /* Just the Report descriptor (no physical descriptor present) */
+#define HID_RPT01_SIZE          29      /* Make sure this matches the size of your HID report descriptor */
 
 
 

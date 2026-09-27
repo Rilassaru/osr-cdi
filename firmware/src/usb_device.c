@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013-2025, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013-, Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,7 @@ either expressed or implied, of the FreeBSD Project.
   (modified from (this file name).c included in MCHPFSUSB v1.2/v1.3)
   --------------------------------------------------------------------------*/
  
- #include "usb.h"
-#include "HardwareProfile.h"
+#include "usb.h"
 
 void usb_check_std_request(void);
 void usb_suspend(void);
@@ -83,8 +82,8 @@ bool DeviceIsSoftDetached;
 
 #define BDT_ADDR    0x20
 #define USB_RAM_BUFF_ADDR   0x40    //EP0 OUT and IN buffers
-#define USB_HID_BUFF_OUT_ADDR  @0xA0
-#define USB_HID_BUFF_IN_ADDR   @0x120
+#define USB_HID_BUFF_OUT_ADDR  (0xA0)
+#define USB_HID_BUFF_IN_ADDR   (0x120)
 
 #ifndef __XC8__
     #pragma udata USB_BDT = BDT_ADDR
@@ -94,15 +93,15 @@ bool DeviceIsSoftDetached;
     #endif
 #endif
 
-#define BDT_ADDR_TAG    @BDT_ADDR
-#define BDT_ADDR_TAG_EP0O_EVEN   @BDT_ADDR
-#define BDT_ADDR_TAG_EP0O_ODD    BDT_ADDR_TAG_EP0O_EVEN+4
-#define BDT_ADDR_TAG_EP0I   BDT_ADDR_TAG+8
-#define BDT_ADDR_TAG_EP1O   BDT_ADDR_TAG+12
-#define BDT_ADDR_TAG_EP1I   BDT_ADDR_TAG+16
-#define USB_EP0_BUFF_ADDR   @USB_RAM_BUFF_ADDR
-#define USB_EP0_BUFF_ADDR2  USB_EP0_BUFF_ADDR+EP0_BUFF_SIZE
-#define USB_CTRL_TRF_DATA_ADDR USB_EP0_BUFF_ADDR2+EP0_BUFF_SIZE
+#define BDT_ADDR_TAG    (BDT_ADDR)
+#define BDT_ADDR_TAG_EP0O_EVEN   (BDT_ADDR)
+#define BDT_ADDR_TAG_EP0O_ODD    (BDT_ADDR_TAG_EP0O_EVEN+4)
+#define BDT_ADDR_TAG_EP0I   (BDT_ADDR_TAG+8)
+#define BDT_ADDR_TAG_EP1O   (BDT_ADDR_TAG+12)
+#define BDT_ADDR_TAG_EP1I   (BDT_ADDR_TAG+16)
+#define USB_EP0_BUFF_ADDR   (USB_RAM_BUFF_ADDR)
+#define USB_EP0_BUFF_ADDR2  (USB_EP0_BUFF_ADDR+EP0_BUFF_SIZE)
+#define USB_CTRL_TRF_DATA_ADDR (USB_EP0_BUFF_ADDR2+EP0_BUFF_SIZE)
 #ifndef USB_HID_BUFF_OUT_ADDR
 #define USB_HID_BUFF_OUT_ADDR  USB_CTRL_TRF_DATA_ADDR+EP0_BUFF_SIZE
 #define USB_HID_BUFF_IN_ADDR   USB_HID_BUFF_OUT_ADDR+HID_INT_OUT_EP_SIZE
@@ -110,14 +109,14 @@ bool DeviceIsSoftDetached;
 
 
 #if(0 <= MAX_EP_NUMBER)
-volatile BDT ep0BoEven BDT_ADDR_TAG_EP0O_EVEN;         //Endpoint #0 BD Out EVEN
-volatile BDT ep0BoOdd BDT_ADDR_TAG_EP0O_ODD;          //Endpoint #0 BD Out ODD
-volatile BDT ep0Bi BDT_ADDR_TAG_EP0I;         //Endpoint #0 BD In
+volatile BDT ep0BoEven __at(BDT_ADDR_TAG_EP0O_EVEN);         //Endpoint #0 BD Out EVEN
+volatile BDT ep0BoOdd __at(BDT_ADDR_TAG_EP0O_ODD);          //Endpoint #0 BD Out ODD
+volatile BDT ep0Bi __at(BDT_ADDR_TAG_EP0I);         //Endpoint #0 BD In
 #endif
 
 #if(1 <= MAX_EP_NUMBER)
-volatile BDT ep1Bo BDT_ADDR_TAG_EP1O;         //Endpoint #1 BD Out
-volatile BDT ep1Bi BDT_ADDR_TAG_EP1I;         //Endpoint #1 BD In
+volatile BDT ep1Bo __at(BDT_ADDR_TAG_EP1O);         //Endpoint #1 BD Out
+volatile BDT ep1Bi __at(BDT_ADDR_TAG_EP1I);         //Endpoint #1 BD In
 #endif
 
 #if(2 <= MAX_EP_NUMBER)
@@ -190,13 +189,13 @@ volatile far BDT ep15Bo;        //Endpoint #15 BD Out
 volatile far BDT ep15Bi;        //Endpoint #15 BD In
 #endif
 
-volatile uint8_t EP0OutEvenBuf[EP0_BUFF_SIZE] USB_EP0_BUFF_ADDR;
-volatile uint8_t EP0OutOddBuf[EP0_BUFF_SIZE] USB_EP0_BUFF_ADDR2;
-volatile CTRL_TRF_DATA CtrlTrfData USB_CTRL_TRF_DATA_ADDR;
+volatile uint8_t EP0OutEvenBuf[EP0_BUFF_SIZE] __at(USB_EP0_BUFF_ADDR);
+volatile uint8_t EP0OutOddBuf[EP0_BUFF_SIZE] __at(USB_EP0_BUFF_ADDR2);
+volatile CTRL_TRF_DATA CtrlTrfData __at(USB_CTRL_TRF_DATA_ADDR);
 
 
-volatile unsigned char hid_report_out[HID_INT_OUT_EP_SIZE] USB_HID_BUFF_OUT_ADDR;
-volatile unsigned char hid_report_in[HID_INT_IN_EP_SIZE] USB_HID_BUFF_IN_ADDR;
+volatile unsigned char hid_report_out[HID_INT_OUT_EP_SIZE] __at(USB_HID_BUFF_OUT_ADDR);
+volatile unsigned char hid_report_in[HID_INT_IN_EP_SIZE] __at(USB_HID_BUFF_IN_ADDR);
 
 
 #ifndef __XC8__
@@ -575,7 +574,7 @@ void usb_ctrl_trf_tx_service(void)
     bytes_to_send = EP0_BUFF_SIZE;
     if(wCount.Val < EP0_BUFF_SIZE)
     {
-        bytes_to_send = wCount.Val;
+        bytes_to_send = (uint8_t)wCount.Val;
         if(short_pkt_status == SHORT_PKT_NOT_SENT)
         {
             short_pkt_status = SHORT_PKT_PENDING;

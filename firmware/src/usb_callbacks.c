@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013 - 2024, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013 - , Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -36,14 +36,23 @@ either expressed or implied, of the FreeBSD Project.
   (modified from (this file name).c included in MCHPFSUSB v1.2/v1.3)
   --------------------------------------------------------------------------*/
 #include "usb.h"
-#include "userinterface.h"
 
+/**
+ * @brief Handles the USB wake-from-suspend callback.
+ *
+ * No additional action is required by this firmware.
+ */
 void usb_cb_wake_from_suspend(void) {
 /* This code for CDI thererore do not use USB suspend.
     delay_routine(0x300); //Device will switch clocks (if using two-speed startup) while executing this delay function
 -- end of rilassaru -- */
 }
 
+/**
+ * @brief Handles the USB suspend callback.
+ *
+ * This firmware does not enter sleep from the USB suspend callback.
+ */
 void usb_cb_suspend(void) {
 /* Rilassaru: CDI does not use USB suspend.
 
@@ -55,6 +64,11 @@ void usb_cb_suspend(void) {
 -- end of rilassaru -- */
 }
 
+/**
+ * @brief Initializes endpoints for the selected USB configuration.
+ *
+ * @param ConfigurationIndex USB configuration index supplied by the stack.
+ */
 void usb_cb_init_ep(uint8_t ConfigurationIndex) {
     if (ConfigurationIndex == 1) //This application only implements one configuration, with index == 1.
     {
@@ -63,6 +77,9 @@ void usb_cb_init_ep(uint8_t ConfigurationIndex) {
     }
 }
 
+/**
+ * @brief Passes class-specific requests to the HID request handler.
+ */
 void usb_cb_check_other_req(void) {
     usb_check_hid_request();
 }

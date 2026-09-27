@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
   Open Source Replica CDI 'OSR-CDI' system for YAMAHA 2T motorcycle
   ----------------------------------------------------------------------------
-Copyright(c) 2013-2025, Rilassaru(http://rilassaru.blog.jp/)
+Copyright(c) 2013-, Rilassaru(http://rilassaru.blog.jp/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -35,13 +35,14 @@ either expressed or implied, of the FreeBSD Project.
   each source code for details.
   (modified from (this file name).c included in MCHPFSUSB v1.2/v1.3)
   --------------------------------------------------------------------------*/
+
 #include "usb.h"
 
 #ifndef __XC8__
 #pragma udata
 #endif
-uint8_t idle_rate;
-uint8_t active_protocol;               // [0] Boot Protocol [1] Report Protocol
+static uint8_t idle_rate;
+static uint8_t active_protocol;               // [0] Boot Protocol [1] Report Protocol
 uint8_t hid_rpt_rx_len;
 
 void hid_get_report_handler(void);
