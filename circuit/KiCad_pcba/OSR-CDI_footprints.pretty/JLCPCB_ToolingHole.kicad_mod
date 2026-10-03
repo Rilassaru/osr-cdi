@@ -1,0 +1,71 @@
+(footprint "JLCPCB_ToolingHole"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "6c9686bd-7e94-4bdc-a50c-25813d951b98")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "ToolingHole"
+		(at 0 1.5875 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "41afa3f4-d0bd-41b6-acf1-1c98f731ae4a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bc2d4992-3660-40b6-81fe-37e33fe3ad51")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9cdd5f55-a57c-449b-b300-9c7cb3e57770")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(pad "" np_thru_hole circle
+		(at 0 0)
+		(size 1.152 1.152)
+		(drill 1.152)
+		(layers "*.Cu" "*.Mask")
+		(solder_mask_margin 0.148)
+		(clearance 0.248)
+		(zone_connect 0)
+		(thermal_bridge_angle 90)
+		(uuid "0a5465a6-d2d9-47e1-bd71-6ff19bfa0bdf")
+	)
+	(embedded_fonts no)
+)
