@@ -82,6 +82,45 @@ void main_window_cb(Fl_Widget*, void*);
 void resize_ignition_chart();
 void device_status_ui_update(const device_id* di, const device_status* st, bool clear_flag);
 
+// Version parsing helpers
+bool ParseVersionFromProductString(const char* prodStr, int& outMajor, int& outMinor, int& outPatch, char& outRev) {
+	if (!prodStr) return false;
+
+	const char* p = strstr(prodStr, "Ver.");
+	if (p) {
+		p += 4; // after "Ver."
+	} else {
+		p = strstr(prodStr, "Ver ");
+		if (p) p += 4; else return false;
+	}
+
+	while (*p == ' ') p++;
+
+	int maj=0, min=0, pat=0;
+	char rev='\0';
+	// Use sscanf_s to read optional revision char
+	int cnt = sscanf_s(p, "%d.%d.%d%c", &maj, &min, &pat, &rev, 1);
+	if (cnt >= 3) {
+		outMajor = maj;
+		outMinor = min;
+		outPatch = pat;
+		outRev = (cnt == 4 && isalpha((unsigned char)rev)) ? rev : '\0';
+		return true;
+	}
+	// try two-component format like 1.5
+	cnt = sscanf_s(p, "%d.%d%c", &maj, &min, &rev, 1);
+	if (cnt >= 2) {
+		outMajor = maj; outMinor = min; outPatch = 0; outRev='\0';
+		return true;
+	}
+	return false;
+}
+
+bool IsVersion155OrEarlier(int major, int minor, int patch) {
+	int verCode = (major * 100) + (minor * 10) + patch; // e.g., 1.5.5 -> 155
+	return (verCode <= 155);
+}
+
 // global
 Fl_Double_Window* w;
 HidDevice dev;			// CDI device connector
@@ -242,7 +281,11 @@ static void repeat_callback(void*) {
 	if (dev.isWireConnected()) {
 		if (0 != dev.Open()) {
 			device_id di = {};
-			if (RET_HID_CMD_SUCCESS == dev.GetDevIds(&di)) {
+			std::string prod = dev_product->value() ? dev_product->value() : "";
+			int major = 0, minor = 0, patch = 0; char rev = '\0';
+			bool hasProdVer = ParseVersionFromProductString(prod.c_str(), major, minor, patch, rev);
+			bool is_old_fw = hasProdVer ? IsVersion155OrEarlier(major, minor, patch) : (prod.find("Ver.1.5.0") != std::string::npos);
+			if (!is_old_fw && RET_HID_CMD_SUCCESS == dev.GetDevIds(&di)) {
 				
 				// If the user id fields are all MAX_UINT14, it means they have not been set yet.
 				if (MAX_UINT14 == di.userid[0] && MAX_UINT14 == di.userid[1]) {
@@ -258,14 +301,21 @@ static void repeat_callback(void*) {
 					uint16_t monthday = static_cast<uint16_t>(((tmnow.tm_mon + 1) << 8) + tmnow.tm_mday);					// Set user id fields to current local date (YYYY and MMDD packed as (MM<<8)|DD)
 					
 					di.userid[0] = year;
-					di.userid[1] = monthday;
-					di.userid[2] = MAX_UINT14;	// Set MAX_UINT14 (not set)
-					di.userid[3] = MAX_UINT14;	// Set MAX_UINT14 (not set)
+						di.userid[1] = monthday;
+						di.userid[2] = MAX_UINT14;	// Set MAX_UINT14 (not set)
+						di.userid[3] = MAX_UINT14;	// Set MAX_UINT14 (not set)
 
-					dev.SetUserIds(di.userid);
-				}
+						// Only send SetUserIds to firmware >= 1.5.6. Skip for older firmware and log.
+						if ((di.fw_ver_hi > 1) || (di.fw_ver_hi == 1 && di.fw_ver_lo >= 56)) {
+							dev.SetUserIds(di.userid);
+						} else {
+							char logbuf[128];
+							snprintf(logbuf, sizeof(logbuf), "Skipping SetUserIds for old firmware %u.%u.%u\n", di.fw_ver_hi, di.fw_ver_lo/10, di.fw_ver_lo%10);
+							msg_cb(logbuf);
+						}
+					}
 
-				snprintf(str, STRING_BUFFER_SIZE, "%04d/%02d/%02d", di.userid[0], di.userid[1] >> 8, di.userid[1] & 0xFF);
+					snprintf(str, STRING_BUFFER_SIZE, "%04d/%02d/%02d", di.userid[0], di.userid[1] >> 8, di.userid[1] & 0xFF);
 				dev_firstupdate->value(str);
 
 				snprintf(str, STRING_BUFFER_SIZE, "%04Xh", di.dev_id);
@@ -278,10 +328,27 @@ static void repeat_callback(void*) {
 				dev_fwver->value(str);
 			}
 			else {
-				dev_devid->value("");
-				dev_revid->value("");
-				dev_fwver->value("");
-				dev_firstupdate->value("");
+				if (is_old_fw) {
+					// Old firmware: present safe dummy identifiers to avoid triggering CFGS bug.
+					dev_devid->value("00");
+					dev_revid->value("00");
+					if (hasProdVer) {
+						if (rev != '\0') snprintf(str, STRING_BUFFER_SIZE, "%d.%d.%d%c", major, minor, patch, rev);
+						else snprintf(str, STRING_BUFFER_SIZE, "%d.%d.%d", major, minor, patch);
+						dev_fwver->value(str);
+					} else {
+						dev_fwver->value("1.5.0");
+					}
+					dev_firstupdate->value("");
+					char logbuf[128];
+					snprintf(logbuf, sizeof(logbuf), "Skipping GetDevIds for old firmware detected via product string '%s'\n", prod.c_str());
+					msg_cb(logbuf);
+				} else {
+					dev_devid->value("");
+					dev_revid->value("");
+					dev_fwver->value("");
+					dev_firstupdate->value("");
+				}
 			}
 
 			// Get device status and update UI indicators
@@ -673,31 +740,55 @@ void cb_device_read(Fl_Button*, void*) {
 	device_id di = {};
 	device_status st = {};
 
-	if (RET_HID_CMD_SUCCESS != dev.GetDevIds(&di)) {
-		// Failed to read device identifiers
-		fl_beep(FL_BEEP_ERROR);
-		fl_alert("Device read error.");
-		msg->add("Device read error.\n");
-		dev.Close();
-		return;
-	}
-	else {
-		// Validate expected device id and firmware major/minor (legacy check)
-		// If the product string explicitly starts with the known compatible
-		// prefix, allow the operation even if the numeric ID/version differ.
-		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = 
-			(prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0) ||
-			(prod.rfind("OSR-CDI TV250J Ver.1.5.", 0) == 0);
+	// Detect old firmware by USB product string; parse version when available
+	std::string prod = dev_product->value() ? dev_product->value() : "";
+	int major=0, minor=0, patch=0; char rev='\0';
+	bool hasProdVer = ParseVersionFromProductString(prod.c_str(), major, minor, patch, rev);
+	bool is_old_fw = hasProdVer ? IsVersion155OrEarlier(major, minor, patch) : (prod.find("Ver.1.5.0") != std::string::npos);
 
-
-		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
-			// Device appears incompatible
+	if (is_old_fw) {
+		// For old firmware, do NOT call GetDevIds() (it may leave CFGS=1 on PIC16F1455).
+		// Provide safe dummy values in the UI and continue to read tables.
+		dev_devid->value("00");
+		dev_revid->value("00");
+		if (hasProdVer) {
+			if (rev != '\0') snprintf(str, STRING_BUFFER_SIZE, "%d.%d.%d%c", major, minor, patch, rev);
+			else snprintf(str, STRING_BUFFER_SIZE, "%d.%d.%d", major, minor, patch);
+			dev_fwver->value(str);
+		} else {
+			dev_fwver->value("1.5.0");
+		}
+		dev_firstupdate->value("");
+		char logbuf[128];
+		snprintf(logbuf, sizeof(logbuf), "Skipping GetDevIds for old firmware detected via product string '%s'\n", prod.c_str());
+		msg_cb(logbuf);
+	} else {
+		// Newer firmware: safe to query device identifiers.
+		if (RET_HID_CMD_SUCCESS != dev.GetDevIds(&di)) {
+			// Failed to read device identifiers
 			fl_beep(FL_BEEP_ERROR);
-			fl_alert("Device or firmware mismatch. Read aborted.");
-			msg->add("Device or firmware mismatch. Read aborted.\n");
+			fl_alert("Device read error.");
+			msg->add("Device read error.\n");
 			dev.Close();
 			return;
+		}
+		else {
+			// Validate expected device id and firmware major/minor (legacy check)
+			// If the product string explicitly starts with the known compatible
+			// prefix, allow the operation even if the numeric ID/version differ.
+			bool product_is_compatible = 
+				(prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0) ||
+				(prod.rfind("OSR-CDI TV250J Ver.1.5.", 0) == 0);
+
+			if (!product_is_compatible)
+			{
+				// Device appears incompatible
+				fl_beep(FL_BEEP_ERROR);
+				fl_alert("Device or firmware mismatch. Read aborted.");
+				msg->add("Device or firmware mismatch. Read aborted.\n");
+				dev.Close();
+				return;
+			}
 		}
 	}
 
@@ -759,6 +850,7 @@ void cb_device_read(Fl_Button*, void*) {
  * @param data User data pointer (unused).
  */
 void cb_device_write(Fl_Button*, void*) {
+	char str[STRING_BUFFER_SIZE] = { 0 };
 	msg->clear();
 
 	// Ensure the USB device appears on the bus before proceeding.
@@ -789,22 +881,44 @@ void cb_device_write(Fl_Button*, void*) {
 	device_id di = {};
 	device_status st = {};
 
-	if (RET_HID_CMD_SUCCESS != dev.GetDevIds(&di)) {
-		// Failed to read device identifiers -> abort.
-		fl_beep(FL_BEEP_ERROR);
-		fl_alert("Device read error.");
-		msg->add("Device read error.\n");
-		dev.Close();
-		return;
-	}
-	else {
-		// Validate expected device id and firmware major/minor (legacy check)
-		// If the product string explicitly starts with the known compatible
-		// prefix, allow the operation even if the numeric ID/version differ.
-		std::string prod = dev_product->value() ? dev_product->value() : "";
-		bool product_is_compatible = (prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0);
+	std::string prod = dev_product->value() ? dev_product->value() : "";
+	int major=0, minor=0, patch=0; char rev='\0';
+	bool hasProdVer = ParseVersionFromProductString(prod.c_str(), major, minor, patch, rev);
+	bool is_old_fw = hasProdVer ? IsVersion155OrEarlier(major, minor, patch) : (prod.find("Ver.1.5.0") != std::string::npos);
 
-		if (!product_is_compatible && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
+	if (is_old_fw) {
+		// Old firmware: skip GetDevIds to avoid CFGS bug and allow write to proceed
+		dev_devid->value("00");
+		dev_revid->value("00");
+		if (hasProdVer) {
+			if (rev != '\0') snprintf(str, STRING_BUFFER_SIZE, "%d.%d.%d%c", major, minor, patch, rev);
+			else snprintf(str, STRING_BUFFER_SIZE, "%d.%d.%d", major, minor, patch);
+			dev_fwver->value(str);
+		} else {
+			dev_fwver->value("1.5.0");
+		}
+		char logbuf[128];
+		snprintf(logbuf, sizeof(logbuf), "Skipping GetDevIds for old firmware detected via product string '%s'\n", prod.c_str());
+		msg_cb(logbuf);
+	} else {
+		if (RET_HID_CMD_SUCCESS != dev.GetDevIds(&di)) {
+			// Failed to read device identifiers -> abort.
+			fl_beep(FL_BEEP_ERROR);
+			fl_alert("Device read error.");
+			msg->add("Device read error.\n");
+			dev.Close();
+			return;
+		}
+		else {
+			// Validate expected device id and firmware major/minor (legacy check)
+			// If the product string explicitly starts with the known compatible
+			// prefix, allow the operation even if the numeric ID/version differ.
+			bool product_is_compatible =
+				(prod.rfind("OSR-CDI SYSTEM Ver.1.5.", 0) == 0) ||
+				(prod.rfind("OSR-CDI TV250J Ver.1.5.", 0) == 0);
+
+			if (!product_is_compatible)// && (0x3021 != di.dev_id || 1 != di.fw_ver_hi || 5 != (di.fw_ver_lo / 10))) {
+
 			// Device appears incompatible
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Device or firmware mismatch. Write aborted.");

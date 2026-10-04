@@ -185,7 +185,6 @@ void hid_user_interface(void)
             break;
 
 		case CMD_GET_STATUS:
-            g_status.ds.cpu_temp = 0;
 			if(!mHIDTxIsBusy()) {
 				hid_tx_report((char *)&g_status, USB_PACKET_SIZE);
 				ReadState = IDLE;
@@ -292,7 +291,9 @@ void send_data_at_addr(uint16_t Addr)
     bool gie_state = INTCONbits.GIE;
     INTCONbits.GIE = 0;
 
-	PacketToPC.Contents[0] = RET_HID_CMD_SUCCESS;   // SUCCESS Flag
+    PMCON1bits.CFGS = 0; // Select Flash memory
+
+    PacketToPC.Contents[0] = RET_HID_CMD_SUCCESS;   // SUCCESS Flag
 	PacketToPC.Contents[1] = PMADRH;                // Address HI
 	PacketToPC.Contents[2] = PMADRL;                // Address LO
 	PacketToPC.Contents[3] = 0;                     // blank

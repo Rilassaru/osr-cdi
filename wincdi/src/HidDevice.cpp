@@ -189,13 +189,6 @@ int HidDevice::GetDevStatus(device_status* pdevstatus) {
 
 	putbin(rxPacket.rxbuf8, "RX: GetDevStatus");
 
-	// The device places a status byte in rxbuf8[0]. Treat non-zero as failure
-	// (consistent with other HID commands in this project where 0 == success).
-	if (rxPacket.rxbuf8[0] != RET_HID_CMD_SUCCESS) {
-		msg("Device reported command failure in GetDevStatus.\n");
-		return RET_HID_CMD_FAIL;
-	}
-
 	// Copy status structure
 	*pdevstatus = rxPacket.s;
 
@@ -299,6 +292,8 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 	int page = 0, ii = 0, rpm = 0;
 	double* pData = nullptr;
 
+	puts("\n### readTable start ####\n");
+
 	if (0 == dev_handle) {
 		msg("Device not connected.\n");
 		return 0;
@@ -322,7 +317,6 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			msg("Error occured on reading Config data.\n");
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert("Error occured on reading Config data.");
-//			Close();
 			return 0;
 		}
 		putbin(rxPacket.rxbuf8, "RX: GetConfig");
@@ -352,7 +346,6 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			msg( "Error occured on reading IG data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on reading IG data." );
-//			Close();
 			return 0;
 		}
 
@@ -385,7 +378,6 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 			msg( "Error occured on reading PV data.\n" );
 			fl_beep(FL_BEEP_ERROR);
 			fl_alert( "Error occured on reading PV data." );
-//			Close();
 			return 0;
 		}
 		putbin(txbuf, "TX: GetPowerValveTable");
@@ -398,7 +390,7 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 		msg( "." );
 	}
 	msg( "OK.\n" );
-//	Close();
+	puts("\n### readTable end ####\n");
 	return 1;
 
 }
@@ -417,6 +409,8 @@ int HidDevice::readTable(double* pIg, double* pPv) {
 int HidDevice::writeTable(double* pIg, double* pPv) {
 	int page = 0, ii = 0, rpm = 0;
 	uint16_t* pTxbuf16 = nullptr;
+
+	puts("### writeTable start ####");
 
 	if (0 == dev_handle) {
 		msg("Device not connected.\n");
@@ -541,7 +535,7 @@ int HidDevice::writeTable(double* pIg, double* pPv) {
 	}
 	msg( "OK\n" );
 
-//	Close();
+	puts("### writeTable end ####");
 	return 1;
 
 }
