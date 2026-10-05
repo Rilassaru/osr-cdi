@@ -1035,6 +1035,28 @@ int data_file_read(const char* file_name) {
 		int ret = data_file_read_v14(file_name);
 		if (ret) msg->add("File load completed.\n");
 		else msg->add("File load failed.\n");
+
+		// Dump dev.cfg to stdout for inspection immediately after read
+		printf(".cd2/.cdi read (legacy Ver1.4) - dev.cfg snapshot:\n");
+		printf("QS-RPM\t%d\n", dev.cfg.qs_enable_rpm);
+		printf("QS_ONT\t%d\n", dev.cfg.qs_sw_on_count);
+		printf("QS-CUT\t%d\n", dev.cfg.qs_cut_count);
+		printf("QS-DIS\t%d\n", dev.cfg.qs_disable_count);
+		printf("rev_limit\t%d\n", dev.cfg.rev_limit);
+		printf("PulseType\t%d\n", dev.cfg.sys_pulse_per_rotation);
+		printf("PickupDeg\t%d\n", dev.cfg.sys_pickup_degree);
+		printf("QSOPT-UseAsStopSW\t%d\n", dev.cfg.qs_use_as_stopsw);
+		printf("QSOPT-SwitchReverse\t%d\n", dev.cfg.qs_reverse_onoff_state);
+		printf("2nd_wave_ignition_count\t%d\n", dev.cfg.count_of_an_ignition);
+		printf("OPT_C2port_usage\t%d\n", dev.cfg.sys_opt_port);
+		printf("TP_TYPE\t%d\n", dev.cfg.tp_type);
+		printf("TP_TH01\t%d\n", dev.cfg.tp_threshold01);
+		printf("TP_TH02\t%d\n", dev.cfg.tp_threshold02);
+		printf("TP_TH03\t%d\n", dev.cfg.tp_threshold03);
+		printf("rpm_limit_for_an_ignition\t%d\n", dev.cfg.sys_rpm_for_an_ignition);
+		printf("pvs_init_pattern\t%d\n", dev.cfg.sys_pvs_init_pattern);
+		fflush(stdout);
+
 		return ret;
 	}
 	else {
@@ -1043,6 +1065,28 @@ int data_file_read(const char* file_name) {
 		int ret = data_file_read_v15(file_name);
 		if (ret) msg->add("File load completed.\n");
 		else msg->add("File load failed.\n");
+
+		// Dump dev.cfg to stdout for inspection immediately after read
+		printf(".cd2 read (Ver1.5) - dev.cfg snapshot:\n");
+		printf("QS-RPM\t%d\n", dev.cfg.qs_enable_rpm);
+		printf("QS_ONT\t%d\n", dev.cfg.qs_sw_on_count);
+		printf("QS-CUT\t%d\n", dev.cfg.qs_cut_count);
+		printf("QS-DIS\t%d\n", dev.cfg.qs_disable_count);
+		printf("rev_limit\t%d\n", dev.cfg.rev_limit);
+		printf("PulseType\t%d\n", dev.cfg.sys_pulse_per_rotation);
+		printf("PickupDeg\t%d\n", dev.cfg.sys_pickup_degree);
+		printf("QSOPT-UseAsStopSW\t%d\n", dev.cfg.qs_use_as_stopsw);
+		printf("QSOPT-SwitchReverse\t%d\n", dev.cfg.qs_reverse_onoff_state);
+		printf("2nd_wave_ignition_count\t%d\n", dev.cfg.count_of_an_ignition);
+		printf("OPT_C2port_usage\t%d\n", dev.cfg.sys_opt_port);
+		printf("TP_TYPE\t%d\n", dev.cfg.tp_type);
+		printf("TP_TH01\t%d\n", dev.cfg.tp_threshold01);
+		printf("TP_TH02\t%d\n", dev.cfg.tp_threshold02);
+		printf("TP_TH03\t%d\n", dev.cfg.tp_threshold03);
+		printf("rpm_limit_for_an_ignition\t%d\n", dev.cfg.sys_rpm_for_an_ignition);
+		printf("pvs_init_pattern\t%d\n", dev.cfg.sys_pvs_init_pattern);
+		fflush(stdout);
+
 		return ret;
 	}
 }
@@ -1197,7 +1241,10 @@ static bool ParseCdiFile(const char* file_name, int &outErrorFlag) {
 				else if (keyU == "QSOPT-SWITCHREVERSE") dev.cfg.qs_reverse_onoff_state = (uint8_t)n;
 				else if (keyU == "OPT-REV") dev.cfg.qs_reverse_onoff_state = (uint8_t)n; // legacy key mapping
 				else if (keyU == "2ND_WAVE_IGNITION_COUNT") dev.cfg.count_of_an_ignition = (uint8_t)n;
-				else if (keyU == "OPT_C2PORT_USAGE") dev.cfg.sys_opt_port = (uint8_t)n;
+				else if (keyU == "OPT_C2PORT_USAGE") dev.cfg.sys_opt_port = (n == 1) ? 1 : 0;
+				else if (keyU == "TP_TYPE") dev.cfg.tp_type = (uint8_t)n;
+
+
 				else if (keyU == "TP_TYPE") dev.cfg.tp_type = (uint8_t)n;
 				else if (keyU == "TP_TH01") dev.cfg.tp_threshold01 = (uint8_t)n;
 				else if (keyU == "TP_TH02") dev.cfg.tp_threshold02 = (uint8_t)n;
@@ -1218,20 +1265,20 @@ static bool ParseCdiFile(const char* file_name, int &outErrorFlag) {
 
 	// Fill defaults for missing option keys (regression safety)
 	// List of keys to ensure defaults: TP_TYPE, TP_TH01/02/03, PVS_INIT_PATTERN, OPT_C2PORT_USAGE
-	auto ensureDefault = [&](const std::string &k, int defaultVal, int &target) {
+	auto ensureDefault = [&](const std::string& k, uint8_t defaultVal, uint8_t& target) {
 		if (presentKeys.find(k) == presentKeys.end()) {
-			target = (int)defaultVal;
-			std::ostringstream os; os << "Default applied: " << k << "=" << defaultVal << "\n";
+			target = defaultVal;
+			std::ostringstream os; os << "Default applied: " << k << "=" << (int)defaultVal << "\n";
 			msg->add(os.str().c_str());
 		}
-	};
+		};
 
-	ensureDefault("TP_TYPE", 0, (int&)dev.cfg.tp_type);
-	ensureDefault("TP_TH01", 64, (int&)dev.cfg.tp_threshold01);
-	ensureDefault("TP_TH02", 128, (int&)dev.cfg.tp_threshold02);
-	ensureDefault("TP_TH03", 192, (int&)dev.cfg.tp_threshold03);
-	ensureDefault("PVS_INIT_PATTERN", 0, (int&)dev.cfg.sys_pvs_init_pattern);
-	ensureDefault("OPT_C2PORT_USAGE", 0, (int&)dev.cfg.sys_opt_port);
+	ensureDefault("TP_TYPE", 0, dev.cfg.tp_type);
+	ensureDefault("TP_TH01", 64, dev.cfg.tp_threshold01);
+	ensureDefault("TP_TH02", 128, dev.cfg.tp_threshold02);
+	ensureDefault("TP_TH03", 192, dev.cfg.tp_threshold03);
+	ensureDefault("PVS_INIT_PATTERN", 0, dev.cfg.sys_pvs_init_pattern);
+	ensureDefault("OPT_C2PORT_USAGE", 0, dev.cfg.sys_opt_port);
 
 	// Summary
 	std::ostringstream sum;

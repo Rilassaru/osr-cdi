@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSR-CDI WebHID Manager & Map Editor</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e293b">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 20px; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3); margin-bottom: 20px; }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        button { padding: 8px 16px; font-weight: 600; cursor: pointer; border-radius: 4px; border: 1px solid #475569; background: #334155; color: #fff; transition: 0.2s; }
+        button:hover:not(:disabled) { background: #3b82f6; border-color: #3b82f6; }
+        button:disabled { opacity: 0.3; cursor: not-allowed; }
+        .btn-accent { background: #0284c7; border-color: #38bdf8; }
+        .btn-accent:hover:not(:disabled) { background: #0369a1; }
+        .btn-edit { background: #475569; border-color: #64748b; font-size: 12px; padding: 6px 12px; }
+        .btn-group button.active { background: #2563eb; border-color: #60a5fa; box-shadow: 0 0 8px rgba(37,99,235,0.6); }
+        progress { width: 100%; height: 12px; margin: 10px 0; border-radius: 6px; overflow: hidden; }
+        .chart-container { position: relative; margin-top: 15px; }
+        canvas { background: #090d16; border-radius: 6px; border: 1px solid #334155; cursor: crosshair; }
+        pre { background: #050811; color: #38bdf8; padding: 12px; border-radius: 6px; overflow-x: auto; max-height: 160px; font-size: 12px; }
+
+        /* Hardware Info Badges */
+        .info-bar { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 12px; color: #94a3b8; }
+        .badge { background: #0f172a; padding: 4px 10px; border-radius: 4px; border: 1px solid #334155; }
+        .badge strong { color: #f8fafc; }
+
+        /* Configuration Sections & Grid */
+        .section-title { font-size: 14px; font-weight: 700; color: #38bdf8; margin: 18px 0 10px 0; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+        .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+        .config-item { background: #0f172a; padding: 12px; border-radius: 6px; border: 1px solid #334155; transition: 0.2s; }
+        .config-item.disabled { opacity: 0.35; pointer-events: none; }
+        .config-item label { display: flex; justify-content: space-between; font-weight: 600; font-size: 13px; color: #94a3b8; margin-bottom: 6px; }
+        .config-item input[type="range"] { width: 100%; cursor: pointer; }
+        .config-item select, .config-item input[type="number"] { width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #475569; background: #1e293b; color: #fff; }
+        .checkbox-container { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <!-- Device Connection & Storage Panel -->
+    <div class="card">
+        <h2>OSR-CDI WebHID Manager & Map Editor</h2>
+        
+        <div style="margin-bottom: 12px;">
+            <button id="btnConnect">Connect CDI</button>
+            <button id="btnRead" disabled>Read from CDI</button>
+            <button id="btnWrite" disabled>Write to CDI</button>
+            <span id="statusText" style="margin-left: 10px; color: #94a3b8;">Disconnected</span>
+        </div>
+
+        <div>
+            <input type="file" id="fileInput" accept=".cd2,.cdi" style="display: none;">
+            <button id="btnOpenFile" class="btn-accent">Load .cd2 File</button>
+            <button id="btnSaveFile" class="btn-accent">Save .cd2 File</button>
+            <span id="fileNameDisplay" style="margin-left: 10px; color: #cbd5e1; font-size: 13px;">No file loaded</span>
+        </div>
+
+        <!-- Hardware Details Bar -->
+        <div class="info-bar">
+            <div class="badge">Device: <strong id="valDevName">None</strong></div>
+            <div class="badge">Firmware: <strong id="valFwVer">--</strong></div>
+            <div class="badge">Device ID: <strong id="valDevId">--</strong></div>
+            <div class="badge">Rev ID: <strong id="valRevId">--</strong></div>
+        </div>
+
+        <progress id="progressBar" value="0" max="100"></progress>
+    </div>
+
+    <!-- Map Editor & Visualizer Panel -->
+    <div class="card">
+        <!-- Unified Map Control Toolbar -->
+        <div class="btn-group" style="background: #0f172a; padding: 12px; border-radius: 6px; border: 1px solid #334155;">
+            <!-- Map Mode Selector -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-right: 15px;">
+                <span style="font-weight: 700; color: #38bdf8; font-size: 13px;">Map Mode:</span>
+                <select id="cfgTpType" style="padding: 6px 10px; border-radius: 4px; border: 1px solid #475569; background: #1e293b; color: #fff; font-weight: 600;">
+                    <option value="0">1-Map Mode</option>
+                    <option value="1">2-Map Mode</option>
+                    <option value="2">4-Map Mode (TPS Branch)</option>
+                </select>
+            </div>
+
+            <!-- Active Map Selection Buttons -->
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-weight: 600; color: #94a3b8; font-size: 13px; margin-right: 4px;">Edit:</span>
+                <button class="map-btn active" data-map="0" id="btnMap0">MAP 1</button>
+                <button class="map-btn" data-map="1" id="btnMap1">MAP 2</button>
+                <button class="map-btn" data-map="2" id="btnMap2">MAP 3</button>
+                <button class="map-btn" data-map="3" id="btnMap3">MAP 4</button>
+            </div>
+
+            <!-- Quick Curve Tweaks -->
+            <div style="margin-left: auto; display: flex; gap: 6px;">
+                <button id="btnOffsetPlus" class="btn-edit">+0.5°</button>
+                <button id="btnOffsetMinus" class="btn-edit">-0.5°</button>
+                <button id="btnInterpolate" class="btn-edit">Interpolate Range</button>
+            </div>
+        </div>
+
+        <div style="font-size: 12px; color: #94a3b8; margin: 10px 0 5px 0;">
+            Tip: <strong>Click & Drag</strong> to edit. Inactive maps appear as faint comparison lines. Use <strong>Arrow Left/Right</strong> to choose RPM, <strong>Arrow Up/Down</strong> to tweak (Shift for ±1.0°).
+        </div>
+
+        <div class="chart-container">
+            <canvas id="ignCanvas" width="900" height="340" tabindex="0"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="pvsCanvas" width="900" height="280" tabindex="0"></canvas>
+        </div>
+    </div>
+
+    <!-- Configuration Settings Panel -->
+    <div class="card">
+        <h3>Configuration Parameters (CONFIG)</h3>
+        
+        <!-- 1. Engine & Basic Valve Setup -->
+        <div class="section-title">Engine, Spark & Valve Configuration</div>
+        <div class="config-grid">
+            <div class="config-item">
+                <label><span>Engine Pulse Mode</span><span id="valPulseType">Twin Pulse</span></label>
+                <select id="cfgPulseType">
+                    <option value="2">Twin Pulse Mode (2 Pulses/Rev)</option>
+                    <option value="1">Single Pulse Mode (1 Pulse/Rev)</option>
+                </select>
+            </div>
+
+            <div class="config-item">
+                <label><span>Pickup Base Angle</span><span id="valPickupDeg">36°</span></label>
+                <input type="range" id="cfgPickupDeg" min="0" max="120" step="1" value="36">
+            </div>
+
+            <div class="config-item">
+                <label><span>Rev Limiter (RPM)</span><span id="valRevLimit">13,000 RPM</span></label>
+                <input type="range" id="cfgRevLimit" min="40" max="160" step="1" value="130">
+            </div>
+
+            <div class="config-item">
+                <label><span>2nd Wave Spark Count</span><span id="val2ndSpark">0 sparks</span></label>
+                <input type="range" id="cfg2ndSpark" min="0" max="60" step="1" value="0">
+            </div>
+
+            <div class="config-item">
+                <label><span>2nd Wave Cutoff RPM</span><span id="val2ndRpm">0 RPM</span></label>
+                <input type="range" id="cfg2ndRpm" min="0" max="60" step="5" value="0">
+            </div>
+
+            <div class="config-item">
+                <label><span>RC2 Pin Function</span></label>
+                <select id="cfgOptPort">
+                    <option value="0">Port 0: Tachometer Pulse Output</option>
+                    <option value="1">Port 1: Active Map Status Output</option>
+                </select>
+            </div>
+
+            <div class="config-item">
+                <label><span>Power Valve Self-Cleaning</span></label>
+                <select id="cfgPvsInit">
+                    <option value="0">Pattern 0: Finish at Open Position</option>
+                    <option value="1">Pattern 1: Finish at Closed Position</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 2. Throttle Position Branch Settings (Active on 4-Map Mode) -->
+        <div class="section-title">Throttle Position Sensor (TPS) Branch Points</div>
+        <div class="config-grid">
+            <div class="config-item" id="boxTpTh1">
+                <label><span>Threshold 1 (MAP 1 &rarr; MAP 2)</span><span id="valTpTh1">64 / 255</span></label>
+                <input type="range" id="cfgTpTh1" min="0" max="253" step="1" value="64">
+            </div>
+
+            <div class="config-item" id="boxTpTh2">
+                <label><span>Threshold 2 (MAP 2 &rarr; MAP 3)</span><span id="valTpTh2">128 / 255</span></label>
+                <input type="range" id="cfgTpTh2" min="1" max="254" step="1" value="128">
+            </div>
+
+            <div class="config-item" id="boxTpTh3">
+                <label><span>Threshold 3 (MAP 3 &rarr; MAP 4)</span><span id="valTpTh3">192 / 255</span></label>
+                <input type="range" id="cfgTpTh3" min="2" max="255" step="1" value="192">
+            </div>
+        </div>
+
+        <!-- 3. Quick Shifter Settings (Grouped at Bottom) -->
+        <div class="section-title">Quick Shifter (QS) System</div>
+        <div class="config-grid">
+            <div class="config-item">
+                <label><span>QS Enable Minimum RPM</span><span id="valQsRpm">6,000 RPM</span></label>
+                <input type="range" id="cfgQsRpm" min="20" max="120" step="5" value="60">
+            </div>
+
+            <div class="config-item">
+                <label><span>QS Cut Duration</span><span id="valQsCut">12 counts</span></label>
+                <input type="range" id="cfgQsCut" min="1" max="50" step="1" value="12">
+            </div>
+
+            <div class="config-item">
+                <label><span>QS Filter / Chattering Count</span><span id="valQsOnt">0 counts</span></label>
+                <input type="range" id="cfgQsOnt" min="0" max="20" step="1" value="0">
+            </div>
+
+            <div class="config-item">
+                <label><span>QS Re-trigger Mask (Lockout)</span><span id="valQsDis">80 counts</span></label>
+                <input type="range" id="cfgQsDis" min="10" max="200" step="5" value="80">
+            </div>
+
+            <div class="config-item">
+                <label><span>Switch Polarity</span></label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="cfgQsReverse">
+                    <span>Invert Switch State (Active Open)</span>
+                </label>
+            </div>
+
+            <div class="config-item">
+                <label><span>Emergency Stop Function</span></label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="cfgQsStopSw">
+                    <span>Use QS Input as Engine Stop Switch</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Communication Log Panel -->
+    <div class="card">
+        <h3>Communication & Diagnostics Log</h3>
+        <pre id="logOutput"></pre>
+    </div>
+
+    <script>
+    /**
+     * OSR-CDI Hardware Constants
+     */
+    const DEVICE_VID = 0x04D8;
+    const DEVICE_PID = 0x003C;
+
+    const CMD_GET_DATA   = 0x90;
+    const CMD_SET_DATA   = 0x92;
+    const CMD_GET_DEVIDS = 0x94;
+
+    const RET_HID_CMD_SUCCESS = 0x00;
+
+    const MAX_MAP_NUM  = 4;
+    const MAX_DATA_NUM = 160;
+
+    const MAX_IG_PAGE = 40;
+    const MAX_PV_PAGE = 20;
+    const MAX_CF_PAGE = 2;
+    const TOTAL_PAGES = MAX_IG_PAGE + MAX_PV_PAGE + MAX_CF_PAGE;
+
+    const FLASH_PAGE_SIZE = 32;
+
+    const COUNT_OF_1DEG_AT_1000RPM = 666.666667;
+    const COUNT_OF_TUNE_1 = 610;
+    const COUNT_OF_TUNE_2 = 570;
+    const SYS_NUMERATOR_FOR_RPM_1 = 37500;
+    const SYS_NUMERATOR_FOR_RPM_2 = 18750;
+
+    // Line Colors for Maps 1 - 4
+    const IGN_MAP_COLORS = ["#38bdf8", "#a855f7", "#eab308", "#22c55e"];
+    const PVS_MAP_COLORS = ["#f43f5e", "#ec4899", "#f97316", "#14b8a6"];
+
+    /**
+     * Device & Map Controller Class
+     */
+    class OsrCdiDevice {
+        constructor() {
+            this.device = null;
+            this.countOfTune = COUNT_OF_TUNE_2;
+
+            this.ignMaps = Array.from({ length: MAX_MAP_NUM }, () => new Float64Array(MAX_DATA_NUM));
+            this.pvsMaps = Array.from({ length: MAX_MAP_NUM }, () => new Uint8Array(MAX_DATA_NUM));
+            this.configRaw = new Uint8Array(64);
+
+            // Hardware details fetched via CMD_GET_DEVIDS
+            this.hwInfo = { devId: 0, revId: 0, fwVer: "" };
+
+            this.cfg = {
+                major_version: 1, minor_version: 5, qs_enable_rpm: 60, qs_sw_on_count: 0,
+                qs_cut_count: 12, qs_disable_count: 80, qs_use_as_stopsw: 0, qs_reverse_onoff_state: 0,
+                rev_limit: 130, rev_reserved01: 0, sys_numerator_for_rpm: SYS_NUMERATOR_FOR_RPM_2,
+                sys_pulse_per_rotation: 2,
+                sys_pickup_degree: 36, // Independent Pickup Angle (0 - 120)
+                count_of_an_ignition: 0,
+                sys_opt_port: 0,
+                tp_type: 0,
+                tp_threshold01: 64, tp_threshold02: 128, tp_threshold03: 192,
+                sys_rpm_for_an_ignition: 0,
+                sys_pvs_init_pattern: 0
+            };
+        }
+
+        async connect() {
+            const devices = await navigator.hid.requestDevice({
+                filters: [{ vendorId: DEVICE_VID, productId: DEVICE_PID }]
+            });
+            if (devices.length === 0) throw new Error("No device selected.");
+            this.device = devices[0];
+            if (!this.device.opened) await this.device.open();
+            return this.device;
+        }
+
+        transfer(command, page, payload = null) {
+            return new Promise(async (resolve, reject) => {
+                if (!this.device || !this.device.opened) return reject(new Error("Device disconnected."));
+
+                const onInputReport = (event) => {
+                    this.device.removeEventListener('inputreport', onInputReport);
+                    clearTimeout(timer);
+                    resolve(new Uint8Array(event.data.buffer));
+                };
+
+                const timer = setTimeout(() => {
+                    this.device.removeEventListener('inputreport', onInputReport);
+                    reject(new Error(`Timeout on page ${page}`));
+                }, 1000);
+
+                this.device.addEventListener('inputreport', onInputReport);
+
+                const txBuf = new Uint8Array(64);
+                txBuf[0] = command;
+                txBuf[1] = page;
+                if (payload) txBuf.set(payload, 4);
+
+                try {
+                    await this.device.sendReport(0, txBuf);
+                } catch (err) {
+                    clearTimeout(timer);
+                    this.device.removeEventListener('inputreport', onInputReport);
+                    reject(err);
+                }
+            });
+        }
+
+
+	/**
+         * Fetch Device ID, Revision ID, and Firmware Version using CMD_GET_DEVIDS (0x94).
+         * Perfectly matched with userinterface.h device_id struct layout:
+         *   uint16_t userid[4] (bytes 0..7)
+         *   uint16_t rev_id    (bytes 8..9)
+         *   uint16_t dev_id    (bytes 10..11)
+         *   uint8_t  fw_ver_hi (byte 12)
+         *   uint8_t  fw_ver_lo (byte 13)
+         */
+        async readDeviceIds() {
+            const rx = await this.transfer(CMD_GET_DEVIDS, 0);
+
+            // Decode device_id struct exactly matching PIC firmware
+            const revId = (rx[9] << 8) | rx[8];
+            const devId = (rx[11] << 8) | rx[10];
+            const fwHi  = rx[12];
+            const fwLo  = rx[13];
+
+            // In PIC firmware: FW_VER_HI = (01), FW_VER_LO = (56) [Decimal 56 = 0x38]
+            // Format to "1.56" or "1.5.6"
+            let verStr = "";
+            if (fwHi !== 0 || fwLo !== 0) {
+                // If fwLo is decimal 56 (0x38), format as 1.5.6 or 1.56
+                const major = fwHi;
+                const minor = Math.floor(fwLo / 10);
+                const sub   = fwLo % 10;
+                verStr = `${major}.${minor}.${sub}`;
+            } else {
+                verStr = "Unknown";
+            }
+
+            this.hwInfo.devId = devId;
+            this.hwInfo.revId = revId;
+            this.hwInfo.fwVer = verStr;
+
+            return this.hwInfo;
+        }
+
+
+        checkConfig() {
+            if (this.cfg.rev_limit < 40) this.cfg.rev_limit = 40;
+            if (this.cfg.rev_limit > 160) this.cfg.rev_limit = 159;
+            if (this.cfg.count_of_an_ignition > 60) this.cfg.count_of_an_ignition = 60;
+
+            if (this.cfg.sys_pickup_degree < 0) this.cfg.sys_pickup_degree = 0;
+            if (this.cfg.sys_pickup_degree > 120) this.cfg.sys_pickup_degree = 120;
+
+            if (this.cfg.sys_pulse_per_rotation === 2) {
+                this.countOfTune = COUNT_OF_TUNE_2;
+                this.cfg.sys_numerator_for_rpm = SYS_NUMERATOR_FOR_RPM_2;
+            } else {
+                this.countOfTune = COUNT_OF_TUNE_1;
+                this.cfg.sys_numerator_for_rpm = SYS_NUMERATOR_FOR_RPM_1;
+            }
+
+            if (this.cfg.tp_threshold03 < 3) this.cfg.tp_threshold03 = 3;
+            if (this.cfg.tp_threshold02 < 2) this.cfg.tp_threshold02 = 2;
+            if (this.cfg.tp_threshold01 >= this.cfg.tp_threshold02) this.cfg.tp_threshold01 = this.cfg.tp_threshold02 - 1;
+            if (this.cfg.tp_threshold02 >= this.cfg.tp_threshold03) this.cfg.tp_threshold02 = this.cfg.tp_threshold03 - 1;
+        }
+
+        unpackConfig(bytes) {
+            this.cfg.major_version          = bytes[0];
+            this.cfg.minor_version          = bytes[1];
+            this.cfg.qs_enable_rpm          = bytes[2];
+            this.cfg.qs_sw_on_count         = bytes[3];
+            this.cfg.qs_cut_count           = bytes[4];
+            this.cfg.qs_disable_count       = bytes[5];
+            this.cfg.qs_use_as_stopsw       = bytes[6];
+            this.cfg.qs_reverse_onoff_state = bytes[7];
+            this.cfg.rev_limit              = bytes[8];
+            this.cfg.rev_reserved01         = bytes[9];
+            this.cfg.sys_numerator_for_rpm  = bytes[10] | (bytes[11] << 8);
+            this.cfg.sys_pulse_per_rotation = bytes[12];
+            this.cfg.sys_pickup_degree      = bytes[13];
+            this.cfg.count_of_an_ignition   = bytes[14];
+            this.cfg.sys_opt_port           = bytes[15];
+            this.cfg.tp_type                = bytes[16];
+            this.cfg.tp_threshold01         = bytes[17];
+            this.cfg.tp_threshold02         = bytes[18];
+            this.cfg.tp_threshold03         = bytes[19];
+            this.cfg.sys_rpm_for_an_ignition= bytes[20];
+            this.cfg.sys_pvs_init_pattern   = bytes[21];
+            this.checkConfig();
+        }
+
+        packConfig() {
+            const bytes = new Uint8Array(64);
+            bytes[0]  = this.cfg.major_version;
+            bytes[1]  = this.cfg.minor_version;
+            bytes[2]  = this.cfg.qs_enable_rpm;
+            bytes[3]  = this.cfg.qs_sw_on_count;
+            bytes[4]  = this.cfg.qs_cut_count;
+            bytes[5]  = this.cfg.qs_disable_count;
+            bytes[6]  = this.cfg.qs_use_as_stopsw;
+            bytes[7]  = this.cfg.qs_reverse_onoff_state;
+            bytes[8]  = this.cfg.rev_limit;
+            bytes[9]  = this.cfg.rev_reserved01;
+            bytes[10] = this.cfg.sys_numerator_for_rpm & 0xFF;
+            bytes[11] = (this.cfg.sys_numerator_for_rpm >> 8) & 0xFF;
+            bytes[12] = this.cfg.sys_pulse_per_rotation;
+            bytes[13] = this.cfg.sys_pickup_degree;
+            bytes[14] = this.cfg.count_of_an_ignition;
+            bytes[15] = this.cfg.sys_opt_port;
+            bytes[16] = this.cfg.tp_type;
+            bytes[17] = this.cfg.tp_threshold01;
+            bytes[18] = this.cfg.tp_threshold02;
+            bytes[19] = this.cfg.tp_threshold03;
+            bytes[20] = this.cfg.sys_rpm_for_an_ignition;
+            bytes[21] = this.cfg.sys_pvs_init_pattern;
+            return bytes;
+        }
+
+        deg2time(deg, rpm) {
+            if (deg === 0 || rpm === 0) return 0;
+            deg = Math.floor(deg * 10) / 10;
+            const preDegree = this.cfg.sys_pickup_degree - deg;
+            let preCount = ((preDegree * COUNT_OF_1DEG_AT_1000RPM * 10) / rpm);
+            if (preCount > this.countOfTune) preCount -= this.countOfTune; else preCount = 0;
+
+            const ii = Math.floor(preCount / 256);
+            let prescaler = 1, pre = 0;
+            if ((ii / 1) < 16)       { prescaler = 1;  pre = 0; }
+            else if ((ii / 4) < 16)  { prescaler = 4;  pre = 1; }
+            else if ((ii / 16) < 16) { prescaler = 16; pre = 2; }
+            else if ((ii / 64) < 16) { prescaler = 64; pre = 3; }
+            else return 0;
+
+            const postscaler = Math.floor(preCount / 256 / prescaler + 1);
+            const pr2 = Math.floor(preCount / prescaler / postscaler);
+            const t2con = ((postscaler - 1) << 3) + 4 + pre;
+            return ((t2con << 8) | (pr2 & 0xFF)) & 0xFFFF;
+        }
+
+        time2deg(src, rpm) {
+            if (src === 0) return 0;
+            const pr2 = src & 0xFF;
+            const t2outps = (src >> 11) & 0x0F;
+            const t2ckps  = (src >> 8) & 0x03;
+            const post = t2outps + 1;
+            let pre = 1;
+            switch (t2ckps) {
+                case 0: pre = 1;  break;
+                case 1: pre = 4;  break;
+                case 2: pre = 16; break;
+                case 3: pre = 64; break;
+                default: pre = 64; break;
+            }
+            const count = (pre * pr2 * post) + this.countOfTune;
+            const deg = this.cfg.sys_pickup_degree - (((count * rpm) / 10) / COUNT_OF_1DEG_AT_1000RPM);
+            return Math.floor(deg * 10) / 10;
+        }
+
+        async readTable(progressCallback) {
+            let processedPages = 0;
+            const cfgOffset = MAX_IG_PAGE + MAX_PV_PAGE;
+
+            // 1. Read Configuration First
+            for (let page = cfgOffset; page < cfgOffset + MAX_CF_PAGE; page++) {
+                const rx = await this.transfer(CMD_GET_DATA, page);
+                if (rx[0] !== RET_HID_CMD_SUCCESS) throw new Error(`Config read failed: page ${page}`);
+                this.configRaw.set(rx.slice(4, 4 + 32), (page - cfgOffset) * 32);
+                if (progressCallback) progressCallback(++processedPages, TOTAL_PAGES);
+            }
+            this.unpackConfig(this.configRaw);
+
+            // 2. Read Ignition Maps
+            let rpm = 0, mapIdx = 0, valIdx = 0;
+            for (let page = 0; page < MAX_IG_PAGE; page++) {
+                const rx = await this.transfer(CMD_GET_DATA, page);
+                if (rx[0] !== RET_HID_CMD_SUCCESS) throw new Error(`Ignition read failed: page ${page}`);
+
+                for (let ii = 0; ii < 16; ii++) {
+                    const rawVal = (rx[4 + ii * 2 + 1] << 8) | rx[4 + ii * 2];
+                    this.ignMaps[mapIdx][valIdx] = this.time2deg(rawVal, (rpm % MAX_DATA_NUM));
+                    valIdx++; rpm++;
+                    if (valIdx >= MAX_DATA_NUM) { valIdx = 0; mapIdx++; }
+                }
+                if (progressCallback) progressCallback(++processedPages, TOTAL_PAGES);
+            }
+
+            // 3. Read Power Valve Maps
+            mapIdx = 0; valIdx = 0;
+            for (let page = MAX_IG_PAGE; page < MAX_IG_PAGE + MAX_PV_PAGE; page++) {
+                const rx = await this.transfer(CMD_GET_DATA, page);
+                if (rx[0] !== RET_HID_CMD_SUCCESS) throw new Error(`Power valve read failed: page ${page}`);
+
+                for (let ii = 0; ii < 32; ii++) {
+                    this.pvsMaps[mapIdx][valIdx] = rx[4 + ii];
+                    valIdx++;
+                    if (valIdx >= MAX_DATA_NUM) { valIdx = 0; mapIdx++; }
+                }
+                if (progressCallback) progressCallback(++processedPages, TOTAL_PAGES);
+            }
+            return true;
+        }
+
+        async writeTable(progressCallback) {
+            let processedPages = 0;
+            let rpm = 0, mapIdx = 0, valIdx = 0;
+
+            // 1. Write Ignition Maps
+            for (let page = 0; page < MAX_IG_PAGE; page++) {
+                const payload = new Uint8Array(FLASH_PAGE_SIZE);
+                for (let ii = 0; ii < 16; ii++) {
+                    const rawVal = this.deg2time(this.ignMaps[mapIdx][valIdx], (rpm % MAX_DATA_NUM));
+                    payload[ii * 2]     = rawVal & 0xFF;
+                    payload[ii * 2 + 1] = (rawVal >> 8) & 0xFF;
+                    valIdx++; rpm++;
+                    if (valIdx >= MAX_DATA_NUM) { valIdx = 0; mapIdx++; }
+                }
+                const rx = await this.transfer(CMD_SET_DATA, page, payload);
+                if (rx[0] !== RET_HID_CMD_SUCCESS || !this.compareRxTx(rx, payload)) {
+                    throw new Error(`Write/Verify failed on ignition page ${page}`);
+                }
+                if (progressCallback) progressCallback(++processedPages, TOTAL_PAGES);
+            }
+
+            // 2. Write Power Valve Maps
+            mapIdx = 0; valIdx = 0;
+            for (let page = MAX_IG_PAGE; page < MAX_IG_PAGE + MAX_PV_PAGE; page++) {
+                const payload = new Uint8Array(FLASH_PAGE_SIZE);
+                for (let ii = 0; ii < 32; ii++) {
+                    payload[ii] = this.pvsMaps[mapIdx][valIdx];
+                    valIdx++;
+                    if (valIdx >= MAX_DATA_NUM) { valIdx = 0; mapIdx++; }
+                }
+                const rx = await this.transfer(CMD_SET_DATA, page, payload);
+                if (rx[0] !== RET_HID_CMD_SUCCESS || !this.compareRxTx(rx, payload)) {
+                    throw new Error(`Write/Verify failed on PV page ${page}`);
+                }
+                if (progressCallback) progressCallback(++processedPages, TOTAL_PAGES);
+            }
+
+            // 3. Write Configuration Data
+            const cfgBytes = this.packConfig();
+            const cfgOffset = MAX_IG_PAGE + MAX_PV_PAGE;
+            for (let page = cfgOffset; page < cfgOffset + MAX_CF_PAGE; page++) {
+                const pageIdx = page - cfgOffset;
+                const payload = cfgBytes.slice(pageIdx * 32, (pageIdx + 1) * 32);
+                const rx = await this.transfer(CMD_SET_DATA, page, payload);
+                if (rx[0] !== RET_HID_CMD_SUCCESS || !this.compareRxTx(rx, payload)) {
+                    throw new Error(`Write/Verify failed on config page ${page}`);
+                }
+                if (progressCallback) progressCallback(++processedPages, TOTAL_PAGES);
+            }
+            return true;
+        }
+
+        compareRxTx(rxData, sentPayload) {
+            for (let ii = 0; ii < FLASH_PAGE_SIZE; ii++) {
+                if (rxData[4 + ii] !== sentPayload[ii]) return false;
+            }
+            return true;
+        }
+
+        exportCd2() {
+            let out = "OSR-CDI\t156\n";
+            for (let map = 0; map < MAX_MAP_NUM; map++) {
+                for (let idx = 0; idx < MAX_DATA_NUM; idx++) {
+                    out += `IG:${map}\t${String(idx).padStart(3, '0')}\t${this.ignMaps[map][idx].toFixed(6)}\n`;
+                }
+            }
+            for (let map = 0; map < MAX_MAP_NUM; map++) {
+                for (let idx = 0; idx < MAX_DATA_NUM; idx++) {
+                    out += `PV:${map}\t${String(idx).padStart(3, '0')}\t${Number(this.pvsMaps[map][idx]).toFixed(6)}\n`;
+                }
+            }
+
+            const pad = (n) => String(n).padStart(3, '0');
+            out += `QS-RPM\t${pad(this.cfg.qs_enable_rpm)}\n`;
+            out += `QS_ONT\t${pad(this.cfg.qs_sw_on_count)}\n`;
+            out += `QS-CUT\t${pad(this.cfg.qs_cut_count)}\n`;
+            out += `QS-DIS\t${pad(this.cfg.qs_disable_count)}\n`;
+            out += `rev_limit\t${pad(this.cfg.rev_limit)}\n`;
+            out += `PulseType\t${pad(this.cfg.sys_pulse_per_rotation)}\n`;
+            out += `PickupDeg\t${pad(this.cfg.sys_pickup_degree)}\n`;
+            out += `QSOPT-UseAsStopSW\t${pad(this.cfg.qs_use_as_stopsw)}\n`;
+            out += `QSOPT-SwitchReverse\t${pad(this.cfg.qs_reverse_onoff_state)}\n`;
+            out += `2nd_wave_ignition_count\t${pad(this.cfg.count_of_an_ignition)}\n`;
+            out += `OPT_C2port_usage\t${pad(this.cfg.sys_opt_port)}\n`;
+            out += `TP_TYPE\t${pad(this.cfg.tp_type)}\n`;
+            out += `TP_TH01\t${pad(this.cfg.tp_threshold01)}\n`;
+            out += `TP_TH02\t${pad(this.cfg.tp_threshold02)}\n`;
+            out += `TP_TH03\t${pad(this.cfg.tp_threshold03)}\n`;
+            out += `rpm_limit_for_an_ignition\t${pad(this.cfg.sys_rpm_for_an_ignition)}\n`;
+            out += `pvs_init_pattern\t${pad(this.cfg.sys_pvs_init_pattern)}\n`;
+            return out;
+        }
+
+        importCd2(content) {
+            const lines = content.split(/\r?\n/);
+            const presentKeys = new Set();
+
+            for (const line of lines) {
+                if (!line || line.trim() === "") continue;
+                if (line.includes("OSR-CDI")) continue;
+
+                const parts = line.split('\t');
+                if (parts.length < 2) continue;
+                const token = parts[0].trim();
+
+                if (token.startsWith("IG:") && parts.length >= 3) {
+                    const map = parseInt(token.substring(3), 10);
+                    const idx = parseInt(parts[1], 10);
+                    const val = parseFloat(parts[2]);
+                    if (map >= 0 && map < MAX_MAP_NUM && idx >= 0 && idx < MAX_DATA_NUM) {
+                        this.ignMaps[map][idx] = Math.floor(val * 10) / 10;
+                    }
+                    continue;
+                }
+
+                if (token.startsWith("PV:") && parts.length >= 3) {
+                    const map = parseInt(token.substring(3), 10);
+                    const idx = parseInt(parts[1], 10);
+                    const val = parseFloat(parts[2]);
+                    if (map >= 0 && map < MAX_MAP_NUM && idx >= 0 && idx < MAX_DATA_NUM) {
+                        this.pvsMaps[map][idx] = Math.round(val);
+                    }
+                    continue;
+                }
+
+                const keyU = token.toUpperCase();
+                const n = parseInt(parts[1].trim(), 10);
+                if (isNaN(n)) continue;
+
+                presentKeys.add(keyU);
+                if (keyU === "QS-RPM") this.cfg.qs_enable_rpm = n;
+                else if (keyU === "QS_ONT") this.cfg.qs_sw_on_count = n;
+                else if (keyU === "QS-CUT") this.cfg.qs_cut_count = n;
+                else if (keyU === "QS-DIS") this.cfg.qs_disable_count = n;
+                else if (keyU === "REV_LIMIT") this.cfg.rev_limit = n;
+                else if (keyU === "PULSETYPE") this.cfg.sys_pulse_per_rotation = n;
+                else if (keyU === "PICKUPDEG" || keyU === "PICKUP_DEG") this.cfg.sys_pickup_degree = n;
+                else if (keyU === "QSOPT-USEASSTOPSW" || keyU === "OPT-STP") this.cfg.qs_use_as_stopsw = n;
+                else if (keyU === "QSOPT-SWITCHREVERSE" || keyU === "OPT-REV") this.cfg.qs_reverse_onoff_state = n;
+                else if (keyU === "2ND_WAVE_IGNITION_COUNT") this.cfg.count_of_an_ignition = n;
+                else if (keyU === "OPT_C2PORT_USAGE") this.cfg.sys_opt_port = (n === 1) ? 1 : 0;
+                else if (keyU === "TP_TYPE") this.cfg.tp_type = n;
+                else if (keyU === "TP_TH01") this.cfg.tp_threshold01 = n;
+                else if (keyU === "TP_TH02") this.cfg.tp_threshold02 = n;
+                else if (keyU === "TP_TH03") this.cfg.tp_threshold03 = n;
+                else if (keyU === "RPM_LIMIT_FOR_AN_IGNITION") this.cfg.sys_rpm_for_an_ignition = n;
+                else if (keyU === "PVS_INIT_PATTERN") this.cfg.sys_pvs_init_pattern = n;
+            }
+
+            if (!presentKeys.has("TP_TYPE")) this.cfg.tp_type = 0;
+            if (!presentKeys.has("TP_TH01")) this.cfg.tp_threshold01 = 64;
+            if (!presentKeys.has("TP_TH02")) this.cfg.tp_threshold02 = 128;
+            if (!presentKeys.has("TP_TH03")) this.cfg.tp_threshold03 = 192;
+            if (!presentKeys.has("PVS_INIT_PATTERN")) this.cfg.sys_pvs_init_pattern = 0;
+            if (!presentKeys.has("OPT_C2PORT_USAGE")) this.cfg.sys_opt_port = 0;
+            if (!presentKeys.has("2ND_WAVE_IGNITION_COUNT")) this.cfg.count_of_an_ignition = 0;
+            if (!presentKeys.has("RPM_LIMIT_FOR_AN_IGNITION")) this.cfg.sys_rpm_for_an_ignition = 0;
+            if (!presentKeys.has("QS_ONT")) this.cfg.qs_sw_on_count = 0;
+            if (!presentKeys.has("QS-DIS")) this.cfg.qs_disable_count = 80;
+
+            this.checkConfig();
+
+            // Log loaded option items to browser console for verification
+            try {
+                console.log("Loaded .cd2 options:");
+                console.log(`QS-RPM\t${this.cfg.qs_enable_rpm}`);
+                console.log(`QS_ONT\t${this.cfg.qs_sw_on_count}`);
+                console.log(`QS-CUT\t${this.cfg.qs_cut_count}`);
+                console.log(`QS-DIS\t${this.cfg.qs_disable_count}`);
+                console.log(`rev_limit\t${this.cfg.rev_limit}`);
+                console.log(`PulseType\t${this.cfg.sys_pulse_per_rotation}`);
+                console.log(`PickupDeg\t${this.cfg.sys_pickup_degree}`);
+                console.log(`QSOPT-UseAsStopSW\t${this.cfg.qs_use_as_stopsw}`);
+                console.log(`QSOPT-SwitchReverse\t${this.cfg.qs_reverse_onoff_state}`);
+                console.log(`2nd_wave_ignition_count\t${this.cfg.count_of_an_ignition}`);
+                console.log(`OPT_C2port_usage\t${this.cfg.sys_opt_port}`);
+                console.log(`TP_TYPE\t${this.cfg.tp_type}`);
+                console.log(`TP_TH01\t${this.cfg.tp_threshold01}`);
+                console.log(`TP_TH02\t${this.cfg.tp_threshold02}`);
+                console.log(`TP_TH03\t${this.cfg.tp_threshold03}`);
+                console.log(`rpm_limit_for_an_ignition\t${this.cfg.sys_rpm_for_an_ignition}`);
+            } catch (e) {
+                // ignore console errors in non-browser environments
+            }
+
+            return true;
+        }
+    }
+
+    /**
+     * Interactive Multi-Map Canvas 2D Visualizer & Editor Class (with Auto-scaling)
+     */
+    class MultiMapVisualizer {
+        constructor(canvasId, options, onDataModified) {
+            this.canvas = document.getElementById(canvasId);
+            this.ctx = this.canvas.getContext('2d');
+            this.options = Object.assign({
+                title: "Chart", yLabel: "Value", minY: 0, maxY: 40, stepY: 5, unit: "", isInteger: false,
+                colors: IGN_MAP_COLORS, autoScale: false
+            }, options);
+
+            this.baseMaxY = this.options.maxY;
+            this.onDataModified = onDataModified;
+            this.padding = { left: 60, right: 30, top: 40, bottom: 40 };
+            this.allMapsRef = null;
+            this.activeMapIndex = 0;
+            this.enabledCount = 1;
+            this.hoverIndex = -1;
+            this.isDragging = false;
+
+            this.initEvents();
+            this.render();
+        }
+
+        bindData(allMaps, activeIndex, enabledCount) {
+            this.allMapsRef = allMaps;
+            this.activeMapIndex = activeIndex;
+            this.enabledCount = enabledCount;
+            this.recalcScale();
+            this.render();
+        }
+
+        /**
+         * Dynamic vertical auto-scale identical to WinCDI resize_ignition_chart.
+         */
+        recalcScale() {
+            if (!this.options.autoScale || !this.allMapsRef) return;
+
+            let maxVal = 0;
+            for (let m = 0; m < this.enabledCount; m++) {
+                const map = this.allMapsRef[m];
+                for (let i = 0; i < MAX_DATA_NUM; i++) {
+                    if (map[i] > maxVal) maxVal = map[i];
+                }
+            }
+
+            // If max value exceeds threshold, scale up in steps of 5 degrees
+            if (maxVal > 35) {
+                this.options.maxY = Math.ceil((maxVal + 5) / 5) * 5;
+            } else {
+                this.options.maxY = this.baseMaxY;
+            }
+        }
+
+        initEvents() {
+            const getIndexFromX = (mouseX) => {
+                const graphWidth = this.canvas.width - this.padding.left - this.padding.right;
+                const ratio = (mouseX - this.padding.left) / graphWidth;
+                return Math.min(MAX_DATA_NUM - 1, Math.max(0, Math.round(ratio * (MAX_DATA_NUM - 1))));
+            };
+
+            const getValueFromY = (mouseY) => {
+                const graphHeight = this.canvas.height - this.padding.top - this.padding.bottom;
+                const ratio = (this.padding.top + graphHeight - mouseY) / graphHeight;
+                let val = this.options.minY + ratio * (this.options.maxY - this.options.minY);
+                val = Math.min(this.options.maxY, Math.max(this.options.minY, val));
+                return this.options.isInteger ? Math.round(val) : Math.round(val * 10) / 10;
+            };
+
+            const applyEdit = (e) => {
+                if (!this.allMapsRef) return;
+                const activeMap = this.allMapsRef[this.activeMapIndex];
+                if (!activeMap) return;
+
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                const idx = getIndexFromX(mouseX);
+                const val = getValueFromY(mouseY);
+                activeMap[idx] = val;
+                this.hoverIndex = idx;
+
+                this.recalcScale();
+                if (this.onDataModified) this.onDataModified();
+                this.render();
+            };
+
+            this.canvas.addEventListener('mousedown', (e) => {
+                this.isDragging = true;
+                this.canvas.focus();
+                applyEdit(e);
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+
+                if (this.isDragging) {
+                    applyEdit(e);
+                } else if (mouseX >= this.padding.left && mouseX <= this.canvas.width - this.padding.right) {
+                    this.hoverIndex = getIndexFromX(mouseX);
+                    this.render();
+                } else {
+                    if (this.hoverIndex !== -1) {
+                        this.hoverIndex = -1;
+                        this.render();
+                    }
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                this.isDragging = false;
+            });
+
+            this.canvas.addEventListener('keydown', (e) => {
+                if (this.hoverIndex < 0 || !this.allMapsRef) return;
+                const activeMap = this.allMapsRef[this.activeMapIndex];
+                if (!activeMap) return;
+
+                let step = this.options.isInteger ? 1 : 0.1;
+                if (e.shiftKey) step *= 10;
+
+                if (e.key === "ArrowUp") {
+                    activeMap[this.hoverIndex] = Math.min(this.options.maxY, activeMap[this.hoverIndex] + step);
+                    if (!this.options.isInteger) activeMap[this.hoverIndex] = Math.round(activeMap[this.hoverIndex] * 10) / 10;
+                    this.recalcScale();
+                    if (this.onDataModified) this.onDataModified();
+                    this.render();
+                    e.preventDefault();
+                } else if (e.key === "ArrowDown") {
+                    activeMap[this.hoverIndex] = Math.max(this.options.minY, activeMap[this.hoverIndex] - step);
+                    if (!this.options.isInteger) activeMap[this.hoverIndex] = Math.round(activeMap[this.hoverIndex] * 10) / 10;
+                    this.recalcScale();
+                    if (this.onDataModified) this.onDataModified();
+                    this.render();
+                    e.preventDefault();
+                } else if (e.key === "ArrowLeft") {
+                    this.hoverIndex = Math.max(0, this.hoverIndex - 1);
+                    this.render();
+                    e.preventDefault();
+                } else if (e.key === "ArrowRight") {
+                    this.hoverIndex = Math.min(MAX_DATA_NUM - 1, this.hoverIndex + 1);
+                    this.render();
+                    e.preventDefault();
+                }
+            });
+        }
+
+        render() {
+            const ctx = this.ctx;
+            const w = this.canvas.width, h = this.canvas.height, p = this.padding;
+            const gw = w - p.left - p.right, gh = h - p.top - p.bottom;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Title
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "bold 13px sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText(this.options.title, p.left, p.top - 15);
+
+            const getX = (idx) => p.left + (idx / (MAX_DATA_NUM - 1)) * gw;
+            const getY = (val) => p.top + gh - ((val - this.options.minY) / (this.options.maxY - this.options.minY)) * gh;
+
+            // Horizontal Grid Lines
+            ctx.strokeStyle = "#1e293b";
+            ctx.lineWidth = 1;
+            ctx.fillStyle = "#64748b";
+            ctx.font = "11px sans-serif";
+            ctx.textAlign = "right";
+
+            for (let v = this.options.minY; v <= this.options.maxY; v += this.options.stepY) {
+                const y = getY(v);
+                ctx.beginPath();
+                ctx.moveTo(p.left, y);
+                ctx.lineTo(w - p.right, y);
+                ctx.stroke();
+                ctx.fillText(`${v}${this.options.unit}`, p.left - 8, y + 4);
+            }
+
+            // Vertical Grid Lines
+            ctx.textAlign = "center";
+            for (let idx = 0; idx < MAX_DATA_NUM; idx += 20) {
+                const x = getX(idx);
+                ctx.beginPath();
+                ctx.moveTo(x, p.top);
+                ctx.lineTo(x, p.top + gh);
+                ctx.stroke();
+                ctx.fillText(`${idx * 100}`, x, p.top + gh + 18);
+            }
+            ctx.fillText("RPM", w - p.right + 15, p.top + gh + 18);
+
+            // Top-Right Color Legend
+            let legendX = w - p.right - 10;
+            ctx.font = "bold 11px sans-serif";
+            for (let m = this.enabledCount - 1; m >= 0; m--) {
+                const label = `MAP ${m + 1}`;
+                const textWidth = ctx.measureText(label).width;
+                legendX -= (textWidth + 20);
+
+                ctx.fillStyle = this.options.colors[m];
+                ctx.fillRect(legendX, p.top - 22, 10, 10);
+
+                ctx.fillStyle = (m === this.activeMapIndex) ? "#ffffff" : "#64748b";
+                ctx.textAlign = "left";
+                ctx.fillText(label, legendX + 14, p.top - 13);
+            }
+
+            if (!this.allMapsRef) return;
+
+            // 1. Draw Inactive Ghost Maps
+            for (let m = 0; m < this.enabledCount; m++) {
+                if (m === this.activeMapIndex) continue;
+
+                const mapData = this.allMapsRef[m];
+                ctx.strokeStyle = this.options.colors[m];
+                ctx.lineWidth = 1.2;
+                ctx.globalAlpha = 0.35;
+
+                ctx.beginPath();
+                for (let idx = 0; idx < MAX_DATA_NUM; idx++) {
+                    const x = getX(idx);
+                    const y = getY(mapData[idx]);
+                    if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+            ctx.globalAlpha = 1.0;
+
+            // 2. Draw Active Highlighted Map
+            const activeData = this.allMapsRef[this.activeMapIndex];
+            const activeColor = this.options.colors[this.activeMapIndex];
+
+            ctx.strokeStyle = activeColor;
+            ctx.lineWidth = 2.8;
+            ctx.beginPath();
+            for (let idx = 0; idx < MAX_DATA_NUM; idx++) {
+                const x = getX(idx);
+                const y = getY(activeData[idx]);
+                if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Gradient Fill
+            const grad = ctx.createLinearGradient(0, p.top, 0, p.top + gh);
+            grad.addColorStop(0, activeColor + "33");
+            grad.addColorStop(1, activeColor + "00");
+            ctx.fillStyle = grad;
+            ctx.lineTo(getX(MAX_DATA_NUM - 1), p.top + gh);
+            ctx.lineTo(getX(0), p.top + gh);
+            ctx.closePath();
+            ctx.fill();
+
+            // Tooltip & Node
+            if (this.hoverIndex >= 0) {
+                const hx = getX(this.hoverIndex);
+                const hy = getY(activeData[this.hoverIndex]);
+                const rpm = this.hoverIndex * 100;
+                const val = activeData[this.hoverIndex];
+
+                ctx.strokeStyle = "#e2e8f0";
+                ctx.lineWidth = 1;
+                ctx.setLineDash([4, 4]);
+
+                ctx.beginPath();
+                ctx.moveTo(hx, p.top);
+                ctx.lineTo(hx, p.top + gh);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(p.left, hy);
+                ctx.lineTo(w - p.right, hy);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.arc(hx, hy, 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                const label = `MAP ${this.activeMapIndex + 1} @ ${rpm} RPM: ${this.options.isInteger ? val : val.toFixed(1)}${this.options.unit}`;
+                ctx.font = "bold 12px sans-serif";
+                const tw = ctx.measureText(label).width + 16;
+                const bx = Math.min(w - p.right - tw, Math.max(p.left, hx - tw / 2));
+                const by = Math.max(p.top + 5, hy - 35);
+
+                ctx.fillStyle = "#0f172a";
+                ctx.strokeStyle = "#475569";
+                ctx.fillRect(bx, by, tw, 24);
+                ctx.strokeRect(bx, by, tw, 24);
+
+                ctx.fillStyle = "#f8fafc";
+                ctx.textAlign = "center";
+                ctx.fillText(label, bx + tw / 2, by + 16);
+            }
+        }
+    }
+
+    // -------------------------------------------------------------
+    // App Initialization & Event Wiring
+    // -------------------------------------------------------------
+    const cdi = new OsrCdiDevice();
+    let currentMapIndex = 0;
+
+    const ignVisualizer = new MultiMapVisualizer('ignCanvas', {
+        title: "Ignition Timing Advance (Degrees BTDC)", minY: 0, maxY: 40, stepY: 5, unit: "°", isInteger: false,
+        colors: IGN_MAP_COLORS, autoScale: true // Enables dynamic Y-scale
+    });
+
+    const pvsVisualizer = new MultiMapVisualizer('pvsCanvas', {
+        title: "Power Valve (YPVS / AETC) Target Position", minY: 0, maxY: 200, stepY: 25, unit: "", isInteger: true,
+        colors: PVS_MAP_COLORS, autoScale: false
+    });
+
+    const logBox = document.getElementById('logOutput');
+    const progressBar = document.getElementById('progressBar');
+    const statusText = document.getElementById('statusText');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    const fileInput = document.getElementById('fileInput');
+
+    function log(msg) {
+        logBox.textContent += `[${new Date().toLocaleTimeString()}] ${msg}\n`;
+        logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function getEnabledMapCount() {
+        switch (cdi.cfg.tp_type) {
+            case 0: return 1;
+            case 1: return 2;
+            case 2: return 4;
+            default: return 1;
+        }
+    }
+
+    function syncMapButtonStates() {
+        const enabledCount = getEnabledMapCount();
+        if (currentMapIndex >= enabledCount) {
+            currentMapIndex = 0;
+        }
+
+        for (let m = 0; m < MAX_MAP_NUM; m++) {
+            const btn = document.getElementById(`btnMap${m}`);
+            if (m < enabledCount) {
+                btn.disabled = false;
+                btn.style.display = "inline-block";
+                btn.classList.toggle('active', m === currentMapIndex);
+            } else {
+                btn.disabled = true;
+                btn.style.display = "none";
+                btn.classList.remove('active');
+            }
+        }
+    }
+
+    function syncConfigUi() {
+        // Map Switching Mode
+        document.getElementById('cfgTpType').value = cdi.cfg.tp_type;
+
+        // Pulse Type & Independent Pickup Angle
+        document.getElementById('cfgPulseType').value = cdi.cfg.sys_pulse_per_rotation;
+        document.getElementById('valPulseType').textContent = (cdi.cfg.sys_pulse_per_rotation === 2) ? "Twin Pulse" : "Single Pulse";
+
+        document.getElementById('cfgPickupDeg').value = cdi.cfg.sys_pickup_degree;
+        document.getElementById('valPickupDeg').textContent = `${cdi.cfg.sys_pickup_degree}°`;
+
+        document.getElementById('cfgRevLimit').value = cdi.cfg.rev_limit;
+        document.getElementById('valRevLimit').textContent = `${cdi.cfg.rev_limit * 100} RPM`;
+
+        // 2nd Wave Ignition & Opt Port
+        document.getElementById('cfg2ndSpark').value = cdi.cfg.count_of_an_ignition;
+        document.getElementById('val2ndSpark').textContent = `${cdi.cfg.count_of_an_ignition} sparks`;
+
+        document.getElementById('cfg2ndRpm').value = cdi.cfg.sys_rpm_for_an_ignition;
+        document.getElementById('val2ndRpm').textContent = `${cdi.cfg.sys_rpm_for_an_ignition * 100} RPM`;
+
+        document.getElementById('cfgOptPort').value = cdi.cfg.sys_opt_port;
+        document.getElementById('cfgPvsInit').value = cdi.cfg.sys_pvs_init_pattern;
+
+        // TPS Thresholds
+        document.getElementById('cfgTpTh1').value = cdi.cfg.tp_threshold01;
+        document.getElementById('valTpTh1').textContent = `${cdi.cfg.tp_threshold01} / 255`;
+
+        document.getElementById('cfgTpTh2').value = cdi.cfg.tp_threshold02;
+        document.getElementById('valTpTh2').textContent = `${cdi.cfg.tp_threshold02} / 255`;
+
+        document.getElementById('cfgTpTh3').value = cdi.cfg.tp_threshold03;
+        document.getElementById('valTpTh3').textContent = `${cdi.cfg.tp_threshold03} / 255`;
+
+        const is4Map = (cdi.cfg.tp_type === 2);
+        ['boxTpTh1', 'boxTpTh2', 'boxTpTh3'].forEach(id => {
+            const box = document.getElementById(id);
+            box.classList.toggle('disabled', !is4Map);
+            box.querySelectorAll('input').forEach(input => input.disabled = !is4Map);
+        });
+
+        // Quick Shifter Complete Settings
+        document.getElementById('cfgQsRpm').value = cdi.cfg.qs_enable_rpm;
+        document.getElementById('valQsRpm').textContent = `${cdi.cfg.qs_enable_rpm * 100} RPM`;
+
+        document.getElementById('cfgQsCut').value = cdi.cfg.qs_cut_count;
+        document.getElementById('valQsCut').textContent = `${cdi.cfg.qs_cut_count} counts`;
+
+        document.getElementById('cfgQsOnt').value = cdi.cfg.qs_sw_on_count;
+        document.getElementById('valQsOnt').textContent = `${cdi.cfg.qs_sw_on_count} counts`;
+
+        document.getElementById('cfgQsDis').value = cdi.cfg.qs_disable_count;
+        document.getElementById('valQsDis').textContent = `${cdi.cfg.qs_disable_count} counts`;
+
+        document.getElementById('cfgQsReverse').checked = (cdi.cfg.qs_reverse_onoff_state === 1);
+        document.getElementById('cfgQsStopSw').checked = (cdi.cfg.qs_use_as_stopsw === 1);
+    }
+
+    function updateVisualizers() {
+        syncMapButtonStates();
+        const enabledCount = getEnabledMapCount();
+
+        ignVisualizer.options.title = `Ignition Advance [Editing: MAP ${currentMapIndex + 1} (${enabledCount} Mode)]`;
+        pvsVisualizer.options.title = `Power Valve Position [Editing: MAP ${currentMapIndex + 1} (${enabledCount} Mode)]`;
+
+        ignVisualizer.bindData(cdi.ignMaps, currentMapIndex, enabledCount);
+        pvsVisualizer.bindData(cdi.pvsMaps, currentMapIndex, enabledCount);
+
+        syncConfigUi();
+    }
+
+    // Config Parameter Listeners
+    document.getElementById('cfgTpType').addEventListener('change', (e) => {
+        cdi.cfg.tp_type = parseInt(e.target.value, 10);
+        updateVisualizers();
+    });
+
+    document.getElementById('cfgPulseType').addEventListener('change', (e) => {
+        cdi.cfg.sys_pulse_per_rotation = parseInt(e.target.value, 10);
+        cdi.checkConfig();
+        syncConfigUi();
+        updateVisualizers();
+    });
+
+    document.getElementById('cfgPickupDeg').addEventListener('input', (e) => {
+        cdi.cfg.sys_pickup_degree = parseInt(e.target.value, 10);
+        document.getElementById('valPickupDeg').textContent = `${cdi.cfg.sys_pickup_degree}°`;
+        cdi.checkConfig();
+        updateVisualizers();
+    });
+
+    document.getElementById('cfgRevLimit').addEventListener('input', (e) => {
+        cdi.cfg.rev_limit = parseInt(e.target.value, 10);
+        document.getElementById('valRevLimit').textContent = `${cdi.cfg.rev_limit * 100} RPM`;
+    });
+
+    document.getElementById('cfg2ndSpark').addEventListener('input', (e) => {
+        cdi.cfg.count_of_an_ignition = parseInt(e.target.value, 10);
+        document.getElementById('val2ndSpark').textContent = `${cdi.cfg.count_of_an_ignition} sparks`;
+    });
+
+    document.getElementById('cfg2ndRpm').addEventListener('input', (e) => {
+        cdi.cfg.sys_rpm_for_an_ignition = parseInt(e.target.value, 10);
+        document.getElementById('val2ndRpm').textContent = `${cdi.cfg.sys_rpm_for_an_ignition * 100} RPM`;
+    });
+
+    document.getElementById('cfgOptPort').addEventListener('change', (e) => {
+        cdi.cfg.sys_opt_port = parseInt(e.target.value, 10);
+    });
+
+    document.getElementById('cfgPvsInit').addEventListener('change', (e) => {
+        cdi.cfg.sys_pvs_init_pattern = parseInt(e.target.value, 10);
+    });
+
+    // TPS Thresholds Order Enforcement
+    document.getElementById('cfgTpTh1').addEventListener('input', (e) => {
+        let v = parseInt(e.target.value, 10);
+        if (v >= cdi.cfg.tp_threshold02) v = cdi.cfg.tp_threshold02 - 1;
+        cdi.cfg.tp_threshold01 = Math.max(0, v);
+        e.target.value = cdi.cfg.tp_threshold01;
+        document.getElementById('valTpTh1').textContent = `${cdi.cfg.tp_threshold01} / 255`;
+    });
+
+    document.getElementById('cfgTpTh2').addEventListener('input', (e) => {
+        let v = parseInt(e.target.value, 10);
+        if (v <= cdi.cfg.tp_threshold01) v = cdi.cfg.tp_threshold01 + 1;
+        if (v >= cdi.cfg.tp_threshold03) v = cdi.cfg.tp_threshold03 - 1;
+        cdi.cfg.tp_threshold02 = v;
+        e.target.value = cdi.cfg.tp_threshold02;
+        document.getElementById('valTpTh2').textContent = `${cdi.cfg.tp_threshold02} / 255`;
+    });
+
+    document.getElementById('cfgTpTh3').addEventListener('input', (e) => {
+        let v = parseInt(e.target.value, 10);
+        if (v <= cdi.cfg.tp_threshold02) v = cdi.cfg.tp_threshold02 + 1;
+        cdi.cfg.tp_threshold03 = Math.min(255, v);
+        e.target.value = cdi.cfg.tp_threshold03;
+        document.getElementById('valTpTh3').textContent = `${cdi.cfg.tp_threshold03} / 255`;
+    });
+
+    // QS Listeners
+    document.getElementById('cfgQsRpm').addEventListener('input', (e) => {
+        cdi.cfg.qs_enable_rpm = parseInt(e.target.value, 10);
+        document.getElementById('valQsRpm').textContent = `${cdi.cfg.qs_enable_rpm * 100} RPM`;
+    });
+
+    document.getElementById('cfgQsCut').addEventListener('input', (e) => {
+        cdi.cfg.qs_cut_count = parseInt(e.target.value, 10);
+        document.getElementById('valQsCut').textContent = `${cdi.cfg.qs_cut_count} counts`;
+    });
+
+    document.getElementById('cfgQsOnt').addEventListener('input', (e) => {
+        cdi.cfg.qs_sw_on_count = parseInt(e.target.value, 10);
+        document.getElementById('valQsOnt').textContent = `${cdi.cfg.qs_sw_on_count} counts`;
+    });
+
+    document.getElementById('cfgQsDis').addEventListener('input', (e) => {
+        cdi.cfg.qs_disable_count = parseInt(e.target.value, 10);
+        document.getElementById('valQsDis').textContent = `${cdi.cfg.qs_disable_count} counts`;
+    });
+
+    document.getElementById('cfgQsReverse').addEventListener('change', (e) => {
+        cdi.cfg.qs_reverse_onoff_state = e.target.checked ? 1 : 0;
+    });
+
+    document.getElementById('cfgQsStopSw').addEventListener('change', (e) => {
+        cdi.cfg.qs_use_as_stopsw = e.target.checked ? 1 : 0;
+    });
+
+    // Curve Tweaks
+    document.getElementById('btnOffsetPlus').addEventListener('click', () => {
+        const map = cdi.ignMaps[currentMapIndex];
+        for (let i = 0; i < MAX_DATA_NUM; i++) {
+            if (map[i] > 0) map[i] = Math.round((map[i] + 0.5) * 10) / 10;
+        }
+        ignVisualizer.recalcScale();
+        ignVisualizer.render();
+    });
+
+    document.getElementById('btnOffsetMinus').addEventListener('click', () => {
+        const map = cdi.ignMaps[currentMapIndex];
+        for (let i = 0; i < MAX_DATA_NUM; i++) {
+            if (map[i] > 0) map[i] = Math.max(0, Math.round((map[i] - 0.5) * 10) / 10);
+        }
+        ignVisualizer.recalcScale();
+        ignVisualizer.render();
+    });
+
+    document.getElementById('btnInterpolate').addEventListener('click', () => {
+        const startRpmStr = prompt("Enter Start RPM (e.g. 2000):", "2000");
+        const endRpmStr = prompt("Enter End RPM (e.g. 8000):", "8000");
+        if (!startRpmStr || !endRpmStr) return;
+
+        const startIdx = Math.max(0, Math.min(MAX_DATA_NUM - 1, Math.round(parseInt(startRpmStr, 10) / 100)));
+        const endIdx = Math.max(0, Math.min(MAX_DATA_NUM - 1, Math.round(parseInt(endRpmStr, 10) / 100)));
+        if (startIdx >= endIdx) return alert("Start RPM must be lower than End RPM.");
+
+        const map = cdi.ignMaps[currentMapIndex];
+        const vStart = map[startIdx];
+        const vEnd = map[endIdx];
+
+        for (let i = startIdx + 1; i < endIdx; i++) {
+            const ratio = (i - startIdx) / (endIdx - startIdx);
+            map[i] = Math.round((vStart + ratio * (vEnd - vStart)) * 10) / 10;
+        }
+        ignVisualizer.recalcScale();
+        ignVisualizer.render();
+    });
+
+    // Map Select Buttons
+    document.querySelectorAll('.map-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentMapIndex = parseInt(btn.dataset.map, 10);
+            updateVisualizers();
+        });
+    });
+
+    // Hardware Connect
+    document.getElementById('btnConnect').addEventListener('click', async () => {
+        try {
+            log("Requesting USB HID connection...");
+            const dev = await cdi.connect();
+            const devName = dev.productName || "OSR-CDI Device";
+            log(`Connected: ${devName}`);
+            document.getElementById('valDevName').textContent = devName;
+
+            // Fetch Hardware Silicon & Firmware Details
+            try {
+                const info = await cdi.readDeviceIds();
+                document.getElementById('valFwVer').textContent = info.fwVer;
+                document.getElementById('valDevId').textContent = `0x${info.devId.toString(16).toUpperCase()}`;
+                document.getElementById('valRevId').textContent = `0x${info.revId.toString(16).toUpperCase()}`;
+                log(`Hardware Info: FW ${info.fwVer}, DevID 0x${info.devId.toString(16).toUpperCase()}`);
+            } catch (hwErr) {
+                log(`Note: Device ID read skipped (${hwErr.message})`);
+            }
+
+            document.getElementById('btnRead').disabled = false;
+            document.getElementById('btnWrite').disabled = false;
+            statusText.textContent = `Connected (${devName})`;
+            statusText.style.color = "#4ade80";
+        } catch (err) {
+            log(`Connection failed: ${err.message}`);
+        }
+    });
+
+    // Read CDI Flash
+    document.getElementById('btnRead').addEventListener('click', async () => {
+        try {
+            statusText.textContent = "Reading flash memory...";
+            log("Reading all maps and configuration from CDI...");
+            progressBar.value = 0;
+
+            await cdi.readTable((current, total) => {
+                progressBar.value = Math.floor((current / total) * 100);
+            });
+
+            log("All maps and settings loaded successfully from CDI!");
+            updateVisualizers();
+            statusText.textContent = "Read Complete";
+            fileNameDisplay.textContent = "Loaded from Device (unsaved)";
+        } catch (err) {
+            log(`Read error: ${err.message}`);
+            statusText.textContent = "Read Failed";
+            statusText.style.color = "#f87171";
+        }
+    });
+
+    // Write CDI Flash
+    document.getElementById('btnWrite').addEventListener('click', async () => {
+        if (!confirm("Are you sure you want to write current maps and settings to CDI flash memory?")) return;
+
+        try {
+            statusText.textContent = "Writing flash memory...";
+            log("Writing maps to CDI...");
+            progressBar.value = 0;
+
+            await cdi.writeTable((current, total) => {
+                progressBar.value = Math.floor((current / total) * 100);
+            });
+
+            log("All tables verified and written successfully!");
+            statusText.textContent = "Write Complete";
+        } catch (err) {
+            log(`Write error: ${err.message}`);
+            statusText.textContent = "Write Failed";
+            statusText.style.color = "#f87171";
+        }
+    });
+
+    // Open .cd2 File
+    document.getElementById('btnOpenFile').addEventListener('click', () => {
+        fileInput.value = "";
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                cdi.importCd2(event.target.result);
+                updateVisualizers();
+                fileNameDisplay.textContent = file.name;
+                log(`Loaded file: ${file.name}`);
+            } catch (err) {
+                log(`Failed to parse file: ${err.message}`);
+                alert(`Error reading CDI data file: ${err.message}`);
+            }
+        };
+        reader.readAsText(file);
+    });
+
+    // Save .cd2 File
+    document.getElementById('btnSaveFile').addEventListener('click', () => {
+        try {
+            const fileData = cdi.exportCd2();
+            const blob = new Blob([fileData], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+            a.download = `osr-cdi-${dateStr}.cd2`;
+            a.href = url;
+            a.click();
+            URL.revokeObjectURL(url);
+            log(`Exported configuration to: ${a.download}`);
+        } catch (err) {
+            log(`Failed to export file: ${err.message}`);
+        }
+    });
+
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        });
+    }
+
+    // Initial View Render
+    updateVisualizers();
+    </script>
+</body>
+</html>
