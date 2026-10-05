@@ -335,8 +335,7 @@
             });
         }
 
-
-	/**
+        /**
          * Fetch Device ID, Revision ID, and Firmware Version using CMD_GET_DEVIDS (0x94).
          * Perfectly matched with userinterface.h device_id struct layout:
          *   uint16_t userid[4] (bytes 0..7)
@@ -355,10 +354,8 @@
             const fwLo  = rx[13];
 
             // In PIC firmware: FW_VER_HI = (01), FW_VER_LO = (56) [Decimal 56 = 0x38]
-            // Format to "1.56" or "1.5.6"
             let verStr = "";
             if (fwHi !== 0 || fwLo !== 0) {
-                // If fwLo is decimal 56 (0x38), format as 1.5.6 or 1.56
                 const major = fwHi;
                 const minor = Math.floor(fwLo / 10);
                 const sub   = fwLo % 10;
@@ -373,7 +370,6 @@
 
             return this.hwInfo;
         }
-
 
         checkConfig() {
             if (this.cfg.rev_limit < 40) this.cfg.rev_limit = 40;
@@ -412,7 +408,7 @@
             this.cfg.sys_pulse_per_rotation = bytes[12];
             this.cfg.sys_pickup_degree      = bytes[13];
             this.cfg.count_of_an_ignition   = bytes[14];
-            this.cfg.sys_opt_port           = bytes[15];
+            this.cfg.sys_opt_port           = (bytes[15] === 1) ? 1 : 0; // Sanitize 0/1
             this.cfg.tp_type                = bytes[16];
             this.cfg.tp_threshold01         = bytes[17];
             this.cfg.tp_threshold02         = bytes[18];
@@ -439,7 +435,7 @@
             bytes[12] = this.cfg.sys_pulse_per_rotation;
             bytes[13] = this.cfg.sys_pickup_degree;
             bytes[14] = this.cfg.count_of_an_ignition;
-            bytes[15] = this.cfg.sys_opt_port;
+            bytes[15] = (this.cfg.sys_opt_port === 1) ? 1 : 0;
             bytes[16] = this.cfg.tp_type;
             bytes[17] = this.cfg.tp_threshold01;
             bytes[18] = this.cfg.tp_threshold02;
@@ -616,7 +612,7 @@
             out += `QSOPT-UseAsStopSW\t${pad(this.cfg.qs_use_as_stopsw)}\n`;
             out += `QSOPT-SwitchReverse\t${pad(this.cfg.qs_reverse_onoff_state)}\n`;
             out += `2nd_wave_ignition_count\t${pad(this.cfg.count_of_an_ignition)}\n`;
-            out += `OPT_C2port_usage\t${pad(this.cfg.sys_opt_port)}\n`;
+            out += `OPT_C2port_usage\t${pad((this.cfg.sys_opt_port === 1) ? 1 : 0)}\n`;
             out += `TP_TYPE\t${pad(this.cfg.tp_type)}\n`;
             out += `TP_TH01\t${pad(this.cfg.tp_threshold01)}\n`;
             out += `TP_TH02\t${pad(this.cfg.tp_threshold02)}\n`;
@@ -673,7 +669,7 @@
                 else if (keyU === "QSOPT-USEASSTOPSW" || keyU === "OPT-STP") this.cfg.qs_use_as_stopsw = n;
                 else if (keyU === "QSOPT-SWITCHREVERSE" || keyU === "OPT-REV") this.cfg.qs_reverse_onoff_state = n;
                 else if (keyU === "2ND_WAVE_IGNITION_COUNT") this.cfg.count_of_an_ignition = n;
-                else if (keyU === "OPT_C2PORT_USAGE") this.cfg.sys_opt_port = (n === 1) ? 1 : 0;
+                else if (keyU === "OPT_C2PORT_USAGE") this.cfg.sys_opt_port = (n === 1) ? 1 : 0; // Guard against legacy values like 151
                 else if (keyU === "TP_TYPE") this.cfg.tp_type = n;
                 else if (keyU === "TP_TH01") this.cfg.tp_threshold01 = n;
                 else if (keyU === "TP_TH02") this.cfg.tp_threshold02 = n;
@@ -694,30 +690,6 @@
             if (!presentKeys.has("QS-DIS")) this.cfg.qs_disable_count = 80;
 
             this.checkConfig();
-
-            // Log loaded option items to browser console for verification
-            try {
-                console.log("Loaded .cd2 options:");
-                console.log(`QS-RPM\t${this.cfg.qs_enable_rpm}`);
-                console.log(`QS_ONT\t${this.cfg.qs_sw_on_count}`);
-                console.log(`QS-CUT\t${this.cfg.qs_cut_count}`);
-                console.log(`QS-DIS\t${this.cfg.qs_disable_count}`);
-                console.log(`rev_limit\t${this.cfg.rev_limit}`);
-                console.log(`PulseType\t${this.cfg.sys_pulse_per_rotation}`);
-                console.log(`PickupDeg\t${this.cfg.sys_pickup_degree}`);
-                console.log(`QSOPT-UseAsStopSW\t${this.cfg.qs_use_as_stopsw}`);
-                console.log(`QSOPT-SwitchReverse\t${this.cfg.qs_reverse_onoff_state}`);
-                console.log(`2nd_wave_ignition_count\t${this.cfg.count_of_an_ignition}`);
-                console.log(`OPT_C2port_usage\t${this.cfg.sys_opt_port}`);
-                console.log(`TP_TYPE\t${this.cfg.tp_type}`);
-                console.log(`TP_TH01\t${this.cfg.tp_threshold01}`);
-                console.log(`TP_TH02\t${this.cfg.tp_threshold02}`);
-                console.log(`TP_TH03\t${this.cfg.tp_threshold03}`);
-                console.log(`rpm_limit_for_an_ignition\t${this.cfg.sys_rpm_for_an_ignition}`);
-            } catch (e) {
-                // ignore console errors in non-browser environments
-            }
-
             return true;
         }
     }
@@ -769,7 +741,6 @@
                 }
             }
 
-            // If max value exceeds threshold, scale up in steps of 5 degrees
             if (maxVal > 35) {
                 this.options.maxY = Math.ceil((maxVal + 5) / 5) * 5;
             } else {
@@ -977,7 +948,7 @@
             ctx.closePath();
             ctx.fill();
 
-            // Tooltip & Node
+            // Tooltip & Crosshair
             if (this.hoverIndex >= 0) {
                 const hx = getX(this.hoverIndex);
                 const hy = getY(activeData[this.hoverIndex]);
@@ -1023,20 +994,50 @@
     }
 
     // -------------------------------------------------------------
+    // Session Auto-Save & Restore Engine (localStorage)
+    // -------------------------------------------------------------
+    const STORAGE_KEY_AUTO_SAVE = "osr_cdi_autosave_cd2";
+
+    function saveToLocalStorage() {
+        try {
+            const dataStr = cdi.exportCd2();
+            localStorage.setItem(STORAGE_KEY_AUTO_SAVE, dataStr);
+        } catch (e) {
+            // Safe guard against quota limitations or disabled localStorage
+        }
+    }
+
+    function loadFromLocalStorage() {
+        try {
+            const savedData = localStorage.getItem(STORAGE_KEY_AUTO_SAVE);
+            if (savedData && savedData.includes("OSR-CDI")) {
+                cdi.importCd2(savedData);
+                document.getElementById('fileNameDisplay').textContent = "Restored previous session (auto-save)";
+                log("Restored previous session state from browser storage.");
+                return true;
+            }
+        } catch (e) {
+            console.warn("Failed to restore session from localStorage", e);
+        }
+        return false;
+    }
+
+    // -------------------------------------------------------------
     // App Initialization & Event Wiring
     // -------------------------------------------------------------
     const cdi = new OsrCdiDevice();
     let currentMapIndex = 0;
 
+    // Visualizers with automatic save triggers on modification
     const ignVisualizer = new MultiMapVisualizer('ignCanvas', {
         title: "Ignition Timing Advance (Degrees BTDC)", minY: 0, maxY: 40, stepY: 5, unit: "°", isInteger: false,
-        colors: IGN_MAP_COLORS, autoScale: true // Enables dynamic Y-scale
-    });
+        colors: IGN_MAP_COLORS, autoScale: true
+    }, () => saveToLocalStorage());
 
     const pvsVisualizer = new MultiMapVisualizer('pvsCanvas', {
         title: "Power Valve (YPVS / AETC) Target Position", minY: 0, maxY: 200, stepY: 25, unit: "", isInteger: true,
         colors: PVS_MAP_COLORS, autoScale: false
-    });
+    }, () => saveToLocalStorage());
 
     const logBox = document.getElementById('logOutput');
     const progressBar = document.getElementById('progressBar');
@@ -1099,7 +1100,7 @@
         document.getElementById('cfg2ndRpm').value = cdi.cfg.sys_rpm_for_an_ignition;
         document.getElementById('val2ndRpm').textContent = `${cdi.cfg.sys_rpm_for_an_ignition * 100} RPM`;
 
-        document.getElementById('cfgOptPort').value = cdi.cfg.sys_opt_port;
+        document.getElementById('cfgOptPort').value = (cdi.cfg.sys_opt_port === 1) ? "1" : "0";
         document.getElementById('cfgPvsInit').value = cdi.cfg.sys_pvs_init_pattern;
 
         // TPS Thresholds
@@ -1149,10 +1150,11 @@
         syncConfigUi();
     }
 
-    // Config Parameter Listeners
+    // Config Parameter Listeners (with real-time auto-saving)
     document.getElementById('cfgTpType').addEventListener('change', (e) => {
         cdi.cfg.tp_type = parseInt(e.target.value, 10);
         updateVisualizers();
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgPulseType').addEventListener('change', (e) => {
@@ -1160,6 +1162,7 @@
         cdi.checkConfig();
         syncConfigUi();
         updateVisualizers();
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgPickupDeg').addEventListener('input', (e) => {
@@ -1167,29 +1170,35 @@
         document.getElementById('valPickupDeg').textContent = `${cdi.cfg.sys_pickup_degree}°`;
         cdi.checkConfig();
         updateVisualizers();
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgRevLimit').addEventListener('input', (e) => {
         cdi.cfg.rev_limit = parseInt(e.target.value, 10);
         document.getElementById('valRevLimit').textContent = `${cdi.cfg.rev_limit * 100} RPM`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfg2ndSpark').addEventListener('input', (e) => {
         cdi.cfg.count_of_an_ignition = parseInt(e.target.value, 10);
         document.getElementById('val2ndSpark').textContent = `${cdi.cfg.count_of_an_ignition} sparks`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfg2ndRpm').addEventListener('input', (e) => {
         cdi.cfg.sys_rpm_for_an_ignition = parseInt(e.target.value, 10);
         document.getElementById('val2ndRpm').textContent = `${cdi.cfg.sys_rpm_for_an_ignition * 100} RPM`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgOptPort').addEventListener('change', (e) => {
         cdi.cfg.sys_opt_port = parseInt(e.target.value, 10);
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgPvsInit').addEventListener('change', (e) => {
         cdi.cfg.sys_pvs_init_pattern = parseInt(e.target.value, 10);
+        saveToLocalStorage();
     });
 
     // TPS Thresholds Order Enforcement
@@ -1199,6 +1208,7 @@
         cdi.cfg.tp_threshold01 = Math.max(0, v);
         e.target.value = cdi.cfg.tp_threshold01;
         document.getElementById('valTpTh1').textContent = `${cdi.cfg.tp_threshold01} / 255`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgTpTh2').addEventListener('input', (e) => {
@@ -1208,6 +1218,7 @@
         cdi.cfg.tp_threshold02 = v;
         e.target.value = cdi.cfg.tp_threshold02;
         document.getElementById('valTpTh2').textContent = `${cdi.cfg.tp_threshold02} / 255`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgTpTh3').addEventListener('input', (e) => {
@@ -1216,35 +1227,42 @@
         cdi.cfg.tp_threshold03 = Math.min(255, v);
         e.target.value = cdi.cfg.tp_threshold03;
         document.getElementById('valTpTh3').textContent = `${cdi.cfg.tp_threshold03} / 255`;
+        saveToLocalStorage();
     });
 
     // QS Listeners
     document.getElementById('cfgQsRpm').addEventListener('input', (e) => {
         cdi.cfg.qs_enable_rpm = parseInt(e.target.value, 10);
         document.getElementById('valQsRpm').textContent = `${cdi.cfg.qs_enable_rpm * 100} RPM`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgQsCut').addEventListener('input', (e) => {
         cdi.cfg.qs_cut_count = parseInt(e.target.value, 10);
         document.getElementById('valQsCut').textContent = `${cdi.cfg.qs_cut_count} counts`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgQsOnt').addEventListener('input', (e) => {
         cdi.cfg.qs_sw_on_count = parseInt(e.target.value, 10);
         document.getElementById('valQsOnt').textContent = `${cdi.cfg.qs_sw_on_count} counts`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgQsDis').addEventListener('input', (e) => {
         cdi.cfg.qs_disable_count = parseInt(e.target.value, 10);
         document.getElementById('valQsDis').textContent = `${cdi.cfg.qs_disable_count} counts`;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgQsReverse').addEventListener('change', (e) => {
         cdi.cfg.qs_reverse_onoff_state = e.target.checked ? 1 : 0;
+        saveToLocalStorage();
     });
 
     document.getElementById('cfgQsStopSw').addEventListener('change', (e) => {
         cdi.cfg.qs_use_as_stopsw = e.target.checked ? 1 : 0;
+        saveToLocalStorage();
     });
 
     // Curve Tweaks
@@ -1255,6 +1273,7 @@
         }
         ignVisualizer.recalcScale();
         ignVisualizer.render();
+        saveToLocalStorage();
     });
 
     document.getElementById('btnOffsetMinus').addEventListener('click', () => {
@@ -1264,6 +1283,7 @@
         }
         ignVisualizer.recalcScale();
         ignVisualizer.render();
+        saveToLocalStorage();
     });
 
     document.getElementById('btnInterpolate').addEventListener('click', () => {
@@ -1285,6 +1305,7 @@
         }
         ignVisualizer.recalcScale();
         ignVisualizer.render();
+        saveToLocalStorage();
     });
 
     // Map Select Buttons
@@ -1337,8 +1358,9 @@
 
             log("All maps and settings loaded successfully from CDI!");
             updateVisualizers();
+            saveToLocalStorage(); // Auto-save after reading from CDI
             statusText.textContent = "Read Complete";
-            fileNameDisplay.textContent = "Loaded from Device (unsaved)";
+            fileNameDisplay.textContent = "Loaded from Device (active session)";
         } catch (err) {
             log(`Read error: ${err.message}`);
             statusText.textContent = "Read Failed";
@@ -1383,6 +1405,7 @@
             try {
                 cdi.importCd2(event.target.result);
                 updateVisualizers();
+                saveToLocalStorage(); // Auto-save after importing file
                 fileNameDisplay.textContent = file.name;
                 log(`Loaded file: ${file.name}`);
             } catch (err) {
@@ -1419,7 +1442,13 @@
         });
     }
 
-    // Initial View Render
+    // Auto-save on window close or tab navigation
+    window.addEventListener('beforeunload', () => {
+        saveToLocalStorage();
+    });
+
+    // Restore session if available, then initialize UI
+    loadFromLocalStorage();
     updateVisualizers();
     </script>
 </body>
