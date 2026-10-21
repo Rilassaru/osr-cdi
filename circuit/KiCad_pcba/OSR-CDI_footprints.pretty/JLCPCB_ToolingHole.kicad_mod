@@ -3,24 +3,24 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(property "Reference" ""
-		(at 0 0 0)
+	(property "Reference" "ToolingHole"
+		(at 1.3025 -1.73 180)
 		(unlocked yes)
-		(layer "F.SilkS")
-		(hide yes)
-		(uuid "6c9686bd-7e94-4bdc-a50c-25813d951b98")
+		(layer "B.SilkS")
+		(uuid "ac24d435-ca6f-495b-a299-ce3c864d6291")
 		(effects
 			(font
 				(size 1 1)
 				(thickness 0.1)
 			)
+			(justify mirror)
 		)
 	)
 	(property "Value" "ToolingHole"
 		(at 0 1.5875 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "41afa3f4-d0bd-41b6-acf1-1c98f731ae4a")
+		(uuid "f4481f6c-d910-4854-af61-7bb15900675c")
 		(effects
 			(font
 				(size 1 1)
@@ -33,7 +33,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "bc2d4992-3660-40b6-81fe-37e33fe3ad51")
+		(uuid "8caf834b-36c1-4cfe-9078-e1a014184c2d")
 		(effects
 			(font
 				(size 1 1)
@@ -46,7 +46,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "9cdd5f55-a57c-449b-b300-9c7cb3e57770")
+		(uuid "655f6b22-d55c-487b-9ac9-4a48aab5f274")
 		(effects
 			(font
 				(size 1 1)
@@ -54,7 +54,7 @@
 			)
 		)
 	)
-	(attr smd)
+	(attr through_hole board_only exclude_from_pos_files exclude_from_bom)
 	(duplicate_pad_numbers_are_jumpers no)
 	(pad "" np_thru_hole circle
 		(at 0 0)
@@ -65,7 +65,7 @@
 		(clearance 0.248)
 		(zone_connect 0)
 		(thermal_bridge_angle 90)
-		(uuid "0a5465a6-d2d9-47e1-bd71-6ff19bfa0bdf")
+		(uuid "47198458-8abd-4819-abe7-5fb61a8fcf91")
 	)
 	(embedded_fonts no)
 )
