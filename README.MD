@@ -20,6 +20,7 @@ OSR-CDI/
 |   `-- lib/             # Pre-built static libraries and dependencies (FLTK, HIDAPI)
 |-- genuine-map-files/   # Baseline and custom ignition curve maps (.bin / .hex / .csv)
 `-- README.md
+```
 
 ===========================================
 Requirements & Toolchain
@@ -35,18 +36,21 @@ Requirements & Toolchain
    Flashing / Debugging
       Tool: PICkit 3 / 4, MPLAB SNAP, MPLAB IPE
       Notes: Via on-board ICSP header pins
-      <p align="center"><img src="assets/flashing_with_pikckit3.jpg" alt="OSR-CDI Board" width="600"></p>
+
+<p align="center">
+<img src="assets/flashing_with_pikckit3.jpg" alt="OSR-CDI Board" width="600">
+</p>
+      
    GUI Utility (WinCDI)
       Tool: Visual Studio ver.2026 (C++ Desktop Development)
       Notes: Statically links against pre-built libraries in wincdi/lib/
-      <p align="center">
-      <img src="assets/wincdi001.png" alt="OSR-CDI Board" width="600">
-      <img src="assets/wincdi002.png" alt="OSR-CDI Board" width="600">
-      <img src="assets/wincdi003.png" alt="OSR-CDI Board" width="600">
-      <img src="assets/wincdi004.png" alt="OSR-CDI Board" width="600">
-      </p>
 
-
+<p align="center">
+<img src="assets/wincdi001.png" alt="OSR-CDI Board" width="450">
+<img src="assets/wincdi002.png" alt="OSR-CDI Board" width="450">
+<img src="assets/wincdi003.png" alt="OSR-CDI Board" width="450">
+<img src="assets/wincdi004.png" alt="OSR-CDI Board" width="450">
+</p>
 
 ===========================================
 Getting Started
