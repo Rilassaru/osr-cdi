@@ -4,9 +4,7 @@ Open-source programmable CDI (Capacitor Discharge Ignition) unit design and sour
 
 This repository includes complete design files for KiCad PCB layouts, PIC microcontroller firmware (MPLAB X), Windows-based map configuration utility "WinCDI" (Visual Studio), and baseline ignition map datasets.
 
-<p align="center">
-  <img src="assets/pcba001.jpg" alt="OSR-CDI Board" width="600">
-</p>
+<p align="center"><img src="assets/pcba001.jpg" alt="OSR-CDI Board" width="600"></p>
 
 ---
 
@@ -37,10 +35,18 @@ Requirements & Toolchain
    Flashing / Debugging
       Tool: PICkit 3 / 4, MPLAB SNAP, MPLAB IPE
       Notes: Via on-board ICSP header pins
-
+      <p align="center"><img src="assets/flashing_with_pikckit3.jpg" alt="OSR-CDI Board" width="600"></p>
    GUI Utility (WinCDI)
       Tool: Visual Studio ver.2026 (C++ Desktop Development)
       Notes: Statically links against pre-built libraries in wincdi/lib/
+      <p align="center">
+      <img src="assets/wincdi001.png" alt="OSR-CDI Board" width="600">
+      <img src="assets/wincdi002.png" alt="OSR-CDI Board" width="600">
+      <img src="assets/wincdi003.png" alt="OSR-CDI Board" width="600">
+      <img src="assets/wincdi004.png" alt="OSR-CDI Board" width="600">
+      </p>
+
+
 
 ===========================================
 Getting Started
@@ -61,6 +67,8 @@ Getting Started
    1.Open the solution file (.sln) inside the wincdi/ directory with Visual Studio.
    2.Set configuration to Release (or Debug) and run Build Solution.
       Note: Required third-party libraries (FLTK, HIDAPI) are pre-configured in wincdi/lib/ for static linkage.
+
+
 
 ===========================================
 Releases & Pre-built Packages
