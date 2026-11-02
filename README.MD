@@ -4,6 +4,10 @@ Open-source programmable CDI (Capacitor Discharge Ignition) unit design and sour
 
 This repository includes complete design files for KiCad PCB layouts, PIC microcontroller firmware (MPLAB X), Windows-based map configuration utility "WinCDI" (Visual Studio), and baseline ignition map datasets.
 
+<p align="center">
+  <img src="assets/pcba001.jpg" alt="OSR-CDI Board" width="600">
+</p>
+
 ---
 
 ## Directory Structure
