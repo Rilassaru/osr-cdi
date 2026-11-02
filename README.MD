@@ -27,7 +27,7 @@ Requirements & Toolchain
       Notes: Custom footprints included in OSR-CDI_footprints.pretty
 
    Firmware
-      Tool: MPLAB X IDE ver.6.2 & XC8 ver.2.5 Compiler
+      Tool: MPLAB X IDE ver.6.2 & XC8 ver.2.5 (or later) Compiler
       Notes: Targets PIC16F1455 series microcontrollers
 
    Flashing / Debugging
@@ -51,9 +51,9 @@ Getting Started
 2. Firmware Build & Flash
    1.Open the project under firmware/ using MPLAB X IDE.
    2.Select your target device (e.g., PIC16F1455) and XC8 compiler version, then run Clean and Build.
-   3.Connect your programmer (PICkit / SNAP) to the ICSP header on the board and click Make and Program Device.
+   3.Connect your programmer (PICkit3/4/5) to the ICSP header on the board and click Make and Program Device.
 
-3. Building WinCDI (Windows Utility)
+3. Building WinCDI (Windows map programming utility)
    1.Open the solution file (.sln) inside the wincdi/ directory with Visual Studio.
    2.Set configuration to Release (or Debug) and run Build Solution.
       Note: Required third-party libraries (FLTK, HIDAPI) are pre-configured in wincdi/lib/ for static linkage.
