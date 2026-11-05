@@ -22,3 +22,5 @@ powershell -Command "Compress-Archive -Path '_release_temp\*' -DestinationPath '
 rmdir /s /q _release_temp
 
 echo ZIP package created: OSR-CDI_v1.5.6-beta_Package.zip
+
+pause

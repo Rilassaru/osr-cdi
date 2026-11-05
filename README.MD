@@ -46,10 +46,17 @@ Requirements & Toolchain
       Notes: Statically links against pre-built libraries in wincdi/lib/
 
 <p align="center">
+<<<<<<< HEAD
 <img src="assets/wincdi001.png" alt="OSR-CDI Board" width="450">
 <img src="assets/wincdi002.png" alt="OSR-CDI Board" width="450">
 <img src="assets/wincdi003.png" alt="OSR-CDI Board" width="450">
 <img src="assets/wincdi004.png" alt="OSR-CDI Board" width="450">
+=======
+<img src="assets/wincdi001.png" alt="OSR-CDI Board" width="400">
+<img src="assets/wincdi002.png" alt="OSR-CDI Board" width="400">
+<img src="assets/wincdi003.png" alt="OSR-CDI Board" width="400">
+<img src="assets/wincdi004.png" alt="OSR-CDI Board" width="400">
+>>>>>>> 391829afcec768678eb88bb72cc10ab4a0bdf8e2
 </p>
 
 ===========================================
